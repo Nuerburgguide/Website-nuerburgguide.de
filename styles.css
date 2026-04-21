@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f9f9f9;
@@ -59,6 +59,11 @@ nav a {
 
 nav a:hover {
     color: #0066cc;
+}
+
+nav a[aria-current="page"] {
+    color: #0066cc;
+    font-weight: 700;
 }
 
 /* Main Content */
@@ -169,10 +174,45 @@ main {
     margin-bottom: 15px;
 }
 
+.legal-page h3 {
+    font-size: 1.05rem;
+    color: #1f1f1f;
+    margin-top: 22px;
+    margin-bottom: 10px;
+}
+
 .legal-page section {
     margin-bottom: 30px;
 }
 
+.legal-page p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.legal-page ul {
+    margin: 0 0 18px 22px;
+    padding: 0;
+}
+
+.legal-page li {
+    color: #555;
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.legal-page a {
+    color: #0066cc;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.legal-page a:hover {
+    text-decoration: underline;
+}
+
+/* Platzhalter aus älteren Entwürfen */
 .placeholder {
     background-color: #f0f4f8;
     border-left: 4px solid #0066cc;
@@ -185,10 +225,21 @@ main {
     align-items: center;
 }
 
-.legal-page p {
-    color: #666;
-    margin-bottom: 15px;
-    line-height: 1.8;
+/* Warnhinweis / Bearbeitungsstatus */
+.notice-box {
+    background-color: #fff3cd;
+    border: 1px solid #ffe69c;
+    border-left: 5px solid #e0a800;
+    color: #664d03;
+    padding: 16px 18px;
+    margin: 0 0 30px 0;
+    border-radius: 8px;
+}
+
+.notice-box p {
+    color: #664d03;
+    margin-bottom: 0;
+    line-height: 1.7;
 }
 
 /* Footer */
@@ -245,9 +296,17 @@ footer p {
         font-size: 1.1rem;
     }
 
+    .legal-page h3 {
+        font-size: 1rem;
+    }
+
     .placeholder {
         padding: 15px;
         font-size: 0.9rem;
+    }
+
+    .notice-box {
+        padding: 14px 15px;
     }
 }
 
