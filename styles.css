@@ -16,9 +16,9 @@ body {
 }
 
 .container {
-    max-width: 1120px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 22px;
+    padding: 0 28px;
 }
 
 /* Header und Navigation */
@@ -36,7 +36,7 @@ header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 22px;
+    padding: 16px 28px;
 }
 
 .logo {
@@ -46,7 +46,7 @@ header .container {
 }
 
 .logo img {
-    height: 72px;
+    height: 92px;
     width: auto;
     display: block;
 }
@@ -56,7 +56,7 @@ nav ul {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
 }
 
@@ -65,9 +65,9 @@ nav a {
     display: inline-block;
     text-decoration: none;
     color: #2c2c2c;
-    font-weight: 700;
-    font-size: 0.94rem;
-    padding: 9px 14px;
+    font-weight: 750;
+    font-size: 0.95rem;
+    padding: 9px 15px;
     border-radius: 999px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -93,23 +93,71 @@ main {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
-    padding: 64px 0;
+    padding: 70px 0 62px;
     margin-bottom: 34px;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 4vw, 3.4rem);
     color: #151515;
     margin-bottom: 14px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-weight: 850;
+    letter-spacing: -0.045em;
 }
 
 .hero p {
-    font-size: 1.08rem;
+    font-size: 1.1rem;
     color: #555;
-    max-width: 720px;
+    max-width: 760px;
+}
+
+/* App Preview Section */
+.app-preview-section {
+    padding: 30px 0 52px;
+}
+
+.app-preview-box {
+    min-height: 300px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 25% 20%, rgba(237, 32, 0, 0.12), transparent 30%),
+        linear-gradient(135deg, #161616 0%, #242424 55%, #111 100%);
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 36px;
+    padding: clamp(28px, 5vw, 54px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.app-preview-text h2 {
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    margin-bottom: 14px;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+}
+
+.app-preview-text p {
+    color: #d5d5d5;
+    max-width: 560px;
+    font-size: 1rem;
+}
+
+.app-preview-placeholder {
+    min-height: 220px;
+    border: 1px dashed rgba(255, 255, 255, 0.35);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cfcfcf;
+    text-align: center;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.04);
 }
 
 /* Links Section */
@@ -121,19 +169,19 @@ main {
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: #151515;
     margin-bottom: 28px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-weight: 850;
+    letter-spacing: -0.035em;
 }
 
 .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
 }
 
 .link-card {
     background: #fff;
-    padding: 26px;
+    padding: 24px;
     border-radius: 18px;
     border: 1px solid #ececec;
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
@@ -147,16 +195,16 @@ main {
 }
 
 .link-card h3 {
-    font-size: 1.22rem;
+    font-size: 1.15rem;
     color: #151515;
     margin-bottom: 12px;
-    font-weight: 800;
+    font-weight: 850;
 }
 
 .link-card p {
     color: #5d5d5d;
     margin-bottom: 18px;
-    font-size: 0.96rem;
+    font-size: 0.95rem;
 }
 
 .button {
@@ -166,7 +214,8 @@ main {
     color: #fff;
     text-decoration: none;
     border-radius: 999px;
-    font-weight: 800;
+    font-weight: 850;
+    font-size: 0.92rem;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -343,31 +392,89 @@ main {
 
 /* Footer */
 footer {
-    background-color: #111;
+    background: linear-gradient(180deg, #141414 0%, #0f0f0f 100%);
     color: #fff;
     margin-top: 70px;
+    border-top: 1px solid #252525;
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 50px;
-    padding: 50px 22px;
-    text-align: left;
+.footer-legal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 34px;
+    padding: 40px 28px;
 }
 
-.footer-grid h3 {
+.footer-brand h3 {
+    color: #fff;
+    font-size: 1.12rem;
+    margin-bottom: 8px;
+    font-weight: 850;
+    letter-spacing: -0.02em;
+}
+
+.footer-brand p {
+    color: #bdbdbd;
+    max-width: 620px;
+    line-height: 1.65;
+    font-size: 0.95rem;
+}
+
+.footer-links h3 {
     color: #fff;
     font-size: 1rem;
-    margin-bottom: 16px;
-    font-weight: 800;
+    margin-bottom: 12px;
+    font-weight: 850;
 }
 
-.footer-grid p {
-    color: #bdbdbd;
-    max-width: 380px;
-    line-height: 1.7;
+.footer-links ul {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.footer-links li {
+    list-style: none;
+    margin: 0;
+}
+
+.footer-links a {
+    color: #d5d5d5;
+    text-decoration: none;
     font-size: 0.95rem;
+    font-weight: 650;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #2b2b2b;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.footer-bottom p {
+    color: #bbb;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Fallback, falls alte Footer-Klasse noch irgendwo drin ist */
+.footer-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 34px;
+    padding: 40px 28px;
+    text-align: left;
 }
 
 .footer-grid ul {
@@ -377,14 +484,15 @@ footer {
 }
 
 .footer-grid li {
-    margin-bottom: 10px;
+    list-style: none;
+    margin-bottom: 8px;
 }
 
 .footer-grid a {
-    color: #bdbdbd;
+    color: #d5d5d5;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 650;
 }
 
 .footer-grid a:hover {
@@ -392,19 +500,17 @@ footer {
     text-decoration: underline;
 }
 
-.footer-bottom {
-    border-top: 1px solid #2b2b2b;
-    text-align: center;
-    padding: 22px 20px;
-}
-
-.footer-bottom p {
-    color: #bbb;
-    font-size: 0.9rem;
-    margin: 0;
-}
-
 /* Responsive Design */
+@media (max-width: 1100px) {
+    .links-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .app-preview-box {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 768px) {
     .header-container,
     header .container {
@@ -413,7 +519,7 @@ footer {
     }
 
     .logo img {
-        height: 64px;
+        height: 72px;
     }
 
     .main-nav ul,
@@ -444,11 +550,17 @@ footer {
         border-radius: 18px;
     }
 
+    .footer-legal,
     .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 40px 22px;
-        text-align: left;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 36px 28px;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        gap: 9px;
     }
 }
 
@@ -465,11 +577,16 @@ footer {
     }
 
     .logo img {
-        height: 58px;
+        height: 64px;
     }
 
     .hero {
         padding: 34px 0;
+    }
+
+    .app-preview-box {
+        padding: 24px;
+        border-radius: 22px;
     }
 
     .link-card {
@@ -480,6 +597,7 @@ footer {
         padding: 20px;
     }
 
+    .footer-legal,
     .footer-grid {
         padding: 34px 14px;
     }
