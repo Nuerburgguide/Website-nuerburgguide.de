@@ -98,17 +98,89 @@ main {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.hero h1 {
+.hero-home {
+    background:
+        radial-gradient(circle at 82% 20%, rgba(237, 32, 0, 0.12), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+}
+
+.hero-home-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 44px;
+    align-items: center;
+}
+
+.hero h1,
+.about-hero h1 {
     font-size: clamp(2.25rem, 4vw, 3.4rem);
     color: #151515;
     margin-bottom: 14px;
     font-weight: 850;
     letter-spacing: -0.045em;
+    line-height: 1.05;
 }
 
-.hero p {
+.hero p,
+.about-hero p {
     font-size: 1.1rem;
     color: #555;
+    max-width: 760px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.hero-panel {
+    background: #151515;
+    color: #fff;
+    border-radius: 26px;
+    padding: 32px;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+}
+
+.hero-panel h2 {
+    font-size: 1.55rem;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    font-weight: 850;
+    letter-spacing: -0.035em;
+}
+
+.hero-panel p {
+    color: #d6d6d6;
+    font-size: 0.98rem;
+}
+
+.eyebrow {
+    color: #ed2000;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 850;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    color: #151515;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #5d5d5d;
     max-width: 760px;
 }
 
@@ -117,6 +189,22 @@ main {
     padding: 30px 0 52px;
 }
 
+.app-preview-image {
+    background: #151515;
+    border-radius: 28px;
+    padding: clamp(10px, 2vw, 18px);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+}
+
+.app-preview-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+}
+
+/* Alte Preview-Klassen als Fallback */
 .app-preview-box {
     min-height: 300px;
     border-radius: 28px;
@@ -158,6 +246,147 @@ main {
     text-align: center;
     padding: 24px;
     background: rgba(255, 255, 255, 0.04);
+}
+
+/* Features */
+.features-section {
+    padding: 34px 0 52px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.feature-card,
+.value-card,
+.about-card {
+    background: #fff;
+    border: 1px solid #ececec;
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.055);
+}
+
+.feature-card h3,
+.value-card h3,
+.about-card h2 {
+    color: #151515;
+    font-size: 1.18rem;
+    font-weight: 850;
+    margin-bottom: 12px;
+    letter-spacing: -0.025em;
+}
+
+.feature-card p,
+.value-card p,
+.about-card p {
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+
+.feature-card p:last-child,
+.value-card p:last-child,
+.about-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Community / Disclaimer */
+.community-section,
+.disclaimer-section,
+.respect-section,
+.cooperation-section,
+.values-section,
+.about-section {
+    padding: 28px 0;
+}
+
+.community-box,
+.respect-box,
+.cooperation-box,
+.disclaimer-box {
+    border-radius: 26px;
+    padding: clamp(26px, 4vw, 42px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.community-box,
+.respect-box {
+    background: #fff;
+    border: 1px solid #ececec;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 34px;
+    align-items: center;
+}
+
+.community-box h2,
+.respect-box h2,
+.cooperation-box h2,
+.disclaimer-box h2 {
+    color: #151515;
+    font-size: clamp(1.55rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+}
+
+.community-box p,
+.respect-box p,
+.cooperation-box p,
+.disclaimer-box p {
+    color: #555;
+    line-height: 1.75;
+}
+
+.disclaimer-box {
+    background: #151515;
+    color: #fff;
+    border: 1px solid #2b2b2b;
+}
+
+.disclaimer-box h2 {
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.disclaimer-box p {
+    color: #d8d8d8;
+}
+
+.cooperation-box {
+    background:
+        radial-gradient(circle at 85% 10%, rgba(237, 32, 0, 0.16), transparent 28%),
+        #fff;
+    border: 1px solid #ececec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+/* About */
+.about-hero {
+    background:
+        radial-gradient(circle at 82% 20%, rgba(237, 32, 0, 0.12), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+    padding: 70px 0 62px;
+    margin-bottom: 34px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
 }
 
 /* Links Section */
@@ -222,6 +451,14 @@ main {
 .button:hover {
     background-color: #c91b00;
     transform: translateY(-1px);
+}
+
+.button-secondary {
+    background: #151515;
+}
+
+.button-secondary:hover {
+    background: #2a2a2a;
 }
 
 /* Legal Pages */
@@ -502,12 +739,23 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 1100px) {
-    .links-grid {
+    .links-grid,
+    .features-grid,
+    .values-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .app-preview-box {
+    .app-preview-box,
+    .hero-home-grid,
+    .community-box,
+    .respect-box,
+    .about-grid {
         grid-template-columns: 1fr;
+    }
+
+    .cooperation-box {
+        align-items: flex-start;
+        flex-direction: column;
     }
 }
 
@@ -538,11 +786,14 @@ footer {
         padding: 28px 0;
     }
 
-    .hero {
+    .hero,
+    .about-hero {
         padding: 42px 0;
     }
 
-    .links-grid {
+    .links-grid,
+    .features-grid,
+    .values-grid {
         grid-template-columns: 1fr;
     }
 
@@ -580,7 +831,8 @@ footer {
         height: 64px;
     }
 
-    .hero {
+    .hero,
+    .about-hero {
         padding: 34px 0;
     }
 
@@ -589,7 +841,19 @@ footer {
         border-radius: 22px;
     }
 
-    .link-card {
+    .app-preview-image {
+        border-radius: 20px;
+        padding: 8px;
+    }
+
+    .app-preview-image img {
+        border-radius: 14px;
+    }
+
+    .link-card,
+    .feature-card,
+    .value-card,
+    .about-card {
         padding: 20px;
     }
 
