@@ -111,9 +111,9 @@
                     <p>In der aktuellen Version der App können insbesondere folgende Daten verarbeitet werden:</p>
                     <ul>
                         <li>Standortdaten des Endgeräts, sofern Sie die Standortfreigabe erteilen</li>
-                        <li>standortbezogene Meldedaten im Rahmen der Streckenstatusfunktion, insbesondere Standortbezug, gemeldeter Status, Zeitstempel sowie technisch erforderliche Verbindungsdaten</li>
-                        <li>gerätebezogene Kennungen und technische Identifikatoren, soweit diese für die technische Bereitstellung, Stabilität und Sicherheit der App erforderlich sind</li>
-                        <li>technische Nutzungs- und Verbindungsdaten, soweit diese beim Einsatz eingebundener Dienste oder unseres Backends anfallen</li>
+                        <li>standortbezogene Meldedaten im Rahmen der Streckenstatusfunktion, insbesondere Standortbezug, gemeldeter Status, Streckenabschnitt oder Sektor, Zeitstempel sowie technisch erforderliche Verbindungsdaten</li>
+                        <li>gerätebezogene Kennungen und technische Identifikatoren, insbesondere Installationskennung, User-ID oder Client-ID, soweit diese für die technische Bereitstellung, Stabilität und Sicherheit der App erforderlich sind</li>
+                        <li>technische Nutzungs-, Protokoll- und Verbindungsdaten, soweit diese beim Einsatz eingebundener Dienste oder unseres Backends anfallen</li>
                         <li>Kontakt- und Kommunikationsdaten, wenn Sie uns per E-Mail, über das Kontaktformular kontaktieren oder Feedback übermitteln</li>
                     </ul>
                 </section>
@@ -249,6 +249,7 @@
                 <section>
                     <h2>9. Gerätekennungen, technische Identifikatoren und Protokolldaten</h2>
                     <p>Im Rahmen der Nutzung der App können technische Identifikatoren, gerätebezogene Informationen sowie technisch erforderliche Protokoll- und Verbindungsdaten verarbeitet werden, soweit dies für die technische Bereitstellung, Stabilität, Sicherheit, Fehleranalyse oder Missbrauchsvermeidung erforderlich ist.</p>
+                    <p>Hierzu kann insbesondere eine zufällig erzeugte Installationskennung, User-ID oder Client-ID gehören. Diese Kennung dient dazu, App-Anfragen und Streckenstatusmeldungen technisch zuzuordnen, Mehrfachmeldungen zu begrenzen, Missbrauch zu verhindern und die Stabilität der Streckenstatusfunktion sicherzustellen. Die Kennung enthält keinen Klarnamen und wird nicht zu Zwecken personalisierter Werbung verwendet.</p>
                     <p>Eine Verarbeitung zu Zwecken personalisierter Werbung findet in der aktuellen Version der App nicht statt.</p>
                     <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
                 </section>
@@ -293,8 +294,32 @@
 
                 <section>
                     <h2>12. Hosting / Server-Infrastruktur / Backend</h2>
-                    <p>Für den technischen Betrieb der App sowie für Server-, Hosting- und Backend-Leistungen nutzen wir Hetzner als technischen Dienstleister. Die Verarbeitung erfolgt dabei auf Servern in Deutschland beziehungsweise innerhalb der EU, soweit dies für die konkret eingesetzten Systeme zutrifft. Hetzner betreibt unter anderem eigene Rechenzentren in Deutschland.</p>
-                    <p>Soweit externe Dienstleister personenbezogene Daten in unserem Auftrag verarbeiten, erfolgt dies auf Grundlage von Art. 28 DSGVO im Rahmen eines Auftragsverarbeitungsvertrags, sofern die rechtlichen Voraussetzungen hierfür vorliegen.</p>
+                    <p>
+                        Für den technischen Betrieb der App sowie für Server-, Hosting- und Backend-Leistungen
+                        nutzen wir Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Deutschland,
+                        als technischen Dienstleister. Der von uns genutzte Server befindet sich nach unserer
+                        derzeitigen Konfiguration in Deutschland, Standort Nürnberg.
+                    </p>
+                    <p>
+                        Die Website selbst wird nicht über Hetzner bereitgestellt, sondern über GitHub Pages.
+                        Hetzner wird für das App-Backend und die damit verbundene Server-Infrastruktur eingesetzt.
+                    </p>
+                    <p>
+                        Im Rahmen des Hostings und Backend-Betriebs können insbesondere technische Verbindungs-
+                        und Logdaten, App-Anfragen, Standortdaten bei aktiver App-Nutzung, technische Identifikatoren
+                        wie Installationskennung, User-ID oder Client-ID, Zeitstempel sowie Streckenstatusmeldungen
+                        einschließlich gemeldetem Status, Streckenabschnitt oder Sektor verarbeitet werden.
+                    </p>
+                    <p>
+                        Die Verarbeitung erfolgt zur sicheren, stabilen und funktionsfähigen Bereitstellung der App
+                        und des Backends, zur technischen Zuordnung von App-Anfragen, zur Plausibilisierung von
+                        Meldungen sowie zur Missbrauchsverhinderung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+                        Soweit die Verarbeitung zur Bereitstellung der von Ihnen angeforderten App-Funktionen
+                        erforderlich ist, erfolgt sie zusätzlich auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+                    </p>
+                    <p>
+                        Mit Hetzner wurde ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen.
+                    </p>
                 </section>
 
                 <section>
@@ -310,7 +335,7 @@
                     <ul>
                         <li>GitHub Pages / GitHub zur Bereitstellung der Website</li>
                         <li>checkdomain GmbH zur Domain- und DNS-Verwaltung</li>
-                        <li>Hetzner als Hosting- und Server-Dienstleister</li>
+                        <li>Hetzner Online GmbH als Hosting- und Server-Dienstleister für App-Backend und Server-Infrastruktur</li>
                         <li>Google Maps / Google Maps Platform für Karten- und Standortfunktionen</li>
                         <li>Open-Meteo zur Bereitstellung von Wetterdaten</li>
                         <li>Formspree zur technischen Verarbeitung des Kontaktformulars</li>
@@ -321,8 +346,24 @@
 
                 <section>
                     <h2>14. Drittlandübermittlungen</h2>
-                    <p>Im Rahmen der Einbindung externer Dienste, insbesondere von Google-Diensten, GitHub Pages und Formspree, kann nicht ausgeschlossen werden, dass personenbezogene Daten auch an Empfänger in Staaten außerhalb der Europäischen Union oder des Europäischen Wirtschaftsraums übermittelt oder dort verarbeitet werden.</p>
-                    <p>Soweit hierbei eine Übermittlung in Drittländer erfolgt, achten wir darauf, dass die gesetzlichen Voraussetzungen eingehalten werden und – soweit erforderlich – geeignete Garantien für ein angemessenes Datenschutzniveau bestehen.</p>
+                    <p>
+                        Im Rahmen der Einbindung externer Dienste, insbesondere von Google-Diensten,
+                        GitHub Pages und Formspree, kann nicht ausgeschlossen werden, dass personenbezogene
+                        Daten auch an Empfänger in Staaten außerhalb der Europäischen Union oder des
+                        Europäischen Wirtschaftsraums übermittelt oder dort verarbeitet werden.
+                    </p>
+                    <p>
+                        Soweit hierbei eine Übermittlung in Drittländer erfolgt, achten wir darauf, dass die
+                        gesetzlichen Voraussetzungen eingehalten werden und – soweit erforderlich – geeignete
+                        Garantien für ein angemessenes Datenschutzniveau bestehen.
+                    </p>
+                    <p>
+                        Die Verarbeitung über unseren Hetzner-Server erfolgt nach unserer derzeitigen
+                        Konfiguration innerhalb Deutschlands. Nach dem mit Hetzner geschlossenen Vertrag
+                        zur Auftragsverarbeitung erfolgt die vertraglich vereinbarte Datenverarbeitung grundsätzlich
+                        innerhalb der Europäischen Union beziehungsweise des Europäischen Wirtschaftsraums,
+                        soweit keine gesonderte Drittlandübermittlung vereinbart wird.
+                    </p>
                 </section>
 
                 <section>
@@ -332,8 +373,9 @@
                     <ul>
                         <li>Standortdaten: grundsätzlich keine dauerhafte personenbezogene Speicherung; nur funktionsbezogene, kurzfristige Verarbeitung</li>
                         <li>standortbezogene Meldedaten / Streckenstatusmeldungen: Speicherung nur insoweit und so lange, wie dies für technische Bereitstellung, Verteilung, Plausibilisierung und Missbrauchsvermeidung erforderlich ist</li>
+                        <li>Installationskennung, User-ID oder Client-ID: Speicherung für die Dauer der App-Nutzung, soweit sie für technische Zuordnung, Stabilität oder Missbrauchsvermeidung erforderlich ist</li>
                         <li>Kontakt- und Feedbackdaten: bis zur abschließenden Bearbeitung des Anliegens, anschließend Löschung, sofern keine gesetzlichen Pflichten entgegenstehen</li>
-                        <li>technische Protokoll- und Fehlerdaten: nur im jeweils technisch erforderlichen Umfang und für die jeweils erforderliche Dauer</li>
+                        <li>technische Protokoll- und Fehlerdaten im Backend: nur im jeweils technisch erforderlichen Umfang und für die jeweils erforderliche Dauer</li>
                         <li>Website-Logdaten bei GitHub Pages und technische Domain-/DNS-Daten bei checkdomain: entsprechend den dort geltenden technischen und organisatorischen Vorgaben</li>
                         <li>Daten bei Drittanbietern: entsprechend deren jeweiligen datenschutzrechtlichen Informationen und Speicherkonzepten</li>
                     </ul>
