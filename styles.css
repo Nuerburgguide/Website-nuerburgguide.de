@@ -6,20 +6,36 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     line-height: 1.6;
     color: #1f1f1f;
     background: #f4f5f7;
 }
 
-body.lightbox-open {
-    overflow: hidden;
+header,
+main,
+footer,
+section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
 }
 
 .container {
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 28px;
@@ -146,7 +162,7 @@ main {
 
 .hero-home-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: 48px;
     align-items: center;
 }
@@ -243,6 +259,9 @@ main {
 
 .app-preview-frame {
     position: relative;
+    display: block;
+    width: 100%;
+    max-width: 100%;
     background:
         radial-gradient(circle at 20% 20%, rgba(237, 32, 0, 0.2), transparent 28%),
         linear-gradient(135deg, #151515 0%, #222 55%, #0d0d0d 100%);
@@ -252,16 +271,12 @@ main {
     overflow: hidden;
 }
 
-.app-preview-button {
-    display: block;
-    width: 100%;
-    border: 0;
+.app-preview-link {
+    text-decoration: none;
     cursor: zoom-in;
-    text-align: left;
-    font: inherit;
 }
 
-.app-preview-button:hover img {
+.app-preview-link:hover img {
     transform: scale(1.01);
 }
 
@@ -285,115 +300,6 @@ main {
     font-size: 0.86rem;
     font-weight: 850;
     backdrop-filter: blur(10px);
-}
-
-/* Lightbox */
-.image-lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-}
-
-.image-lightbox.is-open {
-    display: flex;
-}
-
-.image-lightbox-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.88);
-    backdrop-filter: blur(8px);
-}
-
-.image-lightbox-content {
-    position: relative;
-    z-index: 1;
-    width: min(1560px, 96vw);
-    max-height: 94vh;
-    background: #111;
-    border-radius: 24px;
-    padding: 18px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.image-lightbox-toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
-.image-lightbox-toolbar button {
-    border: 0;
-    border-radius: 999px;
-    background: #ed2000;
-    color: #fff;
-    font: inherit;
-    font-weight: 900;
-    min-width: 48px;
-    height: 38px;
-    padding: 0 15px;
-    cursor: pointer;
-}
-
-.image-lightbox-toolbar button:hover {
-    background: #c91b00;
-}
-
-.image-lightbox-scroll {
-    max-height: calc(94vh - 126px);
-    overflow: auto;
-    border-radius: 16px;
-    background: #000;
-    -webkit-overflow-scrolling: touch;
-    touch-action: none;
-    cursor: grab;
-}
-
-.image-lightbox-scroll:active {
-    cursor: grabbing;
-}
-
-.image-lightbox-scroll img {
-    display: block;
-    height: auto;
-    max-width: none;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.image-lightbox-close {
-    position: absolute;
-    top: -16px;
-    right: -16px;
-    width: 44px;
-    height: 44px;
-    border: 0;
-    border-radius: 999px;
-    background: #ed2000;
-    color: #fff;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-    z-index: 2;
-}
-
-.image-lightbox-close:hover {
-    background: #c91b00;
-}
-
-.image-lightbox-note {
-    color: #d8d8d8;
-    font-size: 0.9rem;
-    margin-top: 12px;
-    text-align: center;
 }
 
 /* Alte Preview-Klassen als Fallback */
@@ -422,7 +328,7 @@ main {
         linear-gradient(135deg, #161616 0%, #242424 55%, #111 100%);
     color: #fff;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     align-items: center;
     gap: 36px;
     padding: clamp(28px, 5vw, 54px);
@@ -523,7 +429,7 @@ main {
     background: #fff;
     border: 1px solid #ececec;
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 34px;
     align-items: center;
 }
@@ -585,7 +491,7 @@ main {
 
 .about-hero-grid {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     gap: 44px;
     align-items: center;
 }
@@ -1023,29 +929,6 @@ footer {
         border-radius: 18px;
     }
 
-    .image-lightbox {
-        padding: 10px;
-    }
-
-    .image-lightbox-content {
-        width: 98vw;
-        max-height: 94vh;
-        padding: 10px;
-        border-radius: 18px;
-    }
-
-    .image-lightbox-scroll {
-        max-height: calc(94vh - 122px);
-    }
-
-    .image-lightbox-close {
-        top: 8px;
-        right: 8px;
-        width: 42px;
-        height: 42px;
-        font-size: 1.8rem;
-    }
-
     .footer-legal,
     .footer-grid {
         flex-direction: column;
@@ -1122,22 +1005,6 @@ footer {
         bottom: 16px;
         font-size: 0.78rem;
         padding: 7px 11px;
-    }
-
-    .image-lightbox-toolbar {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-right: 48px;
-    }
-
-    .image-lightbox-toolbar button {
-        min-width: 44px;
-        height: 36px;
-        padding: 0 13px;
-    }
-
-    .image-lightbox-note {
-        font-size: 0.78rem;
     }
 
     .link-card,
