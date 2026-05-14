@@ -201,12 +201,18 @@
                 ×
             </button>
 
-            <div class="image-lightbox-scroll">
-                <img src="assets/app-preview-wide.jpg" alt="Vergrößerte Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
+            <div class="image-lightbox-toolbar" aria-label="Zoom-Steuerung">
+                <button type="button" data-zoom-out aria-label="Herauszoomen">−</button>
+                <button type="button" data-zoom-reset aria-label="Zoom zurücksetzen">100%</button>
+                <button type="button" data-zoom-in aria-label="Hineinzoomen">+</button>
+            </div>
+
+            <div class="image-lightbox-scroll" data-lightbox-scroll>
+                <img data-lightbox-image src="assets/app-preview-wide.jpg" alt="Vergrößerte Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
             </div>
 
             <p class="image-lightbox-note">
-                Auf dem Handy kannst du mit zwei Fingern hineinzoomen. Am PC kannst du horizontal und vertikal scrollen.
+                Desktop: Mausrad oder +/−. Handy: zwei Finger zum Zoomen, danach im Bild scrollen.
             </p>
         </div>
     </div>
