@@ -74,6 +74,10 @@
                     <p>
                         Die App kann grundsätzlich ohne Registrierung und ohne Benutzerkonto genutzt werden.
                     </p>
+                    <p>
+                        Soweit bestimmte Funktionen noch nicht bereitgestellt werden oder vom Nutzer nicht
+                        aktiviert werden, erfolgt insoweit keine entsprechende Datenverarbeitung.
+                    </p>
                 </section>
 
                 <section>
@@ -108,17 +112,21 @@
                     <p>
                         Weitere Informationen zur Datenverarbeitung durch GitHub und checkdomain finden Sie in den
                         Datenschutzhinweisen der jeweiligen Anbieter:
-                        <br>
-                        GitHub:
-                        <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
-                            https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
-                        </a>
-                        <br>
-                        checkdomain:
-                        <a href="https://www.checkdomain.de/agb/datenschutz/" target="_blank" rel="noopener noreferrer">
-                            https://www.checkdomain.de/agb/datenschutz/
-                        </a>
                     </p>
+                    <ul>
+                        <li>
+                            GitHub:
+                            <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
+                                https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+                            </a>
+                        </li>
+                        <li>
+                            checkdomain:
+                            <a href="https://www.checkdomain.de/agb/datenschutz/" target="_blank" rel="noopener noreferrer">
+                                https://www.checkdomain.de/agb/datenschutz/
+                            </a>
+                        </li>
+                    </ul>
                 </section>
 
                 <section>
@@ -174,11 +182,11 @@
                         Wir verarbeiten personenbezogene Daten nur, soweit dies für die Bereitstellung der App
                         und ihrer Funktionen erforderlich ist.
                     </p>
-                    <p>In der aktuellen Version der App können insbesondere folgende Daten verarbeitet werden:</p>
+                    <p>In der App können insbesondere folgende Daten verarbeitet werden:</p>
                     <ul>
                         <li>Standortdaten des Endgeräts, sofern Sie die Standortfreigabe erteilen</li>
                         <li>standortbezogene Meldedaten im Rahmen der Streckenstatusfunktion, insbesondere Standortbezug, gemeldeter Status, Streckenabschnitt oder Sektor, Zeitstempel sowie technisch erforderliche Verbindungsdaten</li>
-                        <li>gerätebezogene Kennungen und technische Identifikatoren, insbesondere Installationskennung, User-ID oder Client-ID, soweit diese für die technische Bereitstellung, Stabilität und Sicherheit der App erforderlich sind</li>
+                        <li>gerätebezogene Kennungen und technische Identifikatoren, insbesondere eine zufällig erzeugte Installationskennung oder Client-ID, soweit diese für die technische Bereitstellung, Stabilität, Sicherheit und Missbrauchsvermeidung erforderlich sind</li>
                         <li>technische Nutzungs-, Protokoll- und Verbindungsdaten, soweit diese beim Einsatz eingebundener Dienste oder unseres Backends anfallen</li>
                         <li>Kontakt- und Kommunikationsdaten, wenn Sie uns per E-Mail, über das Kontaktformular kontaktieren oder Feedback übermitteln</li>
                     </ul>
@@ -198,7 +206,7 @@
                     <ul>
                         <li>Art. 6 Abs. 1 lit. a DSGVO, soweit Sie uns eine Einwilligung erteilen, insbesondere für die Nutzung von Standortdaten</li>
                         <li>Art. 6 Abs. 1 lit. b DSGVO, soweit die Verarbeitung zur Bereitstellung der von Ihnen angeforderten App-Funktionen erforderlich ist</li>
-                        <li>Art. 6 Abs. 1 lit. f DSGVO, soweit die Verarbeitung der technischen Sicherheit, Stabilität, Fehleranalyse, Missbrauchsverhinderung oder der wirtschaftlichen und funktionsfähigen Bereitstellung unseres Angebots dient</li>
+                        <li>Art. 6 Abs. 1 lit. f DSGVO, soweit die Verarbeitung der technischen Sicherheit, Stabilität, Fehleranalyse, Missbrauchsverhinderung oder der funktionsfähigen Bereitstellung unseres Angebots dient</li>
                     </ul>
 
                     <p>
@@ -212,12 +220,22 @@
 
                     <h3>7.1 Art der Verarbeitung</h3>
                     <p>
-                        Die App verarbeitet Standortdaten Ihres Endgeräts nur, sofern Sie der Standortfreigabe
-                        auf Ihrem Gerät zugestimmt haben und eine standortbezogene Funktion nutzen.
+                        Die App kann beim Start oder bei Nutzung standortbezogener Funktionen die
+                        Standortberechtigung des Endgeräts abfragen.
+                    </p>
+                    <p>
+                        Standortdaten werden nur verarbeitet, sofern Sie der Standortfreigabe auf Ihrem Gerät
+                        zugestimmt haben. Die Standortfreigabe kann jederzeit über die Einstellungen des
+                        Endgeräts widerrufen werden.
+                    </p>
+                    <p>
                         In der aktuellen Version erfolgt die Standortverarbeitung während der aktiven Nutzung
                         der App. Ein Hintergrund-Standortabruf findet in der aktuellen Version nicht statt.
-                        Sollte zukünftig ein Fahr- oder Warnmodus mit Hintergrund-Standortverarbeitung eingeführt
-                        werden, wird hierüber gesondert informiert und eine entsprechende Berechtigung eingeholt.
+                    </p>
+                    <p>
+                        Sollte zukünftig ein Fahr-, Warn- oder Driver-Modus mit Hintergrund-Standortverarbeitung
+                        eingeführt werden, wird hierüber gesondert informiert und eine entsprechende Berechtigung
+                        eingeholt.
                     </p>
 
                     <h3>7.2 Zwecke der Verarbeitung</h3>
@@ -234,8 +252,18 @@
                     <p>
                         Wenn Nutzer innerhalb der App eine Meldung zu einem gelben oder roten Streckenabschnitt
                         abgeben, werden die hierfür erforderlichen standortbezogenen Meldedaten an unser Backend
-                        übermittelt und dort verarbeitet. Die Verarbeitung dient insbesondere:
+                        übermittelt und dort verarbeitet.
                     </p>
+                    <p>Hierzu können insbesondere gehören:</p>
+                    <ul>
+                        <li>gemeldeter Status</li>
+                        <li>betroffener Streckenabschnitt oder Sektor</li>
+                        <li>Zeitpunkt der Meldung</li>
+                        <li>technische Kennung des meldenden Geräts, insbesondere Installationskennung oder Client-ID</li>
+                        <li>technisch erforderliche Verbindungsdaten</li>
+                        <li>Standortbezug, soweit dies für die Zuordnung, Plausibilisierung oder Missbrauchsvermeidung erforderlich ist</li>
+                    </ul>
+                    <p>Die Verarbeitung dient insbesondere:</p>
                     <ul>
                         <li>der technischen Entgegennahme der Meldung</li>
                         <li>der Prüfung der standortbezogenen Zulässigkeit der Meldung</li>
@@ -263,9 +291,12 @@
                     <h3>7.5 Rechtsgrundlagen</h3>
                     <p>
                         Rechtsgrundlage für die Verarbeitung der Standortdaten ist Ihre Einwilligung gemäß
-                        Art. 6 Abs. 1 lit. a DSGVO in Verbindung mit der von Ihnen erteilten Geräteberechtigung;
-                        soweit die Standortverarbeitung technisch erforderlich ist, um die von Ihnen gewünschte
-                        Funktion bereitzustellen, zusätzlich Art. 6 Abs. 1 lit. b DSGVO.
+                        Art. 6 Abs. 1 lit. a DSGVO in Verbindung mit der von Ihnen erteilten Geräteberechtigung.
+                    </p>
+                    <p>
+                        Soweit die Standortverarbeitung technisch erforderlich ist, um die von Ihnen gewünschte
+                        Funktion bereitzustellen, erfolgt die Verarbeitung zusätzlich auf Grundlage von
+                        Art. 6 Abs. 1 lit. b DSGVO.
                     </p>
                     <p>
                         Soweit standortbezogene Meldedaten zur technischen Bereitstellung der Streckenstatusfunktion,
@@ -290,6 +321,12 @@
                     <p>
                         Die Verarbeitung erfolgt zum Zweck der Darstellung von Karteninhalten, POIs,
                         Standortbezügen und navigationsnahen Funktionen innerhalb der App.
+                    </p>
+                    <p>
+                        Soweit Standortdaten für Google Maps, Kartenfunktionen, POI-Anzeigen, Navigation oder
+                        streckenbezogene Funktionen genutzt werden, erfolgt dies nur nach vorheriger Freigabe der
+                        Standortberechtigung durch den Nutzer. Die erteilte Standortberechtigung kann jederzeit
+                        über die Einstellungen des Endgeräts widerrufen werden.
                     </p>
                     <p>
                         Google Maps Platform verlangt für die Verarbeitung von Standortdaten insbesondere eine
@@ -331,7 +368,8 @@
                         Bei der Nutzung von Google-Diensten kann eine Verarbeitung personenbezogener Daten
                         auch in den USA oder anderen Drittländern erfolgen. Google stützt entsprechende
                         Übermittlungen nach eigenen Angaben auf geeignete datenschutzrechtliche Mechanismen,
-                        insbesondere Angemessenheitsbeschlüsse oder Standardvertragsklauseln, soweit erforderlich.
+                        insbesondere Angemessenheitsbeschlüsse, Zertifizierungen nach dem EU-US Data Privacy Framework
+                        oder Standardvertragsklauseln, soweit erforderlich.
                     </p>
                     <p>
                         Rechtsgrundlage für die Einbindung der Karten- und Standortfunktionen ist Art. 6 Abs. 1 lit. b DSGVO,
@@ -347,10 +385,18 @@
                         Für die Bereitstellung von Wetterinformationen nutzt die App den Dienst Open-Meteo.
                     </p>
                     <p>
-                        Beim Abruf von Wetterdaten können technisch erforderliche Verbindungsdaten an Open-Meteo
-                        übermittelt werden. Nach Angaben von Open-Meteo können hierbei insbesondere IP-Adressen
-                        und URLs verarbeitet werden; individuelle Logdateien werden dort nach 90 Tagen gelöscht,
-                        anschließend werden nur noch aggregierte Nutzungsdaten vorgehalten.
+                        Der Abruf der Wetterdaten erfolgt nach unserer derzeitigen technischen Umsetzung über
+                        unser Backend. Das Endgerät des Nutzers ruft Open-Meteo hierbei nicht unmittelbar auf.
+                    </p>
+                    <p>
+                        Gegenüber Open-Meteo können insbesondere die IP-Adresse unseres Servers, angefragte
+                        Wetterdaten, Koordinaten oder Ortsangaben sowie technische Anfrageinformationen verarbeitet
+                        werden, soweit dies für die Bereitstellung der Wetterinformationen erforderlich ist.
+                    </p>
+                    <p>
+                        Nach Angaben von Open-Meteo können beim Abruf der API insbesondere IP-Adressen und URLs
+                        verarbeitet werden. Individuelle Logdateien werden nach Angaben von Open-Meteo nach 90 Tagen
+                        gelöscht; anschließend werden nur noch aggregierte Nutzungsdaten vorgehalten.
                     </p>
                     <p>
                         Die Verarbeitung erfolgt zum Zweck der Bereitstellung aktueller Wetterinformationen innerhalb der App.
@@ -359,6 +405,12 @@
                         Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit der Abruf der Wetterdaten zur Bereitstellung
                         der von Ihnen genutzten App-Funktion erforderlich ist, sowie Art. 6 Abs. 1 lit. f DSGVO hinsichtlich
                         der technisch erforderlichen Bereitstellung und Stabilität der Wetterfunktion.
+                    </p>
+                    <p>
+                        Weitere Informationen:
+                        <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener noreferrer">
+                            https://open-meteo.com/en/terms
+                        </a>
                     </p>
                 </section>
 
@@ -371,11 +423,13 @@
                         erforderlich ist.
                     </p>
                     <p>
-                        Hierzu kann insbesondere eine zufällig erzeugte Installationskennung, User-ID oder Client-ID gehören.
+                        Hierzu kann insbesondere eine zufällig erzeugte Installationskennung oder Client-ID gehören.
                         Diese Kennung dient dazu, App-Anfragen und Streckenstatusmeldungen technisch zuzuordnen,
                         Mehrfachmeldungen zu begrenzen, Missbrauch zu verhindern und die Stabilität der
-                        Streckenstatusfunktion sicherzustellen. Die Kennung enthält keinen Klarnamen und wird nicht zu
-                        Zwecken personalisierter Werbung verwendet.
+                        Streckenstatusfunktion sicherzustellen.
+                    </p>
+                    <p>
+                        Die Kennung enthält keinen Klarnamen und wird nicht zu Zwecken personalisierter Werbung verwendet.
                     </p>
                     <p>
                         Eine Verarbeitung zu Zwecken personalisierter Werbung findet in der aktuellen Version der App nicht statt.
@@ -416,6 +470,12 @@
                         Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet wurde und keine gesetzlichen
                         Aufbewahrungspflichten entgegenstehen.
                     </p>
+                    <p>
+                        Weitere Informationen zur Datenverarbeitung durch Google:
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                            https://policies.google.com/privacy
+                        </a>
+                    </p>
                 </section>
 
                 <section>
@@ -439,12 +499,19 @@
                     </p>
                     <p>
                         Soweit hierbei personenbezogene Daten in die USA oder andere Drittländer übermittelt werden,
-                        erfolgt dies nach Angaben von Formspree auf Grundlage geeigneter Garantien, insbesondere
-                        Standardvertragsklauseln.
+                        erfolgt dies auf Grundlage der hierfür vorgesehenen datenschutzrechtlichen Mechanismen,
+                        insbesondere Angemessenheitsbeschlüssen, Zertifizierungen nach dem EU-US Data Privacy Framework,
+                        Standardvertragsklauseln oder anderer geeigneter Garantien, soweit erforderlich.
                     </p>
                     <p>
                         Die über das Kontaktformular übermittelten Daten werden gelöscht, sobald die jeweilige Anfrage
                         abschließend bearbeitet wurde und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+                    </p>
+                    <p>
+                        Weitere Informationen:
+                        <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
+                            https://formspree.io/legal/privacy-policy/
+                        </a>
                     </p>
                 </section>
 
@@ -463,15 +530,18 @@
                     <p>
                         Im Rahmen des Hostings und Backend-Betriebs können insbesondere technische Verbindungs-
                         und Logdaten, App-Anfragen, Standortdaten bei aktiver App-Nutzung, technische Identifikatoren
-                        wie Installationskennung, User-ID oder Client-ID, Zeitstempel sowie Streckenstatusmeldungen
+                        wie Installationskennung oder Client-ID, Zeitstempel sowie Streckenstatusmeldungen
                         einschließlich gemeldetem Status, Streckenabschnitt oder Sektor verarbeitet werden.
                     </p>
                     <p>
                         Die Verarbeitung erfolgt zur sicheren, stabilen und funktionsfähigen Bereitstellung der App
                         und des Backends, zur technischen Zuordnung von App-Anfragen, zur Plausibilisierung von
-                        Meldungen sowie zur Missbrauchsverhinderung. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
-                        Soweit die Verarbeitung zur Bereitstellung der von Ihnen angeforderten App-Funktionen
-                        erforderlich ist, erfolgt sie zusätzlich auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
+                        Meldungen sowie zur Missbrauchsverhinderung.
+                    </p>
+                    <p>
+                        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Soweit die Verarbeitung zur Bereitstellung
+                        der von Ihnen angeforderten App-Funktionen erforderlich ist, erfolgt sie zusätzlich auf
+                        Grundlage von Art. 6 Abs. 1 lit. b DSGVO.
                     </p>
                     <p>
                         Mit Hetzner wurde ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO geschlossen.
@@ -505,15 +575,19 @@
                     <h2>15. Drittlandübermittlungen</h2>
                     <p>
                         Im Rahmen der Einbindung externer Dienste, insbesondere von Google-Diensten,
-                        GitHub Pages, Apple-Diensten und Formspree, kann nicht ausgeschlossen werden,
-                        dass personenbezogene Daten auch an Empfänger in Staaten außerhalb der Europäischen
-                        Union oder des Europäischen Wirtschaftsraums übermittelt oder dort verarbeitet werden.
+                        GitHub Pages, Apple-Diensten und Formspree, kann es zu einer Verarbeitung
+                        personenbezogener Daten in Staaten außerhalb der Europäischen Union oder des
+                        Europäischen Wirtschaftsraums kommen.
                     </p>
                     <p>
                         Soweit hierbei eine Übermittlung in Drittländer erfolgt, achten wir darauf, dass die
                         gesetzlichen Voraussetzungen eingehalten werden und – soweit erforderlich – geeignete
-                        Garantien für ein angemessenes Datenschutzniveau bestehen, insbesondere
-                        Angemessenheitsbeschlüsse oder Standardvertragsklauseln.
+                        Garantien für ein angemessenes Datenschutzniveau bestehen.
+                    </p>
+                    <p>
+                        Hierzu können insbesondere Angemessenheitsbeschlüsse der Europäischen Kommission,
+                        Zertifizierungen nach dem EU-US Data Privacy Framework, Standardvertragsklauseln
+                        oder andere geeignete Garantien gehören.
                     </p>
                     <p>
                         Die Verarbeitung über unseren Hetzner-Server erfolgt nach unserer derzeitigen
@@ -531,11 +605,11 @@
                         Wir speichern personenbezogene Daten nur so lange, wie dies für die jeweiligen
                         Verarbeitungszwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.
                     </p>
-                    <p>Für die aktuelle App-Version gilt insbesondere:</p>
+                    <p>Für die App und Website gilt insbesondere:</p>
                     <ul>
-                        <li>Standortdaten: grundsätzlich keine dauerhafte personenbezogene Speicherung; nur funktionsbezogene, kurzfristige Verarbeitung</li>
+                        <li>Standortdaten: grundsätzlich keine dauerhafte personenbezogene Speicherung als Bewegungsprofil; nur funktionsbezogene, situationsbezogene und kurzfristige Verarbeitung</li>
                         <li>standortbezogene Meldedaten / Streckenstatusmeldungen: Speicherung nur insoweit und so lange, wie dies für technische Bereitstellung, Verteilung, Plausibilisierung und Missbrauchsvermeidung erforderlich ist</li>
-                        <li>Installationskennung, User-ID oder Client-ID: Speicherung für die Dauer der App-Nutzung, soweit sie für technische Zuordnung, Stabilität oder Missbrauchsvermeidung erforderlich ist</li>
+                        <li>Installationskennung oder Client-ID: Speicherung für die Dauer der App-Nutzung beziehungsweise so lange, wie sie für technische Zuordnung, Stabilität oder Missbrauchsvermeidung erforderlich ist</li>
                         <li>Kontakt- und Feedbackdaten: bis zur abschließenden Bearbeitung des Anliegens, anschließend Löschung, sofern keine gesetzlichen Pflichten entgegenstehen</li>
                         <li>technische Protokoll- und Fehlerdaten im Backend: nur im jeweils technisch erforderlichen Umfang und für die jeweils erforderliche Dauer</li>
                         <li>Website-Logdaten bei GitHub Pages und technische Domain-/DNS-Daten bei checkdomain: entsprechend den dort geltenden technischen und organisatorischen Vorgaben</li>
@@ -589,8 +663,15 @@
                         wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer personenbezogenen Daten rechtswidrig erfolgt.
                     </p>
                     <p>
-                        Zuständige Aufsichtsbehörde ist insbesondere die Landesbeauftragte für Datenschutz
-                        und Informationsfreiheit Nordrhein-Westfalen, Postfach 20 04 44, 40102 Düsseldorf.
+                        Zuständige Aufsichtsbehörde ist insbesondere:
+                    </p>
+                    <p>
+                        Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen<br>
+                        Postfach 20 04 44<br>
+                        40102 Düsseldorf<br>
+                        Deutschland
+                    </p>
+                    <p>
                         Website:
                         <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">
                             https://www.ldi.nrw.de
@@ -602,7 +683,11 @@
                     <h2>20. Pflicht zur Bereitstellung von Daten</h2>
                     <p>Eine gesetzliche Pflicht zur Bereitstellung personenbezogener Daten besteht grundsätzlich nicht.</p>
                     <p>
-                        Die Bereitstellung von Standortdaten kann technisch erforderlich sein, wenn Sie Karten-,
+                        Die Bereitstellung bestimmter Daten kann jedoch technisch erforderlich sein, wenn Sie
+                        bestimmte Funktionen der App nutzen möchten.
+                    </p>
+                    <p>
+                        Die Bereitstellung von Standortdaten kann insbesondere erforderlich sein, wenn Sie Karten-,
                         Navigations- oder standortbezogene Meldefunktionen der App nutzen möchten. Ohne Bereitstellung
                         dieser Daten können einzelne Funktionen ganz oder teilweise nicht verfügbar sein.
                     </p>
