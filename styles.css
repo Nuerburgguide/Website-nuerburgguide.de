@@ -9,6 +9,7 @@ html {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    background: #f4f5f7;
 }
 
 body {
@@ -43,12 +44,11 @@ img {
 
 /* Header und Navigation */
 header {
-    background: rgba(255, 255, 255, 0.97);
+    background: #ffffff;
     border-bottom: 1px solid #e7e7e7;
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
 }
 
 .header-container,
@@ -107,7 +107,8 @@ nav a[aria-current="page"] {
 /* Main Content */
 main {
     min-height: calc(100vh - 190px);
-    padding: 42px 0;
+    padding: 0;
+    background: #f4f5f7;
 }
 
 /* Buttons */
@@ -145,7 +146,7 @@ main {
 
 /* Eyebrow */
 .eyebrow {
-    color: #ed2000;
+    color: #4d4d4d;
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -155,23 +156,25 @@ main {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
-    padding: 70px 0 62px;
-    margin-bottom: 34px;
-    border-bottom: 1px solid #e5e5e5;
+    background: #f4f5f7;
+    padding: 72px 0 68px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e2e3e6;
 }
 
 .hero-home {
-    background:
-        radial-gradient(circle at 82% 20%, rgba(237, 32, 0, 0.08), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    background: #f4f5f7;
 }
 
 .hero-home-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-    gap: 52px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
     align-items: center;
+}
+
+.hero-copy {
+    max-width: 760px;
 }
 
 .hero h1,
@@ -199,51 +202,6 @@ main {
     margin-top: 26px;
 }
 
-.hero-panel {
-    position: relative;
-    background: #ffffff;
-    color: #151515;
-    border: 1px solid #ededed;
-    border-radius: 28px;
-    padding: 34px;
-    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.07);
-    overflow: hidden;
-}
-
-.hero-panel::before {
-    content: "";
-    position: absolute;
-    left: 34px;
-    top: 0;
-    width: 72px;
-    height: 4px;
-    background: #ed2000;
-    border-radius: 999px;
-}
-
-.hero-panel-label {
-    color: #ed2000;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 850;
-    margin-bottom: 12px;
-}
-
-.hero-panel h2 {
-    color: #151515;
-    font-size: 1.65rem;
-    line-height: 1.12;
-    margin-bottom: 14px;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-}
-
-.hero-panel p {
-    color: #555;
-    font-size: 0.98rem;
-}
-
 /* Section Headings */
 .section-heading {
     margin-bottom: 28px;
@@ -266,15 +224,14 @@ main {
 
 /* App Preview */
 .app-preview-section {
-    padding: 30px 0 56px;
+    padding: 64px 0 64px;
+    background: #f4f5f7;
 }
 
 .app-preview-top {
-    padding-top: 56px;
-    background:
-        radial-gradient(circle at 82% 12%, rgba(237, 32, 0, 0.08), transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #f4f5f7 100%);
-    border-bottom: 1px solid #e5e5e5;
+    padding-top: 64px;
+    background: #f4f5f7;
+    border-bottom: 1px solid #e2e3e6;
 }
 
 .app-preview-frame {
@@ -365,7 +322,8 @@ main {
 
 /* Features */
 .features-section {
-    padding: 34px 0 52px;
+    padding: 64px 0 56px;
+    background: #f4f5f7;
 }
 
 .features-grid {
@@ -430,6 +388,7 @@ main {
 .respect-section,
 .cooperation-section {
     padding: 28px 0;
+    background: #f4f5f7;
 }
 
 .community-box,
@@ -496,12 +455,10 @@ main {
 
 /* About Page */
 .about-hero {
-    background:
-        radial-gradient(circle at 82% 20%, rgba(237, 32, 0, 0.08), transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+    background: #f4f5f7;
     padding: 74px 0 66px;
-    margin-bottom: 34px;
-    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e2e3e6;
 }
 
 .about-hero-grid {
@@ -528,6 +485,7 @@ main {
 .about-story-section,
 .about-principles-section {
     padding: 34px 0;
+    background: #f4f5f7;
 }
 
 .about-story {
@@ -567,7 +525,8 @@ main {
 
 /* Links Section */
 .links-section {
-    padding: 24px 0 42px;
+    padding: 36px 0 64px;
+    background: #f4f5f7;
 }
 
 .links-section h2 {
@@ -770,7 +729,7 @@ main {
 footer {
     background: linear-gradient(180deg, #141414 0%, #0f0f0f 100%);
     color: #fff;
-    margin-top: 70px;
+    margin-top: 0;
     border-top: 1px solid #252525;
 }
 
@@ -902,7 +861,6 @@ footer {
         position: static;
         top: auto;
         z-index: auto;
-        backdrop-filter: none;
     }
 
     .header-container,
@@ -927,17 +885,19 @@ footer {
         padding: 7px 10px;
     }
 
-    main {
-        padding: 0 0 28px;
-    }
-
+    .app-preview-section,
     .app-preview-top {
         padding-top: 40px;
+        padding-bottom: 46px;
     }
 
     .hero,
     .about-hero {
-        padding: 44px 0;
+        padding: 46px 0;
+    }
+
+    .features-section {
+        padding: 46px 0;
     }
 
     .links-grid,
@@ -988,17 +948,9 @@ footer {
         height: 68px;
     }
 
-    .app-preview-section {
-        padding-bottom: 42px;
-    }
-
-    .app-preview-top {
-        padding-top: 34px;
-    }
-
     .hero,
     .about-hero {
-        padding: 36px 0;
+        padding: 40px 0;
     }
 
     .hero-actions {
@@ -1028,7 +980,6 @@ footer {
         padding: 7px 11px;
     }
 
-    .hero-panel,
     .community-box,
     .disclaimer-box,
     .respect-box,
