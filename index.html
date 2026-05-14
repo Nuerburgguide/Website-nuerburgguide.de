@@ -27,11 +27,28 @@
     </header>
 
     <main>
+        <section class="app-preview-section app-preview-top" id="app-preview">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">App-Vorschau</p>
+                    <h1>Ein erster Blick in Nürburg Guide</h1>
+                    <p>
+                        Die Vorschau zeigt zentrale Screens und Funktionen der App. Klicke auf das Bild, um es größer anzusehen.
+                    </p>
+                </div>
+
+                <button class="app-preview-frame app-preview-button" type="button" data-lightbox-open aria-label="App-Vorschau vergrößert öffnen">
+                    <img src="assets/app-preview-wide.jpg" alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
+                    <span class="preview-zoom-hint">Zum Vergrößern antippen</span>
+                </button>
+            </div>
+        </section>
+
         <section class="hero hero-home">
             <div class="container hero-home-grid">
                 <div class="hero-copy">
                     <p class="eyebrow">Für Touristenfahrten, Besucher und Nordschleifen-Fans</p>
-                    <h1>Nürburg Guide</h1>
+                    <h2>Nürburg Guide</h2>
                     <p>
                         Dein All-in-One Begleiter für Touristenfahrten. Gemacht für Fahrer, Zuschauer und Besucher,
                         die schnelle Orientierung, aktuelle Informationen und ein community-basiertes Streckenstatus-System suchen.
@@ -50,22 +67,6 @@
                         Streckenstatus, Wetter, Karte, Touristenfahrten-Infos, Notfallzugang und wichtige Orte:
                         alles klarer gebündelt an einem Ort.
                     </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="app-preview-section" id="app-preview">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="eyebrow">App-Vorschau</p>
-                    <h2>Ein erster Blick in Nürburg Guide</h2>
-                    <p>
-                        Die Vorschau zeigt zentrale Screens und Funktionen der App. Sie dient nur zur visuellen Darstellung.
-                    </p>
-                </div>
-
-                <div class="app-preview-frame">
-                    <img src="assets/app-preview-wide.jpg" alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
                 </div>
             </div>
         </section>
@@ -192,6 +193,24 @@
         </section>
     </main>
 
+    <div class="image-lightbox" data-lightbox aria-hidden="true">
+        <div class="image-lightbox-backdrop" data-lightbox-close></div>
+
+        <div class="image-lightbox-content" role="dialog" aria-modal="true" aria-label="App-Vorschau vergrößert">
+            <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="App-Vorschau schließen">
+                ×
+            </button>
+
+            <div class="image-lightbox-scroll">
+                <img src="assets/app-preview-wide.jpg" alt="Vergrößerte Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
+            </div>
+
+            <p class="image-lightbox-note">
+                Auf dem Handy kannst du mit zwei Fingern hineinzoomen. Am PC kannst du horizontal und vertikal scrollen.
+            </p>
+        </div>
+    </div>
+
     <footer>
         <div class="container footer-legal">
             <div class="footer-brand">
@@ -215,5 +234,7 @@
             <p>&copy; 2026 Nürburg Guide UG (haftungsbeschränkt). Alle Rechte vorbehalten.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
