@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Nürburg Guide - App für Touristenfahrten, Streckenstatus, Karten und Informationen rund um die Nordschleife">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon.png">
@@ -33,14 +33,14 @@
                     <p class="eyebrow">App-Vorschau</p>
                     <h1>Ein erster Blick in Nürburg Guide</h1>
                     <p>
-                        Die Vorschau zeigt zentrale Screens und Funktionen der App. Klicke auf das Bild, um es größer anzusehen.
+                        Die Vorschau zeigt zentrale Screens und Funktionen der App. Tippe auf das Bild, um es groß zu öffnen.
                     </p>
                 </div>
 
-                <button class="app-preview-frame app-preview-button" type="button" data-lightbox-open aria-label="App-Vorschau vergrößert öffnen">
+                <a class="app-preview-frame app-preview-link" href="assets/app-preview-wide.jpg" target="_blank" rel="noopener" aria-label="App-Vorschau groß öffnen">
                     <img src="assets/app-preview-wide.jpg" alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
-                    <span class="preview-zoom-hint">Zum Vergrößern antippen</span>
-                </button>
+                    <span class="preview-zoom-hint">Bild groß öffnen</span>
+                </a>
             </div>
         </section>
 
@@ -192,30 +192,6 @@
             </div>
         </section>
     </main>
-
-    <div class="image-lightbox" data-lightbox aria-hidden="true">
-        <div class="image-lightbox-backdrop" data-lightbox-close></div>
-
-        <div class="image-lightbox-content" role="dialog" aria-modal="true" aria-label="App-Vorschau vergrößert">
-            <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="App-Vorschau schließen">
-                ×
-            </button>
-
-            <div class="image-lightbox-toolbar" aria-label="Zoom-Steuerung">
-                <button type="button" data-zoom-out aria-label="Herauszoomen">−</button>
-                <button type="button" data-zoom-reset aria-label="Zoom zurücksetzen">100%</button>
-                <button type="button" data-zoom-in aria-label="Hineinzoomen">+</button>
-            </div>
-
-            <div class="image-lightbox-scroll" data-lightbox-scroll>
-                <img data-lightbox-image src="assets/app-preview-wide.jpg" alt="Vergrößerte Vorschau der Nürburg Guide App mit mehreren App-Screenshots">
-            </div>
-
-            <p class="image-lightbox-note">
-                Desktop: Mausrad oder +/−. Handy: zwei Finger zum Zoomen, danach im Bild scrollen.
-            </p>
-        </div>
-    </div>
 
     <footer>
         <div class="container footer-legal">
