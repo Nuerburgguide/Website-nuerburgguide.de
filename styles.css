@@ -819,6 +819,13 @@ footer {
 }
 
 @media (max-width: 768px) {
+    header {
+        position: static;
+        top: auto;
+        z-index: auto;
+        backdrop-filter: none;
+    }
+
     .header-container,
     header .container {
         flex-direction: column;
@@ -879,10 +886,18 @@ footer {
         padding: 0 14px;
     }
 
+    .header-container,
+    header .container {
+        gap: 12px;
+        padding: 12px 14px;
+    }
+
     .main-nav ul,
     nav ul {
-        flex-direction: column;
-        gap: 6px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
         align-items: center;
     }
 
@@ -893,6 +908,15 @@ footer {
     .hero,
     .about-hero {
         padding: 36px 0;
+    }
+
+    .hero-actions {
+        gap: 10px;
+    }
+
+    .button {
+        padding: 10px 14px;
+        font-size: 0.9rem;
     }
 
     .app-preview-frame,
