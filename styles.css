@@ -3,7 +3,6 @@
     --color-surface: #ffffff;
     --color-text: #151515;
     --color-muted: #4f4f4f;
-    --color-soft-muted: #5d5d5d;
     --color-border: #e2e3e6;
     --color-border-soft: #ececec;
     --color-accent: #ed2000;
@@ -15,7 +14,6 @@
     --type-body-small: 0.95rem;
     --type-card-title: 1.12rem;
     --type-section-title: clamp(1.75rem, 2.6vw, 2.25rem);
-    --type-display-title: clamp(2.35rem, 4vw, 3.35rem);
 
     --radius-card: 22px;
     --radius-large: 28px;
@@ -24,9 +22,6 @@
     --shadow-soft: 0 10px 28px rgba(0, 0, 0, 0.045);
     --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.07);
     --shadow-preview: 0 22px 50px rgba(0, 0, 0, 0.18);
-
-    --section-padding: 64px 0;
-    --section-padding-mobile: 46px 0;
 }
 
 * {
@@ -193,22 +188,14 @@ main {
 .app-preview-top .section-heading h1,
 .hero h1,
 .hero h2,
-.about-hero h1 {
-    font-size: var(--type-display-title);
-    color: var(--color-text);
-    margin-bottom: 16px;
-    font-weight: 900;
-    letter-spacing: -0.055em;
-    line-height: 1.03;
-}
-
 .section-heading h2,
 .community-box h2,
 .respect-box h2,
 .cooperation-box h2,
 .disclaimer-box h2,
 .links-section h2,
-.about-story h2 {
+.about-story h2,
+.about-hero h1 {
     font-size: var(--type-section-title);
     color: var(--color-text);
     font-weight: 900;
@@ -231,39 +218,9 @@ main {
     max-width: 760px;
 }
 
-/* Hero Section */
-.hero {
-    background: var(--color-bg);
-    padding: 72px 0 68px;
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--color-border);
-}
-
-.hero-home {
-    background: var(--color-bg);
-}
-
-.hero-home-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    align-items: center;
-}
-
-.hero-copy {
-    max-width: 760px;
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 26px;
-}
-
 /* App Preview */
 .app-preview-section {
-    padding: var(--section-padding);
+    padding: 64px 0 64px;
     background: var(--color-bg);
 }
 
@@ -314,6 +271,36 @@ main {
     font-size: 0.82rem;
     font-weight: 850;
     backdrop-filter: blur(10px);
+}
+
+/* Hero Section */
+.hero {
+    background: var(--color-bg);
+    padding: 72px 0 68px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.hero-home {
+    background: var(--color-bg);
+}
+
+.hero-home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    align-items: center;
+}
+
+.hero-copy {
+    max-width: 760px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px;
 }
 
 /* Alte Preview-Klassen als Fallback */
@@ -432,6 +419,10 @@ main {
     background: var(--color-bg);
 }
 
+.community-eyebrow {
+    margin-bottom: 14px;
+}
+
 .community-box,
 .respect-box,
 .cooperation-box,
@@ -449,6 +440,10 @@ main {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 34px;
     align-items: center;
+}
+
+.community-box h2 {
+    margin-bottom: 0;
 }
 
 .disclaimer-box {
@@ -571,14 +566,14 @@ main {
 }
 
 .legal-page h1 {
-    font-size: var(--type-display-title);
+    font-size: var(--type-section-title);
     color: var(--color-text);
     margin-bottom: 28px;
     padding-bottom: 18px;
     border-bottom: 2px solid #eeeeee;
     font-weight: 900;
-    letter-spacing: -0.055em;
-    line-height: 1.03;
+    letter-spacing: -0.045em;
+    line-height: 1.1;
 }
 
 .legal-page h2 {
@@ -861,7 +856,6 @@ footer {
 
 @media (max-width: 768px) {
     :root {
-        --type-display-title: clamp(2rem, 8vw, 2.7rem);
         --type-section-title: clamp(1.55rem, 6vw, 2rem);
         --type-body: 1rem;
     }
@@ -915,6 +909,10 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .community-box {
+        gap: 18px;
+    }
+
     .legal-page {
         border-radius: 18px;
     }
@@ -935,7 +933,6 @@ footer {
 
 @media (max-width: 480px) {
     :root {
-        --type-display-title: clamp(1.9rem, 9vw, 2.35rem);
         --type-section-title: clamp(1.45rem, 7vw, 1.85rem);
         --type-card-title: 1.08rem;
         --type-body: 0.98rem;
