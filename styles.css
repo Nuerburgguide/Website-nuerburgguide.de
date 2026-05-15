@@ -44,8 +44,8 @@ img {
 
 /* Header und Navigation */
 header {
-    background: #ffffff;
-    border-bottom: 1px solid #e7e7e7;
+    background: #f4f5f7;
+    border-bottom: 1px solid #e2e3e6;
     position: sticky;
     top: 0;
     z-index: 100;
