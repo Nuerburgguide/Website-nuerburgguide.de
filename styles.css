@@ -1029,3 +1029,14 @@ footer {
         padding: 34px 14px;
     }
 }
+/* Fix: "Von der Community" optisch wie die anderen Abschnittslabels */
+.community-eyebrow {
+    color: var(--color-muted);
+    font-size: 0.95rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 850;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    max-width: none;
+}
