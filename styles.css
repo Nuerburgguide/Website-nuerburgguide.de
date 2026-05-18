@@ -1040,3 +1040,15 @@ footer {
     margin-bottom: 14px;
     max-width: none;
 }
+/* Fix: Hero-Eyebrow gleiche Größe wie APP-VORSCHAU / FUNKTIONEN */
+.hero .eyebrow,
+.hero .section-heading > p:first-child {
+    color: var(--color-muted);
+    font-size: 0.95rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 850;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    max-width: none;
+}
