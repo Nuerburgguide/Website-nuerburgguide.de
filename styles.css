@@ -171,7 +171,9 @@ main {
 }
 
 /* Typografie */
-.eyebrow {
+.eyebrow,
+.community-eyebrow,
+.about-hero .section-heading > p:first-child {
     color: var(--color-muted);
     font-size: var(--type-label);
     text-transform: uppercase;
@@ -216,6 +218,20 @@ main {
     color: var(--color-muted);
     line-height: 1.72;
     max-width: 760px;
+}
+
+/* Erzwingt korrektes Eyebrow-Format auch bei allgemeinen p-Regeln */
+.about-hero .section-heading > p:first-child,
+.section-heading .eyebrow,
+.community-eyebrow {
+    color: var(--color-muted);
+    font-size: var(--type-label);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 850;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    max-width: none;
 }
 
 /* App Preview */
@@ -417,10 +433,6 @@ main {
 .cooperation-section {
     padding: 28px 0;
     background: var(--color-bg);
-}
-
-.community-eyebrow {
-    margin-bottom: 14px;
 }
 
 .community-box,
