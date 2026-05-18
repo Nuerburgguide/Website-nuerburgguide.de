@@ -9,7 +9,7 @@
     --color-accent-dark: #c91b00;
     --color-dark: #151515;
 
-    --type-label: 0.78rem;
+    --type-label: 0.95rem;
     --type-body: 1.02rem;
     --type-body-small: 0.95rem;
     --type-card-title: 1.12rem;
@@ -171,18 +171,6 @@ main {
 }
 
 /* Typografie */
-.eyebrow,
-.community-eyebrow,
-.about-hero .section-heading > p:first-child {
-    color: var(--color-muted);
-    font-size: var(--type-label);
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 850;
-    line-height: 1.35;
-    margin-bottom: 10px;
-}
-
 .section-heading {
     margin-bottom: 28px;
 }
@@ -220,10 +208,15 @@ main {
     max-width: 760px;
 }
 
-/* Erzwingt korrektes Eyebrow-Format auch bei allgemeinen p-Regeln */
-.about-hero .section-heading > p:first-child,
-.section-heading .eyebrow,
-.community-eyebrow {
+/* Kleine Abschnittsüberschriften: überall einheitlich */
+.eyebrow,
+.section-label,
+.section-heading > .eyebrow,
+.hero .eyebrow,
+.about-hero .eyebrow,
+.community-eyebrow,
+.respect-box .eyebrow,
+.cooperation-box .eyebrow {
     color: var(--color-muted);
     font-size: var(--type-label);
     text-transform: uppercase;
@@ -1028,27 +1021,4 @@ footer {
     .footer-grid {
         padding: 34px 14px;
     }
-}
-/* Fix: "Von der Community" optisch wie die anderen Abschnittslabels */
-.community-eyebrow {
-    color: var(--color-muted);
-    font-size: 0.95rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 850;
-    line-height: 1.35;
-    margin-bottom: 14px;
-    max-width: none;
-}
-/* Fix: Hero-Eyebrow gleiche Größe wie APP-VORSCHAU / FUNKTIONEN */
-.hero .eyebrow,
-.hero .section-heading > p:first-child {
-    color: var(--color-muted);
-    font-size: 0.95rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 850;
-    line-height: 1.35;
-    margin-bottom: 10px;
-    max-width: none;
 }
