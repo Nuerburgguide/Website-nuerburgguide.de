@@ -281,7 +281,7 @@ main {
     backdrop-filter: blur(10px);
 }
 
-/* Hero Section */
+/* Hero / Download */
 .hero {
     background: var(--color-bg);
     padding: 48px 0 68px;
@@ -300,39 +300,25 @@ main {
 }
 
 .hero-copy {
-    max-width: 760px;
-}
-
-/* Download im Nürburg-Guide-Intro */
-.hero-download {
-    margin-top: 24px;
-}
-
-.download-label {
-    color: var(--color-muted);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-weight: 900;
-    line-height: 1.35;
-    margin-bottom: 10px;
+    max-width: 900px;
 }
 
 .store-links-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 430px;
     gap: 14px;
-    flex-wrap: nowrap;
+    margin-top: 24px;
 }
 
 .store-badge-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     text-decoration: none;
     transition: transform 0.2s ease, opacity 0.2s ease;
-    flex: 0 1 auto;
 }
 
 .store-badge-link:hover {
@@ -342,17 +328,10 @@ main {
 
 .store-badge-link img {
     display: block;
-    width: auto;
-    max-width: 165px;
-    max-height: 50px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 26px;
 }
 
 /* Alte Preview-Klassen als Fallback */
@@ -960,26 +939,20 @@ footer {
         gap: 18px;
     }
 
-    .hero-download {
-        margin-top: 22px;
+    .hero-copy {
+        max-width: none;
     }
 
     .store-links-row {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 310px;
-        gap: 10px;
-    }
-
-    .store-badge-link {
+        max-width: none;
         width: 100%;
-        justify-content: center;
+        gap: 10px;
+        margin-top: 22px;
     }
 
     .store-badge-link img {
         width: 100%;
-        max-width: 140px;
-        max-height: 42px;
+        max-width: none;
     }
 
     .legal-page {
@@ -1036,10 +1009,6 @@ footer {
         padding: 40px 0;
     }
 
-    .hero-actions {
-        gap: 10px;
-    }
-
     .button {
         padding: 10px 14px;
         font-size: 0.88rem;
@@ -1063,23 +1032,17 @@ footer {
         padding: 7px 11px;
     }
 
-    .hero-download {
+    .store-links-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        max-width: none;
+        gap: 8px;
         margin-top: 20px;
     }
 
-    .download-label {
-        margin-bottom: 9px;
-    }
-
-    .store-links-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        max-width: 280px;
-        gap: 8px;
-    }
-
     .store-badge-link img {
-        max-width: 128px;
-        max-height: 38px;
+        width: 100%;
+        max-width: none;
     }
 
     .community-box,
