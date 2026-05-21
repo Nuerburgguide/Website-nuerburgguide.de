@@ -315,9 +315,7 @@ main {
 /* Download / Store Links */
 .download-section {
     padding: 64px 0 58px;
-    background:
-        radial-gradient(circle at top right, rgba(237, 32, 0, 0.08), transparent 34%),
-        var(--color-bg);
+    background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -329,7 +327,6 @@ main {
 }
 
 .download-card {
-    position: relative;
     background: var(--color-surface);
     border: 1px solid var(--color-border-soft);
     border-radius: var(--radius-large);
@@ -340,24 +337,23 @@ main {
     justify-content: space-between;
     gap: 28px;
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.download-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(237, 32, 0, 0.08), transparent 42%);
-    pointer-events: none;
+.download-card:hover {
+    border-color: rgba(237, 32, 0, 0.22);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
 .download-card-header {
-    position: relative;
-    z-index: 1;
     min-width: 0;
 }
 
 .download-platform-label {
-    color: var(--color-accent);
+    color: var(--color-muted);
     font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
@@ -381,9 +377,7 @@ main {
     line-height: 1.65;
 }
 
-.store-badge-link {
-    position: relative;
-    z-index: 1;
+.store-badge {
     display: inline-flex;
     width: fit-content;
     max-width: 190px;
@@ -391,16 +385,9 @@ main {
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.store-badge-link:hover {
-    transform: translateY(-1px);
-    opacity: 0.92;
-}
-
-.store-badge-link img {
+.store-badge img {
     display: block;
     width: auto;
     max-width: 190px;
@@ -1114,8 +1101,8 @@ footer {
         padding: 22px;
     }
 
-    .store-badge-link,
-    .store-badge-link img {
+    .store-badge,
+    .store-badge img {
         max-width: 172px;
     }
 
