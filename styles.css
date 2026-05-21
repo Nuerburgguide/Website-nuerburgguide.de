@@ -236,7 +236,6 @@ main {
 .app-preview-top {
     padding-top: 64px;
     background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
 }
 
 .app-preview-frame {
@@ -287,7 +286,6 @@ main {
     background: var(--color-bg);
     padding: 72px 0 68px;
     margin-bottom: 0;
-    border-bottom: 1px solid var(--color-border);
 }
 
 .hero-home {
@@ -316,7 +314,6 @@ main {
 .download-section {
     padding: 64px 0 58px;
     background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
 }
 
 .download-grid {
@@ -340,6 +337,11 @@ main {
     text-decoration: none;
     color: inherit;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-card,
+.download-card * {
+    text-decoration: none;
 }
 
 .download-card:hover {
@@ -563,7 +565,6 @@ main {
     background: var(--color-bg);
     padding: 74px 0 66px;
     margin-bottom: 0;
-    border-bottom: 1px solid var(--color-border);
 }
 
 .about-hero-grid {
