@@ -229,7 +229,7 @@ main {
 
 /* App Preview */
 .app-preview-section {
-    padding: 64px 0 64px;
+    padding: 64px 0 48px;
     background: var(--color-bg);
 }
 
@@ -281,14 +281,49 @@ main {
     backdrop-filter: blur(10px);
 }
 
-/* Store Links unter App-Vorschau */
+/* Hero Section */
+.hero {
+    background: var(--color-bg);
+    padding: 48px 0 68px;
+    margin-bottom: 0;
+}
+
+.hero-home {
+    background: var(--color-bg);
+}
+
+.hero-home-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    align-items: center;
+}
+
+.hero-copy {
+    max-width: 760px;
+}
+
+/* Download im Nürburg-Guide-Intro */
+.hero-download {
+    margin-top: 24px;
+}
+
+.download-label {
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 10px;
+}
+
 .store-links-row {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 14px;
     flex-wrap: nowrap;
-    margin-top: 18px;
 }
 
 .store-badge-link {
@@ -311,28 +346,6 @@ main {
     max-width: 165px;
     max-height: 50px;
     object-fit: contain;
-}
-
-/* Hero Section */
-.hero {
-    background: var(--color-bg);
-    padding: 72px 0 68px;
-    margin-bottom: 0;
-}
-
-.hero-home {
-    background: var(--color-bg);
-}
-
-.hero-home-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    align-items: center;
-}
-
-.hero-copy {
-    max-width: 760px;
 }
 
 .hero-actions {
@@ -925,12 +938,12 @@ footer {
     .app-preview-section,
     .app-preview-top {
         padding-top: 40px;
-        padding-bottom: 46px;
+        padding-bottom: 40px;
     }
 
     .hero,
     .about-hero {
-        padding: 46px 0;
+        padding: 42px 0;
     }
 
     .features-section {
@@ -947,11 +960,14 @@ footer {
         gap: 18px;
     }
 
+    .hero-download {
+        margin-top: 22px;
+    }
+
     .store-links-row {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         max-width: 310px;
-        margin: 16px auto 0;
         gap: 10px;
     }
 
@@ -1047,11 +1063,18 @@ footer {
         padding: 7px 11px;
     }
 
+    .hero-download {
+        margin-top: 20px;
+    }
+
+    .download-label {
+        margin-bottom: 9px;
+    }
+
     .store-links-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         max-width: 280px;
         gap: 8px;
-        margin-top: 14px;
     }
 
     .store-badge-link img {
