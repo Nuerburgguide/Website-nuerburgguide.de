@@ -137,6 +137,57 @@ main {
     background: var(--color-bg);
 }
 
+/* Update Ticker */
+.update-ticker {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    background: var(--color-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(237, 32, 0, 0.55);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.update-ticker-track {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+    animation: update-ticker-scroll 28s linear infinite;
+}
+
+.update-ticker-track span {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 36px;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 850;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.update-ticker-track span::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 14px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 4px rgba(237, 32, 0, 0.18);
+}
+
+@keyframes update-ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
 /* Buttons */
 .button {
     display: inline-flex;
@@ -229,12 +280,12 @@ main {
 
 /* App Preview */
 .app-preview-section {
-    padding: 64px 0 42px;
+    padding: 56px 0 42px;
     background: var(--color-bg);
 }
 
 .app-preview-top {
-    padding-top: 64px;
+    padding-top: 56px;
     background: var(--color-bg);
 }
 
@@ -963,6 +1014,16 @@ footer {
         padding: 7px 10px;
     }
 
+    .update-ticker-track {
+        animation-duration: 24s;
+    }
+
+    .update-ticker-track span {
+        padding: 9px 26px;
+        font-size: 0.78rem;
+        letter-spacing: 0.065em;
+    }
+
     .app-preview-section,
     .app-preview-top {
         padding-top: 40px;
@@ -1060,6 +1121,22 @@ footer {
         height: 68px;
     }
 
+    .update-ticker-track {
+        animation-duration: 22s;
+    }
+
+    .update-ticker-track span {
+        padding: 9px 22px;
+        font-size: 0.72rem;
+        letter-spacing: 0.055em;
+    }
+
+    .update-ticker-track span::before {
+        width: 7px;
+        height: 7px;
+        margin-right: 10px;
+    }
+
     .hero,
     .about-hero {
         padding: 40px 0;
@@ -1122,5 +1199,28 @@ footer {
     .footer-legal,
     .footer-grid {
         padding: 34px 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .update-ticker-track {
+        width: 100%;
+        animation: none;
+        justify-content: center;
+        white-space: normal;
+    }
+
+    .update-ticker-track span {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .update-ticker-track span[aria-hidden="true"] {
+        display: none;
     }
 }
