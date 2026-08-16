@@ -505,13 +505,17 @@ main {
 }
 
 .stat-plus {
+    display: inline-block;
     position: relative;
     top: -0.08em;
     margin-left: 3px;
-    color: var(--color-accent);
+    color: #ed2000;
     font-size: 0.68em;
     font-weight: 900;
+    line-height: 1;
     letter-spacing: -0.04em;
+    visibility: visible;
+    opacity: 1;
 }
 
 .stat-label {
