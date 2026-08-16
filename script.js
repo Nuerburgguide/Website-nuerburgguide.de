@@ -2,11 +2,17 @@
     "use strict";
 
     document.addEventListener("DOMContentLoaded", function () {
-
         /*
+         * ============================================================
          * Instagram iOS Hinweis
+         * ============================================================
          */
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        const userAgent =
+            navigator.userAgent ||
+            navigator.vendor ||
+            window.opera ||
+            "";
 
         const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
         const isInstagramBrowser = /Instagram/i.test(userAgent);
@@ -29,15 +35,18 @@
 
 
         /*
-         * Nürburg Guide Nutzerstatistik
+         * ============================================================
+         * Nutzerstatistik
+         * ============================================================
          *
-         * Die Counter befinden sich bereits direkt in der index.html.
-         * JavaScript übernimmt hier ausschließlich die Animation.
+         * Die Statistik befindet sich bereits in der index.html.
          *
-         * Zielwerte:
-         * 2600 = Nutzer in den letzten 9 Tagen
-         * 4300 = Nutzer insgesamt
-         * 40   = Länder
+         * Beispiel:
+         *
+         * <span class="counter" data-target="2600">0</span>
+         *
+         * Die JavaScript-Logik greift direkt auf diese Elemente zu
+         * und zählt von 0 bis zum jeweiligen Zielwert hoch.
          */
 
         const counters = document.querySelectorAll(".counter");
@@ -48,9 +57,15 @@
 
 
         /*
-         * Counter-Animation
+         * ============================================================
+         * Counter Animation
+         * ============================================================
          */
-        function animateCounter(counter, delay) {
+
+        function animateCounter(counter) {
+            if (!counter || counter.dataset.animated === "true") {
+                return;
+            }
 
             const target = Number(counter.dataset.target);
 
@@ -58,148 +73,114 @@
                 return;
             }
 
+            counter.dataset.animated = "true";
 
-            const statNumber = counter.closest(".stat-number");
-            const plus = statNumber
-                ? statNumber.querySelector(".stat-plus")
-                : null;
-
-
-            /*
-             * Plus zunächst ausblenden.
-             * Es soll erst erscheinen, wenn die Zahl fertig hochgezählt wurde.
-             */
-            if (plus) {
-                plus.style.opacity = "0";
-                plus.style.visibility = "hidden";
-                plus.style.transform = "translateY(4px) scale(0.85)";
-                plus.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-            }
+            const duration = 1600;
+            const startValue = 0;
+            const startTime = performance.now();
 
 
-            /*
-             * Startwert sicher auf 0 setzen.
-             */
-            counter.textContent = "0";
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+
+                const progress = Math.min(
+                    elapsed / duration,
+                    1
+                );
+
+                /*
+                 * Ease-Out:
+                 * Am Anfang etwas schneller,
+                 * zum Ende hin sanft abbremsen.
+                 */
+                const easedProgress =
+                    1 - Math.pow(1 - progress, 3);
+
+                const currentValue = Math.floor(
+                    startValue +
+                    (target - startValue) * easedProgress
+                );
+
+                counter.textContent =
+                    currentValue.toLocaleString("de-DE");
 
 
-            /*
-             * Bei reduzierter Bewegung:
-             * Zielwert direkt anzeigen.
-             */
-            const reducedMotion = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-
-            if (reducedMotion) {
-
-                setTimeout(function () {
-
-                    counter.textContent = target.toLocaleString("de-DE");
-
-                    if (plus) {
-                        plus.style.opacity = "1";
-                        plus.style.visibility = "visible";
-                        plus.style.transform = "translateY(0) scale(1)";
-                    }
-
-                }, delay);
-
-                return;
-            }
-
-
-            /*
-             * Normale Animation
-             */
-            setTimeout(function () {
-
-                const duration = target >= 4000 ? 2100 : 1800;
-                const startTime = performance.now();
-
-
-                function updateCounter(currentTime) {
-
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-
-
+                if (progress < 1) {
+                    window.requestAnimationFrame(updateCounter);
+                } else {
                     /*
-                     * Ease-Out-Cubic:
-                     * Anfang schnell, gegen Ende immer langsamer.
+                     * Am Ende exakt den Zielwert setzen.
                      */
-                    const easedProgress =
-                        1 - Math.pow(1 - progress, 3);
-
-
-                    const currentValue = Math.floor(
-                        target * easedProgress
-                    );
-
-
                     counter.textContent =
-                        currentValue.toLocaleString("de-DE");
-
-
-                    if (progress < 1) {
-
-                        requestAnimationFrame(updateCounter);
-
-                    } else {
-
-                        /*
-                         * Absolut sicherstellen,
-                         * dass am Ende exakt der Zielwert steht.
-                         */
-                        counter.textContent =
-                            target.toLocaleString("de-DE");
-
-
-                        /*
-                         * Das Plus kommt mit einer kleinen Verzögerung.
-                         */
-                        if (plus) {
-
-                            setTimeout(function () {
-
-                                plus.style.visibility = "visible";
-
-                                requestAnimationFrame(function () {
-
-                                    plus.style.opacity = "1";
-                                    plus.style.transform =
-                                        "translateY(0) scale(1)";
-
-                                });
-
-                            }, 220);
-                        }
-                    }
+                        target.toLocaleString("de-DE");
                 }
+            }
 
 
-                requestAnimationFrame(updateCounter);
-
-            }, delay);
+            window.requestAnimationFrame(updateCounter);
         }
 
 
         /*
-         * Alle Counter starten.
+         * ============================================================
+         * Animation starten
+         * ============================================================
          *
-         * Der kleine zeitliche Versatz sorgt dafür,
-         * dass die drei Zahlen nacheinander anlaufen.
+         * Die Statistik befindet sich beim Laden der Seite bereits
+         * relativ weit oben. Deshalb starten wir die Animation,
+         * sobald der Statistikbereich sichtbar ist.
          */
-        counters.forEach(function (counter, index) {
 
-            animateCounter(
-                counter,
-                index * 220
+        const statsSection =
+            document.querySelector(".hero-stats");
+
+
+        /*
+         * Falls der Browser IntersectionObserver unterstützt,
+         * starten wir die Animation beim Sichtbarwerden.
+         */
+
+        if (
+            statsSection &&
+            "IntersectionObserver" in window
+        ) {
+            let hasStarted = false;
+
+            const observer = new IntersectionObserver(
+                function (entries, observerInstance) {
+                    entries.forEach(function (entry) {
+                        if (
+                            entry.isIntersecting &&
+                            !hasStarted
+                        ) {
+                            hasStarted = true;
+
+                            counters.forEach(function (counter, index) {
+                                setTimeout(function () {
+                                    animateCounter(counter);
+                                }, index * 150);
+                            });
+
+                            observerInstance.disconnect();
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
             );
 
-        });
+            observer.observe(statsSection);
 
+        } else {
+            /*
+             * Fallback für ältere Browser.
+             */
+            counters.forEach(function (counter, index) {
+                setTimeout(function () {
+                    animateCounter(counter);
+                }, index * 150);
+            });
+        }
     });
-
 })();
