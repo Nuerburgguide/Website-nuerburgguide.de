@@ -1,164 +1,205 @@
 (function () {
     "use strict";
 
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    document.addEventListener("DOMContentLoaded", function () {
 
-    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-    const isInstagramBrowser = /Instagram/i.test(userAgent);
+        /*
+         * Instagram iOS Hinweis
+         */
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    if (isIOS && isInstagramBrowser) {
-        const banner = document.createElement("div");
-        banner.className = "instagram-warning-banner";
+        const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+        const isInstagramBrowser = /Instagram/i.test(userAgent);
 
-        banner.innerHTML = `
-            <div class="instagram-warning-content">
-                <strong>⚠️ iPhone erkannt: Instagram blockiert den App Store-Link</strong>
-                <span>
-                    Bitte oben rechts auf „…“ tippen und im Browser öffnen, um die App herunterzuladen.
-                </span>
-            </div>
-        `;
+        if (isIOS && isInstagramBrowser) {
+            const banner = document.createElement("div");
+            banner.className = "instagram-warning-banner";
 
-        document.body.prepend(banner);
-    }
+            banner.innerHTML = `
+                <div class="instagram-warning-content">
+                    <strong>⚠️ iPhone erkannt: Instagram blockiert den App Store-Link</strong>
+                    <span>
+                        Bitte oben rechts auf „…“ tippen und im Browser öffnen, um die App herunterzuladen.
+                    </span>
+                </div>
+            `;
 
-    /*
-     * Neuer Hero-Counter
-     *
-     * Die Counter werden nicht mehr dynamisch zwischen App-Vorschau
-     * und Download-Bereich eingefügt.
-     *
-     * Die HTML-Struktur befindet sich direkt im Hero-Bereich der
-     * index.html. Dadurch bleibt der Counter genau dort, wo er
-     * gestalterisch hingehört:
-     *
-     * Überschrift
-     *      ↓
-     * Counter
-     *      ↓
-     * App-Store-Buttons
-     */
+            document.body.prepend(banner);
+        }
 
-    const counterSection = document.querySelector(".hero-counter");
 
-    if (!counterSection) {
-        return;
-    }
+        /*
+         * Nürburg Guide Nutzerstatistik
+         *
+         * Die Counter befinden sich bereits direkt in der index.html.
+         * JavaScript übernimmt hier ausschließlich die Animation.
+         *
+         * Zielwerte:
+         * 2600 = Nutzer in den letzten 9 Tagen
+         * 4300 = Nutzer insgesamt
+         * 40   = Länder
+         */
 
-    const counters = counterSection.querySelectorAll(".hero-counter-item");
+        const counters = document.querySelectorAll(".counter");
 
-    if (!counters.length) {
-        return;
-    }
-
-    const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    const formatNumber = (value) => {
-        return Number(value).toLocaleString("de-DE");
-    };
-
-    const animateCounter = (item, delay) => {
-        const valueElement = item.querySelector(".hero-counter-value");
-        const suffixElement = item.querySelector(".hero-counter-suffix");
-
-        if (!valueElement) {
+        if (!counters.length) {
             return;
         }
 
-        const target = Number(valueElement.dataset.target);
 
-        if (!Number.isFinite(target)) {
-            return;
-        }
+        /*
+         * Counter-Animation
+         */
+        function animateCounter(counter, delay) {
 
-        const duration = target >= 4000 ? 2300 : target >= 1000 ? 2000 : 1500;
+            const target = Number(counter.dataset.target);
 
-        const startAnimation = () => {
-            if (prefersReducedMotion) {
-                valueElement.textContent = formatNumber(target);
-
-                if (suffixElement) {
-                    suffixElement.classList.add("is-visible");
-                }
-
-                item.classList.add("is-complete");
+            if (!Number.isFinite(target)) {
                 return;
             }
 
-            const startTime = performance.now();
 
-            const updateCounter = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
+            const statNumber = counter.closest(".stat-number");
+            const plus = statNumber
+                ? statNumber.querySelector(".stat-plus")
+                : null;
 
-                /*
-                 * Ease-out:
-                 * Die Zahl startet schnell und wird zum Ende hin
-                 * immer langsamer.
-                 */
-                const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-                const currentValue = Math.floor(target * easedProgress);
-
-                valueElement.textContent = formatNumber(currentValue);
-
-                if (progress < 1) {
-                    window.requestAnimationFrame(updateCounter);
-                    return;
-                }
-
-                valueElement.textContent = formatNumber(target);
-                item.classList.add("is-complete");
-
-                /*
-                 * Das Plus kommt bewusst erst nach dem vollständigen
-                 * Hochzählen der Zahl.
-                 */
-                if (suffixElement) {
-                    window.setTimeout(() => {
-                        suffixElement.classList.add("is-visible");
-                    }, 180);
-                }
-            };
-
-            window.requestAnimationFrame(updateCounter);
-        };
-
-        window.setTimeout(startAnimation, delay);
-    };
-
-    const startCounters = () => {
-        counters.forEach((item, index) => {
             /*
-             * Die drei Werte starten leicht versetzt.
+             * Plus zunächst ausblenden.
+             * Es soll erst erscheinen, wenn die Zahl fertig hochgezählt wurde.
              */
-            animateCounter(item, index * 220);
-        });
-    };
-
-    /*
-     * Animation erst starten, wenn der Counter im sichtbaren Bereich
-     * angekommen ist.
-     */
-    if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-            (entries, observerInstance) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        startCounters();
-                        observerInstance.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                threshold: 0.45
+            if (plus) {
+                plus.style.opacity = "0";
+                plus.style.visibility = "hidden";
+                plus.style.transform = "translateY(4px) scale(0.85)";
+                plus.style.transition = "opacity 0.3s ease, transform 0.3s ease";
             }
-        );
 
-        observer.observe(counterSection);
-    } else {
-        startCounters();
-    }
+
+            /*
+             * Startwert sicher auf 0 setzen.
+             */
+            counter.textContent = "0";
+
+
+            /*
+             * Bei reduzierter Bewegung:
+             * Zielwert direkt anzeigen.
+             */
+            const reducedMotion = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            ).matches;
+
+
+            if (reducedMotion) {
+
+                setTimeout(function () {
+
+                    counter.textContent = target.toLocaleString("de-DE");
+
+                    if (plus) {
+                        plus.style.opacity = "1";
+                        plus.style.visibility = "visible";
+                        plus.style.transform = "translateY(0) scale(1)";
+                    }
+
+                }, delay);
+
+                return;
+            }
+
+
+            /*
+             * Normale Animation
+             */
+            setTimeout(function () {
+
+                const duration = target >= 4000 ? 2100 : 1800;
+                const startTime = performance.now();
+
+
+                function updateCounter(currentTime) {
+
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+
+                    /*
+                     * Ease-Out-Cubic:
+                     * Anfang schnell, gegen Ende immer langsamer.
+                     */
+                    const easedProgress =
+                        1 - Math.pow(1 - progress, 3);
+
+
+                    const currentValue = Math.floor(
+                        target * easedProgress
+                    );
+
+
+                    counter.textContent =
+                        currentValue.toLocaleString("de-DE");
+
+
+                    if (progress < 1) {
+
+                        requestAnimationFrame(updateCounter);
+
+                    } else {
+
+                        /*
+                         * Absolut sicherstellen,
+                         * dass am Ende exakt der Zielwert steht.
+                         */
+                        counter.textContent =
+                            target.toLocaleString("de-DE");
+
+
+                        /*
+                         * Das Plus kommt mit einer kleinen Verzögerung.
+                         */
+                        if (plus) {
+
+                            setTimeout(function () {
+
+                                plus.style.visibility = "visible";
+
+                                requestAnimationFrame(function () {
+
+                                    plus.style.opacity = "1";
+                                    plus.style.transform =
+                                        "translateY(0) scale(1)";
+
+                                });
+
+                            }, 220);
+                        }
+                    }
+                }
+
+
+                requestAnimationFrame(updateCounter);
+
+            }, delay);
+        }
+
+
+        /*
+         * Alle Counter starten.
+         *
+         * Der kleine zeitliche Versatz sorgt dafür,
+         * dass die drei Zahlen nacheinander anlaufen.
+         */
+        counters.forEach(function (counter, index) {
+
+            animateCounter(
+                counter,
+                index * 220
+            );
+
+        });
+
+    });
+
 })();
