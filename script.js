@@ -1,7 +1,14 @@
 (function () {
     "use strict";
 
-    document.addEventListener("DOMContentLoaded", function () {
+    /*
+     * ============================================================
+     * Nürburg Guide - Script
+     * ============================================================
+     */
+
+    function init() {
+
         /*
          * ============================================================
          * Instagram iOS Hinweis
@@ -18,19 +25,27 @@
         const isInstagramBrowser = /Instagram/i.test(userAgent);
 
         if (isIOS && isInstagramBrowser) {
-            const banner = document.createElement("div");
-            banner.className = "instagram-warning-banner";
 
-            banner.innerHTML = `
-                <div class="instagram-warning-content">
-                    <strong>⚠️ iPhone erkannt: Instagram blockiert den App Store-Link</strong>
-                    <span>
-                        Bitte oben rechts auf „…“ tippen und im Browser öffnen, um die App herunterzuladen.
-                    </span>
-                </div>
-            `;
+            /*
+             * Verhindert, dass der Hinweis doppelt erscheint.
+             */
+            if (!document.querySelector(".instagram-warning-banner")) {
 
-            document.body.prepend(banner);
+                const banner = document.createElement("div");
+
+                banner.className = "instagram-warning-banner";
+
+                banner.innerHTML = `
+                    <div class="instagram-warning-content">
+                        <strong>⚠️ iPhone erkannt: Instagram blockiert den App Store-Link</strong>
+                        <span>
+                            Bitte oben rechts auf „…“ tippen und im Browser öffnen, um die App herunterzuladen.
+                        </span>
+                    </div>
+                `;
+
+                document.body.prepend(banner);
+            }
         }
 
 
@@ -39,14 +54,24 @@
          * Nutzerstatistik
          * ============================================================
          *
-         * Die Statistik befindet sich bereits in der index.html.
+         * Die Counter befinden sich bereits in der index.html:
          *
-         * Beispiel:
+         * .counter[data-target="2600"]
+         * .counter[data-target="4300"]
+         * .counter[data-target="40"]
          *
-         * <span class="counter" data-target="2600">0</span>
+         * Die Animation startet bewusst OHNE IntersectionObserver.
          *
-         * Die JavaScript-Logik greift direkt auf diese Elemente zu
-         * und zählt von 0 bis zum jeweiligen Zielwert hoch.
+         * Dadurch funktioniert sie zuverlässig auf:
+         * - Desktop
+         * - Windows
+         * - macOS
+         * - iPhone
+         * - Android
+         * - Safari
+         * - Chrome
+         * - Edge
+         * - Firefox
          */
 
         const counters = document.querySelectorAll(".counter");
@@ -58,17 +83,67 @@
 
         /*
          * ============================================================
+         * Pluszeichen sicherstellen
+         * ============================================================
+         *
+         * Das Plus wird von JavaScript selbst erzeugt.
+         *
+         * Dadurch ist es egal, ob das Plus in der HTML vorhanden ist
+         * oder nicht.
+         */
+
+        counters.forEach(function (counter) {
+
+            const statNumber = counter.closest(".stat-number");
+
+            if (!statNumber) {
+                return;
+            }
+
+            let plus = statNumber.querySelector(".stat-plus");
+
+            if (!plus) {
+                plus = document.createElement("span");
+                plus.className = "stat-plus";
+                plus.textContent = "+";
+
+                statNumber.appendChild(plus);
+            }
+
+            /*
+             * Plus direkt sichtbar machen.
+             */
+            plus.style.display = "inline";
+            plus.style.visibility = "visible";
+            plus.style.opacity = "1";
+        });
+
+
+        /*
+         * ============================================================
          * Counter Animation
          * ============================================================
          */
 
-        function animateCounter(counter) {
-            if (!counter || counter.dataset.animated === "true") {
+        function animateCounter(counter, delay) {
+
+            if (!counter) {
+                return;
+            }
+
+            /*
+             * Verhindert eine doppelte Animation.
+             */
+            if (counter.dataset.animated === "true") {
                 return;
             }
 
             const target = Number(counter.dataset.target);
 
+            /*
+             * Falls kein gültiger Zielwert vorhanden ist,
+             * wird dieser Counter übersprungen.
+             */
             if (!Number.isFinite(target)) {
                 return;
             }
@@ -76,11 +151,11 @@
             counter.dataset.animated = "true";
 
             const duration = 1600;
-            const startValue = 0;
             const startTime = performance.now();
 
 
             function updateCounter(currentTime) {
+
                 const elapsed = currentTime - startTime;
 
                 const progress = Math.min(
@@ -89,35 +164,77 @@
                 );
 
                 /*
-                 * Ease-Out:
-                 * Am Anfang etwas schneller,
-                 * zum Ende hin sanft abbremsen.
+                 * Ease-Out-Animation.
+                 *
+                 * Die Zahl startet schnell und wird zum Ende
+                 * hin sanfter.
                  */
                 const easedProgress =
                     1 - Math.pow(1 - progress, 3);
 
-                const currentValue = Math.floor(
-                    startValue +
-                    (target - startValue) * easedProgress
-                );
+                const currentValue =
+                    Math.floor(target * easedProgress);
 
                 counter.textContent =
                     currentValue.toLocaleString("de-DE");
 
 
                 if (progress < 1) {
-                    window.requestAnimationFrame(updateCounter);
+
+                    window.requestAnimationFrame(
+                        updateCounter
+                    );
+
                 } else {
+
                     /*
                      * Am Ende exakt den Zielwert setzen.
                      */
                     counter.textContent =
                         target.toLocaleString("de-DE");
+
+                    /*
+                     * Pluszeichen nochmals sicherstellen.
+                     */
+                    const statNumber =
+                        counter.closest(".stat-number");
+
+                    if (statNumber) {
+
+                        let plus =
+                            statNumber.querySelector(".stat-plus");
+
+                        if (!plus) {
+
+                            plus =
+                                document.createElement("span");
+
+                            plus.className =
+                                "stat-plus";
+
+                            plus.textContent = "+";
+
+                            statNumber.appendChild(plus);
+                        }
+
+                        plus.style.display = "inline";
+                        plus.style.visibility = "visible";
+                        plus.style.opacity = "1";
+                    }
                 }
             }
 
 
-            window.requestAnimationFrame(updateCounter);
+            /*
+             * Kleiner zeitlicher Versatz zwischen den Zahlen.
+             */
+            window.setTimeout(function () {
+
+                window.requestAnimationFrame(
+                    updateCounter
+                );
+
+            }, delay);
         }
 
 
@@ -126,61 +243,43 @@
          * Animation starten
          * ============================================================
          *
-         * Die Statistik befindet sich beim Laden der Seite bereits
-         * relativ weit oben. Deshalb starten wir die Animation,
-         * sobald der Statistikbereich sichtbar ist.
+         * KEIN IntersectionObserver.
+         *
+         * Die Statistik ist auf der Startseite direkt sichtbar.
+         * Deshalb starten wir die Counter einfach zuverlässig
+         * nach dem Laden der Seite.
          */
 
-        const statsSection =
-            document.querySelector(".hero-stats");
+        counters.forEach(function (counter, index) {
 
-
-        /*
-         * Falls der Browser IntersectionObserver unterstützt,
-         * starten wir die Animation beim Sichtbarwerden.
-         */
-
-        if (
-            statsSection &&
-            "IntersectionObserver" in window
-        ) {
-            let hasStarted = false;
-
-            const observer = new IntersectionObserver(
-                function (entries, observerInstance) {
-                    entries.forEach(function (entry) {
-                        if (
-                            entry.isIntersecting &&
-                            !hasStarted
-                        ) {
-                            hasStarted = true;
-
-                            counters.forEach(function (counter, index) {
-                                setTimeout(function () {
-                                    animateCounter(counter);
-                                }, index * 150);
-                            });
-
-                            observerInstance.disconnect();
-                        }
-                    });
-                },
-                {
-                    threshold: 0.15
-                }
+            animateCounter(
+                counter,
+                index * 150
             );
 
-            observer.observe(statsSection);
+        });
+    }
 
-        } else {
-            /*
-             * Fallback für ältere Browser.
-             */
-            counters.forEach(function (counter, index) {
-                setTimeout(function () {
-                    animateCounter(counter);
-                }, index * 150);
-            });
-        }
-    });
+
+    /*
+     * ============================================================
+     * Sicherstellen, dass das Script sowohl bei normalem Laden
+     * als auch bei verzögertem Laden funktioniert.
+     * ============================================================
+     */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            init,
+            { once: true }
+        );
+
+    } else {
+
+        init();
+
+    }
+
 })();
