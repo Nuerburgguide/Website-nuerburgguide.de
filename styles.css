@@ -333,7 +333,7 @@ main {
 
 /* Statistik */
 .stats-section {
-    padding: 30px 0 34px;
+    padding: 52px 0 52px;
     background: var(--color-bg);
 }
 
@@ -1096,8 +1096,9 @@ footer {
         padding-bottom: 40px;
     }
 
+    /* Mehr Weißraum rund um die Statistik */
     .stats-section {
-        padding: 24px 0 28px;
+        padding: 38px 0 42px;
     }
 
     .stats-grid {
@@ -1251,8 +1252,9 @@ footer {
         padding: 7px 11px;
     }
 
+    /* Noch etwas mehr Weißraum auf kleinen Screens */
     .stats-section {
-        padding: 20px 0 24px;
+        padding: 34px 0 40px;
     }
 
     .stats-grid {
