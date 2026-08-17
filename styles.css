@@ -502,7 +502,6 @@ p {
 .links-section h2,
 .about-story h2,
 .about-hero h1 {
-
     margin-bottom: 13px;
 
     color: var(--color-text);
@@ -522,7 +521,6 @@ p {
 .cooperation-box p,
 .disclaimer-box p,
 .about-story p {
-
     max-width: 760px;
 
     color: var(--color-muted);
@@ -539,7 +537,6 @@ p {
 .community-eyebrow,
 .respect-box .eyebrow,
 .cooperation-box .eyebrow {
-
     display: block;
 
     max-width: none;
@@ -646,15 +643,19 @@ p {
 
 
 /* =========================================================
-   STATISTIK / HERO STATS
-
-   Bewusst mehr vertikaler Weißraum
+   HERO STATS
+   Tatsächliche HTML-Klasse: .hero-stats
    ========================================================= */
 
 .hero-stats {
     margin-top: 34px;
     margin-bottom: 38px;
 }
+
+
+/* =========================================================
+   STATISTIK GRID
+   ========================================================= */
 
 .stats-grid {
     display: grid;
@@ -946,7 +947,6 @@ p {
 .link-card h3,
 .principle-card h3,
 .about-card h2 {
-
     margin-bottom: 12px;
 
     color: var(--color-text);
@@ -962,7 +962,6 @@ p {
 .link-card p,
 .principle-card p,
 .about-card p {
-
     margin-bottom: 12px;
 
     color: var(--color-muted);
@@ -987,7 +986,6 @@ p {
 .disclaimer-section,
 .respect-section,
 .cooperation-section {
-
     padding: 28px 0;
 
     background: var(--color-bg);
@@ -997,7 +995,6 @@ p {
 .respect-box,
 .cooperation-box,
 .disclaimer-box {
-
     padding: clamp(26px, 4vw, 42px);
 
     border-radius: var(--radius-large);
@@ -1848,7 +1845,11 @@ footer {
         bottom: 18px;
     }
 
-    /* Hero Stats: kompakterer Abstand auf Mobile */
+
+    /* ---------------------------------------------------------
+       HERO STATS — MOBILE
+       --------------------------------------------------------- */
+
     .hero-stats {
         margin-top: 28px;
         margin-bottom: 32px;
@@ -1870,6 +1871,7 @@ footer {
     .stat-label {
         font-size: 0.78rem;
     }
+
 
     .hero,
     .about-hero {
@@ -2056,7 +2058,11 @@ footer {
         font-size: 0.72rem;
     }
 
-    /* Hero Stats: noch kompakter auf kleinen Smartphones */
+
+    /* ---------------------------------------------------------
+       HERO STATS — SMALL MOBILE
+       --------------------------------------------------------- */
+
     .hero-stats {
         margin-top: 24px;
         margin-bottom: 28px;
@@ -2143,6 +2149,16 @@ footer {
         padding: 7px 8px;
 
         font-size: 0.78rem;
+    }
+
+
+    /* ---------------------------------------------------------
+       HERO STATS — VERY SMALL MOBILE
+       --------------------------------------------------------- */
+
+    .hero-stats {
+        margin-top: 22px;
+        margin-bottom: 26px;
     }
 
     .stat-number {
@@ -2239,6 +2255,7 @@ footer {
 
     a {
         color: #000000 !important;
+
         text-decoration: underline;
     }
 }
