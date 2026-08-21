@@ -5,6 +5,8 @@
     const WIDGET_STYLE_URL = "https://raceticket.de/widget/raceticket-widget.css";
     const WIDGET_CONTAINER_SELECTOR = "#raceticket-widget";
     const WIDGET_RENDER_CHECK_MS = 500;
+    const WIDGET_FAILURE_TIMEOUT_MS = 60000;
+    const SUPPORTED_WIDGET_LOCALES = ["de", "en", "es"];
 
     function initGetSpeedBooking() {
         const shell = document.querySelector("[data-raceticket-shell]");
@@ -22,7 +24,19 @@
         let observer;
         let shadowObserver;
         let renderCheckId;
+        let failureTimeoutId;
+        let apiCheckId;
         let scriptLoading = false;
+
+        function getWidgetLocale() {
+            const pageLanguage = (document.documentElement.lang || "").toLowerCase().split("-")[0];
+
+            if (SUPPORTED_WIDGET_LOCALES.includes(pageLanguage)) {
+                return pageLanguage;
+            }
+
+            return null;
+        }
 
         function setStatus(message, state) {
             shell.dataset.state = state;
@@ -63,25 +77,24 @@
         }
 
         function markLoaded() {
-            window.clearInterval(renderCheckId);
-            renderCheckId = null;
-
-            if (observer) {
-                observer.disconnect();
-                observer = null;
-            }
-
-            if (shadowObserver) {
-                shadowObserver.disconnect();
-                shadowObserver = null;
-            }
+            stopWatchingWidget();
 
             shell.dataset.state = "loaded";
+
+            if (status) {
+                status.innerHTML = "";
+            }
         }
 
-        function markError() {
+        function stopWatchingWidget() {
             window.clearInterval(renderCheckId);
             renderCheckId = null;
+
+            window.clearTimeout(failureTimeoutId);
+            failureTimeoutId = null;
+
+            window.clearInterval(apiCheckId);
+            apiCheckId = null;
 
             if (observer) {
                 observer.disconnect();
@@ -91,10 +104,28 @@
             if (shadowObserver) {
                 shadowObserver.disconnect();
                 shadowObserver = null;
+            }
+        }
+
+        function markError(keepWatching) {
+            window.clearTimeout(failureTimeoutId);
+            failureTimeoutId = null;
+
+            if (!keepWatching) {
+                stopWatchingWidget();
+            }
+
+            if (hasWidgetContent()) {
+                markLoaded();
+                return;
             }
 
             scriptLoading = false;
             setStatus(errorText, "error");
+
+            if (keepWatching) {
+                watchRenderedWidget();
+            }
         }
 
         function ensureWidgetStyles() {
@@ -109,7 +140,7 @@
         }
 
         function observeWidgetContent() {
-            if (!("MutationObserver" in window)) {
+            if (!("MutationObserver" in window) || observer) {
                 return;
             }
 
@@ -145,7 +176,11 @@
         }
 
         function watchRenderedWidget() {
-            window.clearInterval(renderCheckId);
+            observeWidgetContent();
+
+            if (renderCheckId) {
+                return;
+            }
 
             renderCheckId = window.setInterval(function () {
                 observeShadowContent();
@@ -156,24 +191,63 @@
             }, WIDGET_RENDER_CHECK_MS);
         }
 
-        function initializeWidget() {
-            if (!window.RaceTicketWidget || typeof window.RaceTicketWidget.init !== "function") {
-                markError();
+        function armFailureTimeout() {
+            window.clearTimeout(failureTimeoutId);
+
+            failureTimeoutId = window.setTimeout(function () {
+                if (hasWidgetContent()) {
+                    markLoaded();
+                } else {
+                    markError(true);
+                }
+            }, WIDGET_FAILURE_TIMEOUT_MS);
+        }
+
+        function waitForWidgetApi() {
+            if (apiCheckId) {
                 return;
             }
 
-            container.innerHTML = "";
-            observeWidgetContent();
             watchRenderedWidget();
+            armFailureTimeout();
+
+            apiCheckId = window.setInterval(function () {
+                if (window.RaceTicketWidget && typeof window.RaceTicketWidget.init === "function") {
+                    window.clearInterval(apiCheckId);
+                    apiCheckId = null;
+                    initializeWidget();
+                }
+            }, WIDGET_RENDER_CHECK_MS);
+        }
+
+        function initializeWidget() {
+            if (!window.RaceTicketWidget || typeof window.RaceTicketWidget.init !== "function") {
+                waitForWidgetApi();
+                return;
+            }
+
+            window.clearInterval(apiCheckId);
+            apiCheckId = null;
+
+            container.innerHTML = "";
+            watchRenderedWidget();
+            armFailureTimeout();
 
             try {
-                window.RaceTicketWidget.init({
+                const widgetConfig = {
                     container: "#raceticket-widget",
                     hostSlug: "under8-gmbh",
                     variant: "3uJXkN0wHwRCElzhjQf8gr5aKRskBsH6"
-                });
+                };
+                const widgetLocale = getWidgetLocale();
+
+                if (widgetLocale) {
+                    widgetConfig.locale = widgetLocale;
+                }
+
+                window.RaceTicketWidget.init(widgetConfig);
             } catch (error) {
-                markError();
+                markError(true);
                 return;
             }
         }
@@ -183,18 +257,7 @@
                 return;
             }
 
-            window.clearInterval(renderCheckId);
-            renderCheckId = null;
-
-            if (observer) {
-                observer.disconnect();
-                observer = null;
-            }
-
-            if (shadowObserver) {
-                shadowObserver.disconnect();
-                shadowObserver = null;
-            }
+            stopWatchingWidget();
 
             setStatus(loadingText, "loading");
             ensureWidgetStyles();
@@ -221,7 +284,9 @@
                 scriptLoading = false;
                 initializeWidget();
             };
-            script.onerror = markError;
+            script.onerror = function () {
+                markError(false);
+            };
             document.body.appendChild(script);
         }
 

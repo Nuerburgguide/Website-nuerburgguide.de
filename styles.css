@@ -31,6 +31,13 @@
     --type-section-title: clamp(1.8rem, 3vw, 2.45rem);
     --type-hero-title: clamp(2.25rem, 5vw, 4rem);
 
+    --space-eyebrow-title: 10px;
+    --space-title-copy: 14px;
+    --space-heading-block: 32px;
+    --space-section-y: 56px;
+    --space-section-y-compact: 34px;
+    --space-card-inner: clamp(26px, 4vw, 42px);
+
     --container-width: 1280px;
     --content-width: 980px;
 
@@ -449,7 +456,9 @@ p {
 }
 
 .section-heading {
-    margin-bottom: 30px;
+    display: grid;
+    gap: var(--space-title-copy);
+    margin-bottom: var(--space-heading-block);
 }
 
 .app-preview-top .section-heading h1,
@@ -462,7 +471,7 @@ p {
 .disclaimer-box h2,
 .about-story h2,
 .about-hero h1 {
-    margin-bottom: 13px;
+    margin-bottom: var(--space-title-copy);
 
     color: var(--color-text);
 
@@ -480,13 +489,14 @@ p {
 .respect-box p,
 .cooperation-box p,
 .disclaimer-box p,
-.about-story p {
+.about-story p,
+.about-contact-box p {
     max-width: 760px;
 
     color: var(--color-muted);
 
     font-size: var(--type-body);
-    line-height: 1.75;
+    line-height: 1.72;
 }
 
 .eyebrow,
@@ -496,12 +506,13 @@ p {
 .about-hero .eyebrow,
 .community-eyebrow,
 .respect-box .eyebrow,
-.cooperation-box .eyebrow {
+.cooperation-box .eyebrow,
+.about-contact-box .eyebrow {
     display: block;
 
     max-width: none;
 
-    margin-bottom: 10px;
+    margin-bottom: var(--space-eyebrow-title);
 
     color: var(--color-muted);
 
@@ -513,18 +524,25 @@ p {
     text-transform: uppercase;
 }
 
+.section-heading > .eyebrow,
+.section-heading > h1,
+.section-heading > h2,
+.section-heading > p {
+    margin-bottom: 0;
+}
+
 
 /* =========================================================
    APP PREVIEW
    ========================================================= */
 
 .app-preview-section {
-    padding: 56px 0 44px;
+    padding: var(--space-section-y) 0 calc(var(--space-section-y) - 10px);
     background: var(--color-bg);
 }
 
 .app-preview-top {
-    padding-top: 56px;
+    padding-top: var(--space-section-y);
     background: var(--color-bg);
 }
 
@@ -737,8 +755,8 @@ p {
    ========================================================= */
 
 .hero-stats {
-    margin-top: 34px;
-    margin-bottom: 38px;
+    margin-top: calc(var(--space-heading-block) + 22px);
+    margin-bottom: calc(var(--space-heading-block) + 4px);
 }
 
 
@@ -837,13 +855,17 @@ p {
    ========================================================= */
 
 .hero {
-    padding: 48px 0 72px;
+    padding: var(--space-section-y) 0 calc(var(--space-section-y) + 8px);
 
     background: var(--color-bg);
 }
 
 .hero-home {
     background: var(--color-bg);
+}
+
+.app-preview-top + .hero-home {
+    padding-top: calc(var(--space-section-y) + 12px);
 }
 
 .hero-home-grid {
@@ -861,6 +883,16 @@ p {
     max-width: 900px;
 }
 
+.hero-home .hero-copy > .eyebrow {
+    margin-bottom: clamp(20px, 2.1vw, 30px);
+}
+
+.hero-copy > h1,
+.hero-copy > h2,
+.hero-copy > p {
+    margin-bottom: 0;
+}
+
 .hero-copy p:last-of-type {
     margin-bottom: 0;
 }
@@ -876,7 +908,7 @@ p {
     width: 100%;
     max-width: 900px;
 
-    margin-top: 34px;
+    margin-top: var(--space-heading-block);
     padding: clamp(26px, 4vw, 40px);
 
     color: #ffffff;
@@ -910,7 +942,7 @@ p {
 .download-cta-eyebrow {
     display: block;
 
-    margin-bottom: 8px;
+    margin-bottom: var(--space-eyebrow-title);
 
     color: #aeb3ba !important;
 
@@ -924,7 +956,7 @@ p {
 }
 
 .download-cta h3 {
-    margin-bottom: 10px;
+    margin-bottom: var(--space-title-copy);
 
     color: #ffffff;
 
@@ -953,7 +985,7 @@ p {
 .download-cta-text {
     max-width: 650px !important;
 
-    margin: 14px auto 0;
+    margin: var(--space-title-copy) auto 0;
 
     color: #c9c9c9 !important;
 
@@ -1036,7 +1068,7 @@ p {
    ========================================================= */
 
 .features-section {
-    padding: 64px 0 56px;
+    padding: var(--space-section-y) 0;
     background: var(--color-bg);
 }
 
@@ -1080,7 +1112,7 @@ p {
 
 .feature-card h3,
 .principle-card h3 {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-title-copy);
 
     color: var(--color-text);
 
@@ -1093,7 +1125,7 @@ p {
 
 .feature-card p,
 .principle-card p {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-title-copy);
 
     color: var(--color-muted);
 
@@ -1115,7 +1147,7 @@ p {
 .disclaimer-section,
 .respect-section,
 .cooperation-section {
-    padding: 28px 0;
+    padding: var(--space-section-y-compact) 0;
 
     background: var(--color-bg);
 }
@@ -1124,7 +1156,7 @@ p {
 .respect-box,
 .cooperation-box,
 .disclaimer-box {
-    padding: clamp(26px, 4vw, 42px);
+    padding: var(--space-card-inner);
 
     border-radius: var(--radius-large);
 
@@ -1183,7 +1215,7 @@ p {
 }
 
 .about-contact-section {
-    padding: 28px 0 42px;
+    padding: var(--space-section-y-compact) 0 calc(var(--space-section-y-compact) + 10px);
     background: var(--color-bg);
 }
 
@@ -1192,14 +1224,14 @@ p {
     align-items: center;
     justify-content: space-between;
     gap: 28px;
-    padding: clamp(26px, 4vw, 42px);
+    padding: var(--space-card-inner);
     background: var(--color-dark);
     border-radius: var(--radius-large);
     box-shadow: var(--shadow-card);
 }
 
 .about-contact-box h2 {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-title-copy);
     color: #ffffff;
     font-size: var(--type-section-title);
     line-height: 1.08;
@@ -1208,7 +1240,6 @@ p {
 .about-contact-box p {
     max-width: 720px;
     color: #d8d8d8;
-    line-height: 1.75;
 }
 
 .about-contact-box .eyebrow {
@@ -1221,7 +1252,7 @@ p {
    ========================================================= */
 
 .about-hero {
-    padding: 74px 0 66px;
+    padding: calc(var(--space-section-y) + 10px) 0 var(--space-section-y);
 
     background: var(--color-bg);
 }
@@ -1254,12 +1285,12 @@ p {
     color: #e2e2e2;
 
     font-size: var(--type-body);
-    line-height: 1.75;
+    line-height: 1.72;
 }
 
 .about-story-section,
 .about-principles-section {
-    padding: 34px 0;
+    padding: var(--space-section-y-compact) 0;
 
     background: var(--color-bg);
 }
@@ -1268,7 +1299,7 @@ p {
     width: 100%;
     max-width: 980px;
 
-    padding: clamp(28px, 5vw, 48px);
+    padding: var(--space-card-inner);
 
     background: var(--color-surface);
 
@@ -1632,11 +1663,11 @@ p {
 }
 
 .getspeed-hero .eyebrow {
-    margin-bottom: 8px;
+    margin-bottom: var(--space-eyebrow-title);
 }
 
 .getspeed-hero h1 {
-    margin-bottom: 14px;
+    margin-bottom: var(--space-title-copy);
     color: #ffffff;
     font-size: clamp(2.35rem, 5.2vw, 5rem);
     font-weight: 950;
@@ -1646,7 +1677,7 @@ p {
 
 .getspeed-hero-lead {
     max-width: 660px;
-    margin-bottom: 22px;
+    margin-bottom: calc(var(--space-title-copy) + 8px);
     color: #e0e0e0;
     font-size: clamp(1.02rem, 1.6vw, 1.2rem);
     line-height: 1.62;
@@ -1670,21 +1701,22 @@ p {
 }
 
 .getspeed-section {
-    padding: 56px 0;
+    padding: var(--space-section-y) 0;
     background: var(--color-bg);
 }
 
 .getspeed-booking-card {
-    padding: clamp(26px, 4vw, 42px);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border-soft);
+    padding: var(--space-card-inner);
+    color: #ffffff;
+    background: #070707;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.24);
 }
 
 .getspeed-booking-card h2 {
-    margin-bottom: 14px;
-    color: var(--color-text);
+    margin-bottom: var(--space-title-copy);
+    color: #ffffff;
     font-size: var(--type-section-title);
     font-weight: 900;
     line-height: 1.08;
@@ -1692,9 +1724,9 @@ p {
 }
 
 .getspeed-booking-card p {
-    color: var(--color-muted);
+    color: #d8d8d8;
     font-size: var(--type-body);
-    line-height: 1.75;
+    line-height: 1.72;
 }
 
 .getspeed-vehicle-grid {
@@ -1746,7 +1778,7 @@ p {
 }
 
 .getspeed-booking-section {
-    padding: 56px 0 68px;
+    padding: var(--space-section-y) 0 calc(var(--space-section-y) + 12px);
     background: var(--color-bg);
 }
 
@@ -1756,7 +1788,15 @@ p {
 
 .getspeed-booking-head {
     max-width: 780px;
-    margin-bottom: 26px;
+    margin-bottom: 24px;
+}
+
+.getspeed-booking-card .eyebrow {
+    color: #a7a7a7;
+}
+
+.getspeed-booking-card h2 {
+    margin-bottom: 0;
 }
 
 .raceticket-widget-shell {
@@ -1765,8 +1805,8 @@ p {
     margin: 0 auto;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    background: var(--color-surface-soft);
-    border: 1px solid var(--color-border-soft);
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-card);
 }
 
@@ -1777,14 +1817,14 @@ p {
     justify-content: center;
     gap: 14px;
     padding: 28px;
-    color: var(--color-muted);
+    color: #d8d8d8;
     text-align: center;
     flex-direction: column;
 }
 
 .raceticket-widget-status p {
     margin: 0;
-    color: var(--color-muted);
+    color: #d8d8d8;
     font-size: var(--type-body-small);
     font-weight: 800;
 }
@@ -1820,8 +1860,8 @@ p {
 .getspeed-external-note {
     margin-top: 18px;
     padding: 16px 18px;
-    color: var(--color-muted);
-    background: var(--color-surface-soft);
+    color: #cfcfcf;
+    background: rgba(255, 255, 255, 0.05);
     border-left: 4px solid var(--getspeed-red);
     border-radius: var(--radius-small);
     font-size: 0.94rem;
@@ -2072,6 +2112,11 @@ footer {
     :root {
         --type-section-title: clamp(1.55rem, 6vw, 2rem);
         --type-body: 1rem;
+        --space-eyebrow-title: 8px;
+        --space-title-copy: 12px;
+        --space-heading-block: 26px;
+        --space-section-y: 46px;
+        --space-section-y-compact: 28px;
     }
 
     header {
@@ -2136,8 +2181,8 @@ footer {
 
     .app-preview-section,
     .app-preview-top {
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: var(--space-section-y);
+        padding-bottom: var(--space-section-y);
     }
 
     .app-preview-frame {
@@ -2172,7 +2217,7 @@ footer {
        --------------------------------------------------------- */
 
     .hero-stats {
-        margin-top: 28px;
+        margin-top: 44px;
         margin-bottom: 32px;
     }
 
@@ -2196,7 +2241,7 @@ footer {
 
     .hero,
     .about-hero {
-        padding: 42px 0;
+        padding: var(--space-section-y) 0;
     }
 
     .hero-copy {
@@ -2204,7 +2249,7 @@ footer {
     }
 
     .features-section {
-        padding: 46px 0;
+        padding: var(--space-section-y) 0;
     }
 
     .features-grid,
@@ -2247,11 +2292,11 @@ footer {
 
     .getspeed-section,
     .getspeed-booking-section {
-        padding: 46px 0;
+        padding: var(--space-section-y) 0;
     }
 
     .getspeed-booking-head {
-        margin-bottom: 22px;
+        margin-bottom: var(--space-heading-block);
     }
 
     .raceticket-widget-shell {
@@ -2264,7 +2309,7 @@ footer {
        --------------------------------------------------------- */
 
     .download-cta {
-        margin-top: 28px;
+        margin-top: var(--space-heading-block);
 
         padding: 28px 20px;
 
@@ -2342,6 +2387,9 @@ footer {
         --type-card-title: 1.08rem;
         --type-body: 0.98rem;
         --type-body-small: 0.94rem;
+        --space-heading-block: 24px;
+        --space-section-y: 40px;
+        --space-section-y-compact: 24px;
     }
 
     .container {
@@ -2385,7 +2433,7 @@ footer {
 
     .hero,
     .about-hero {
-        padding: 40px 0;
+        padding: var(--space-section-y) 0;
     }
 
     .button {
@@ -2402,7 +2450,7 @@ footer {
        --------------------------------------------------------- */
 
     .download-cta {
-        margin-top: 24px;
+        margin-top: var(--space-heading-block);
 
         padding: 25px 16px;
 
@@ -2469,7 +2517,7 @@ footer {
        --------------------------------------------------------- */
 
     .hero-stats {
-        margin-top: 24px;
+        margin-top: 38px;
         margin-bottom: 28px;
     }
 
@@ -2581,7 +2629,7 @@ footer {
        --------------------------------------------------------- */
 
     .hero-stats {
-        margin-top: 22px;
+        margin-top: 34px;
         margin-bottom: 26px;
     }
 
