@@ -470,7 +470,7 @@ p {
     font-weight: 900;
     line-height: 1.08;
 
-    letter-spacing: -0.045em;
+    letter-spacing: 0;
 }
 
 .section-heading p,
@@ -1319,7 +1319,7 @@ p {
     font-weight: 900;
     line-height: 1.1;
 
-    letter-spacing: -0.045em;
+    letter-spacing: 0;
 
     border-bottom: 2px solid #eeeeee;
 }
@@ -1523,6 +1523,309 @@ p {
 
 .contact-form button:active {
     transform: translateY(0);
+}
+
+
+/* =========================================================
+   GETSPEED PARTNER PAGE
+   ========================================================= */
+
+.getspeed-page {
+    --getspeed-red: #e30303;
+    --getspeed-ink: #101010;
+    --getspeed-panel: #181818;
+    --getspeed-line: rgba(255, 255, 255, 0.14);
+}
+
+.getspeed-page main {
+    background:
+        linear-gradient(
+            180deg,
+            #111111 0,
+            #171717 480px,
+            var(--color-bg) 480px,
+            var(--color-bg) 100%
+        );
+}
+
+.getspeed-hero {
+    position: relative;
+    padding: 34px 0 46px;
+    color: #ffffff;
+    background: #111111;
+    overflow: hidden;
+}
+
+.getspeed-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(17, 17, 17, 0.98) 0%,
+            rgba(17, 17, 17, 0.84) 42%,
+            rgba(17, 17, 17, 0.48) 70%,
+            rgba(17, 17, 17, 0.74) 100%
+        );
+    z-index: 1;
+}
+
+.getspeed-hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background:
+        linear-gradient(
+            90deg,
+            var(--color-accent) 0%,
+            var(--getspeed-red) 45%,
+            rgba(255, 255, 255, 0.28) 100%
+        );
+    z-index: 2;
+}
+
+.getspeed-hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 65% center;
+}
+
+.getspeed-hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    min-height: 350px;
+}
+
+.getspeed-hero-copy {
+    max-width: 760px;
+}
+
+.getspeed-hero-branding {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.7vw, 18px);
+    margin-bottom: 16px;
+}
+
+.getspeed-hero-branding img {
+    display: block;
+    width: auto;
+    height: clamp(44px, 4.4vw, 64px);
+    max-width: min(26vw, 88px);
+    object-fit: contain;
+}
+
+.getspeed-hero-branding span {
+    color: rgba(255, 255, 255, 0.58);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.getspeed-hero .eyebrow {
+    margin-bottom: 8px;
+}
+
+.getspeed-hero h1 {
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: clamp(2.35rem, 5.2vw, 5rem);
+    font-weight: 950;
+    line-height: 0.98;
+    letter-spacing: 0;
+}
+
+.getspeed-hero-lead {
+    max-width: 660px;
+    margin-bottom: 22px;
+    color: #e0e0e0;
+    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    line-height: 1.62;
+}
+
+.getspeed-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.getspeed-button {
+    background: var(--getspeed-red);
+    box-shadow: 0 10px 24px rgba(227, 3, 3, 0.24);
+}
+
+.getspeed-button:hover {
+    background: #ba0202;
+    box-shadow: 0 12px 28px rgba(227, 3, 3, 0.3);
+}
+
+.getspeed-section {
+    padding: 56px 0;
+    background: var(--color-bg);
+}
+
+.getspeed-booking-card {
+    padding: clamp(26px, 4vw, 42px);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+}
+
+.getspeed-booking-card h2 {
+    margin-bottom: 14px;
+    color: var(--color-text);
+    font-size: var(--type-section-title);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.getspeed-booking-card p {
+    color: var(--color-muted);
+    font-size: var(--type-body);
+    line-height: 1.75;
+}
+
+.getspeed-vehicle-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.getspeed-vehicle-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+}
+
+.getspeed-vehicle-image {
+    position: relative;
+    aspect-ratio: 16 / 11;
+    background: #101010;
+    overflow: hidden;
+}
+
+.getspeed-vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.getspeed-vehicle-card:hover .getspeed-vehicle-image img {
+    transform: scale(1.025);
+}
+
+.getspeed-vehicle-body {
+    padding: 18px 22px;
+}
+
+.getspeed-vehicle-body h3 {
+    margin-bottom: 0;
+    color: var(--color-text);
+    font-size: clamp(1.16rem, 1.8vw, 1.45rem);
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: 0;
+}
+
+.getspeed-booking-section {
+    padding: 56px 0 68px;
+    background: var(--color-bg);
+}
+
+.getspeed-booking-card {
+    overflow: hidden;
+}
+
+.getspeed-booking-head {
+    max-width: 780px;
+    margin-bottom: 26px;
+}
+
+.raceticket-widget-shell {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+}
+
+.raceticket-widget-status {
+    display: flex;
+    min-height: 170px;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 28px;
+    color: var(--color-muted);
+    text-align: center;
+    flex-direction: column;
+}
+
+.raceticket-widget-status p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--type-body-small);
+    font-weight: 800;
+}
+
+.raceticket-widget-shell[data-state="loaded"] .raceticket-widget-status {
+    display: none;
+}
+
+#raceticket-widget {
+    width: 100%;
+    min-width: 0;
+}
+
+.raceticket-retry-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 14px;
+    color: #ffffff;
+    background: var(--getspeed-red);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.raceticket-retry-button:hover {
+    background: #ba0202;
+}
+
+.getspeed-external-note {
+    margin-top: 18px;
+    padding: 16px 18px;
+    color: var(--color-muted);
+    background: var(--color-surface-soft);
+    border-left: 4px solid var(--getspeed-red);
+    border-radius: var(--radius-small);
+    font-size: 0.94rem;
+    line-height: 1.65;
 }
 
 
@@ -1734,6 +2037,11 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .getspeed-hero-content {
+        min-height: 340px;
+        align-items: center;
+    }
+
     .cooperation-box {
         align-items: flex-start;
 
@@ -1900,13 +2208,54 @@ footer {
     }
 
     .features-grid,
-    .principles-grid {
+    .principles-grid,
+    .getspeed-vehicle-grid {
         grid-template-columns: 1fr;
     }
 
     .community-box,
     .respect-box {
         gap: 20px;
+    }
+
+    .getspeed-hero {
+        padding: 34px 0 42px;
+    }
+
+    .getspeed-hero::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(17, 17, 17, 0.94) 0%,
+                rgba(17, 17, 17, 0.86) 48%,
+                rgba(17, 17, 17, 0.72) 100%
+            );
+    }
+
+    .getspeed-hero-image {
+        object-position: 68% center;
+    }
+
+    .getspeed-hero-content {
+        min-height: 360px;
+    }
+
+    .getspeed-hero-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .getspeed-section,
+    .getspeed-booking-section {
+        padding: 46px 0;
+    }
+
+    .getspeed-booking-head {
+        margin-bottom: 22px;
+    }
+
+    .raceticket-widget-shell {
+        border-radius: 18px;
     }
 
 
@@ -2158,15 +2507,43 @@ footer {
     .community-box,
     .disclaimer-box,
     .respect-box,
-    .cooperation-box {
+    .cooperation-box,
+    .getspeed-booking-card,
+    .getspeed-vehicle-card {
         border-radius: 22px;
     }
 
     .community-box,
     .disclaimer-box,
     .respect-box,
-    .cooperation-box {
+    .cooperation-box,
+    .getspeed-booking-card {
         padding: 22px 20px;
+    }
+
+    .getspeed-hero {
+        padding: 30px 0 38px;
+    }
+
+    .getspeed-hero-content {
+        min-height: 380px;
+    }
+
+    .getspeed-hero h1 {
+        font-size: clamp(2rem, 11vw, 3.2rem);
+    }
+
+    .getspeed-hero-lead {
+        font-size: 0.98rem;
+    }
+
+    .getspeed-vehicle-body {
+        padding: 16px 18px;
+    }
+
+    .raceticket-widget-status {
+        min-height: 150px;
+        padding: 24px 18px;
     }
 
     .feature-card,
@@ -2233,6 +2610,18 @@ footer {
 
         margin: 0 auto;
     }
+
+    .getspeed-hero-content {
+        min-height: 400px;
+    }
+
+    .getspeed-hero h1 {
+        font-size: clamp(1.85rem, 12vw, 2.65rem);
+    }
+
+    .getspeed-button {
+        width: 100%;
+    }
 }
 
 
@@ -2254,6 +2643,7 @@ footer {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
 
 
 
