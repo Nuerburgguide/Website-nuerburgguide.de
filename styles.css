@@ -320,87 +320,6 @@ nav.main-nav a[aria-current="page"]:hover {
 
 
 /* =========================================================
-   UPDATE TICKER
-   ========================================================= */
-
-.update-ticker {
-    position: relative;
-
-    width: 100%;
-
-    overflow: hidden;
-
-    background: var(--color-dark);
-
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    border-bottom: 1px solid rgba(237, 32, 0, 0.55);
-
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.08);
-
-    isolation: isolate;
-}
-
-.update-ticker-track {
-    display: flex;
-
-    width: max-content;
-    min-width: max-content;
-
-    white-space: nowrap;
-
-    animation:
-        update-ticker-scroll 28s linear infinite;
-
-    will-change: transform;
-}
-
-.update-ticker-track span {
-    display: inline-flex;
-    align-items: center;
-
-    padding: 10px 36px;
-
-    color: #ffffff;
-
-    font-size: 0.86rem;
-    font-weight: 800;
-    line-height: 1.25;
-
-    letter-spacing: 0.075em;
-    text-transform: uppercase;
-}
-
-.update-ticker-track span::before {
-    content: "";
-
-    flex: 0 0 auto;
-
-    width: 8px;
-    height: 8px;
-
-    margin-right: 14px;
-
-    border-radius: 50%;
-
-    background: var(--color-accent);
-
-    box-shadow:
-        0 0 0 4px rgba(237, 32, 0, 0.16);
-}
-
-@keyframes update-ticker-scroll {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        transform: translate3d(-50%, 0, 0);
-    }
-}
-
-
-/* =========================================================
    BUTTONS
    ========================================================= */
 
@@ -499,7 +418,6 @@ p {
 .respect-box h2,
 .cooperation-box h2,
 .disclaimer-box h2,
-.links-section h2,
 .about-story h2,
 .about-hero h1 {
     margin-bottom: 13px;
@@ -942,77 +860,6 @@ p {
 
 
 /* =========================================================
-   ALTE PREVIEW-KLASSEN / FALLBACK
-   ========================================================= */
-
-.app-preview-image {
-    padding: clamp(9px, 1.8vw, 18px);
-
-    background: #101010;
-
-    border-radius: var(--radius-preview);
-
-    overflow: hidden;
-
-    box-shadow: var(--shadow-preview);
-}
-
-.app-preview-image img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    border-radius: 20px;
-}
-
-.app-preview-box {
-    display: grid;
-
-    min-height: 300px;
-
-    grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(0, 0.9fr);
-
-    align-items: center;
-
-    gap: 36px;
-
-    padding: clamp(28px, 5vw, 54px);
-
-    color: #ffffff;
-    background: var(--color-dark);
-
-    border-radius: var(--radius-large);
-
-    box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.14);
-
-    overflow: hidden;
-}
-
-.app-preview-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 220px;
-
-    padding: 24px;
-
-    color: #cfcfcf;
-
-    text-align: center;
-
-    background: rgba(255, 255, 255, 0.04);
-
-    border: 1px dashed rgba(255, 255, 255, 0.35);
-    border-radius: 24px;
-}
-
-
-/* =========================================================
    FEATURES
    ========================================================= */
 
@@ -1031,9 +878,7 @@ p {
 }
 
 .feature-card,
-.link-card,
-.principle-card,
-.about-card {
+.principle-card {
     min-width: 0;
 
     padding: 26px;
@@ -1046,16 +891,14 @@ p {
     box-shadow: var(--shadow-soft);
 }
 
-.feature-card,
-.link-card {
+.feature-card {
     transition:
         border-color var(--transition),
         transform var(--transition),
         box-shadow var(--transition);
 }
 
-.feature-card:hover,
-.link-card:hover {
+.feature-card:hover {
     border-color: rgba(237, 32, 0, 0.2);
 
     transform: translateY(-3px);
@@ -1064,9 +907,7 @@ p {
 }
 
 .feature-card h3,
-.link-card h3,
-.principle-card h3,
-.about-card h2 {
+.principle-card h3 {
     margin-bottom: 12px;
 
     color: var(--color-text);
@@ -1079,9 +920,7 @@ p {
 }
 
 .feature-card p,
-.link-card p,
-.principle-card p,
-.about-card p {
+.principle-card p {
     margin-bottom: 12px;
 
     color: var(--color-muted);
@@ -1091,9 +930,7 @@ p {
 }
 
 .feature-card p:last-child,
-.link-card p:last-child,
-.principle-card p:last-child,
-.about-card p:last-child {
+.principle-card p:last-child {
     margin-bottom: 0;
 }
 
@@ -1251,48 +1088,6 @@ p {
 
 
 /* =========================================================
-   LINKS
-   ========================================================= */
-
-.links-section {
-    padding: 36px 0 64px;
-
-    background: var(--color-bg);
-}
-
-.links-section h2 {
-    margin-bottom: 28px;
-}
-
-.links-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 22px;
-}
-
-.link-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.link-card p {
-    flex: 1;
-}
-
-.link-card .button {
-    margin-top: 10px;
-
-    padding: 10px 14px;
-
-    font-size: 0.84rem;
-}
-
-
-/* =========================================================
    LEGAL PAGES
    ========================================================= */
 
@@ -1389,54 +1184,6 @@ p {
 .legal-page a:hover {
     color: var(--color-accent-dark);
     text-decoration: underline;
-}
-
-
-/* =========================================================
-   PLACEHOLDER
-   ========================================================= */
-
-.placeholder {
-    display: flex;
-    align-items: center;
-
-    min-height: 60px;
-
-    padding: 18px;
-
-    color: #333333;
-    background: #f1f5f9;
-
-    border-left: 4px solid var(--color-accent);
-    border-radius: 12px;
-
-    font-style: italic;
-}
-
-
-/* =========================================================
-   NOTICE / WARNHINWEIS
-   ========================================================= */
-
-.notice-box {
-    margin: 0 0 30px;
-
-    padding: 16px 18px;
-
-    color: #5c3900;
-    background: #fff7e6;
-
-    border: 1px solid #ffe0a3;
-    border-left: 5px solid var(--color-accent);
-    border-radius: 14px;
-}
-
-.notice-box p {
-    margin-bottom: 0;
-
-    color: #5c3900;
-
-    line-height: 1.7;
 }
 
 
@@ -1744,50 +1491,6 @@ footer {
 
 
 /* =========================================================
-   FOOTER FALLBACK
-   ========================================================= */
-
-.footer-grid {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 34px;
-
-    padding: 40px 28px;
-
-    text-align: left;
-}
-
-.footer-grid ul {
-    list-style: none;
-
-    padding: 0;
-    margin: 0;
-}
-
-.footer-grid li {
-    list-style: none;
-
-    margin-bottom: 8px;
-}
-
-.footer-grid a {
-    color: #d5d5d5;
-
-    text-decoration: none;
-
-    font-size: 0.95rem;
-    font-weight: 700;
-}
-
-.footer-grid a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-
-/* =========================================================
    INSTAGRAM / iOS WARNING
    ========================================================= */
 
@@ -1839,7 +1542,6 @@ footer {
 
 @media (max-width: 1100px) {
 
-    .links-grid,
     .features-grid,
     .principles-grid {
         grid-template-columns:
@@ -1936,18 +1638,6 @@ footer {
         font-size: 0.86rem;
     }
 
-    .update-ticker-track {
-        animation-duration: 24s;
-    }
-
-    .update-ticker-track span {
-        padding: 9px 26px;
-
-        font-size: 0.77rem;
-
-        letter-spacing: 0.06em;
-    }
-
     .app-preview-section,
     .app-preview-top {
         padding-top: 40px;
@@ -2008,7 +1698,6 @@ footer {
         padding: 46px 0;
     }
 
-    .links-grid,
     .features-grid,
     .principles-grid {
         grid-template-columns: 1fr;
@@ -2065,8 +1754,7 @@ footer {
         border-radius: 18px;
     }
 
-    .footer-legal,
-    .footer-grid {
+    .footer-legal {
         flex-direction: column;
 
         align-items: flex-start;
@@ -2145,25 +1833,6 @@ footer {
         font-size: 0.82rem;
     }
 
-    .update-ticker-track {
-        animation-duration: 22s;
-    }
-
-    .update-ticker-track span {
-        padding: 9px 20px;
-
-        font-size: 0.7rem;
-
-        letter-spacing: 0.05em;
-    }
-
-    .update-ticker-track span::before {
-        width: 7px;
-        height: 7px;
-
-        margin-right: 9px;
-    }
-
     .hero,
     .about-hero {
         padding: 40px 0;
@@ -2223,15 +1892,13 @@ footer {
         border-radius: 11px;
     }
 
-    .app-preview-frame,
-    .app-preview-image {
+    .app-preview-frame {
         padding: 8px;
 
         border-radius: 20px;
     }
 
-    .app-preview-frame img,
-    .app-preview-image img {
+    .app-preview-frame img {
         border-radius: 14px;
     }
 
@@ -2301,10 +1968,8 @@ footer {
         padding: 22px 20px;
     }
 
-    .link-card,
     .feature-card,
-    .principle-card,
-    .about-card {
+    .principle-card {
         padding: 20px;
     }
 
@@ -2312,8 +1977,7 @@ footer {
         padding: 20px;
     }
 
-    .footer-legal,
-    .footer-grid {
+    .footer-legal {
         padding: 34px 14px;
     }
 
@@ -2397,30 +2061,6 @@ footer {
         scroll-behavior: auto !important;
     }
 
-    .update-ticker-track {
-        width: 100%;
-
-        animation: none;
-
-        justify-content: center;
-
-        white-space: normal;
-
-        transform: none;
-    }
-
-    .update-ticker-track span {
-        width: 100%;
-
-        justify-content: center;
-
-        text-align: center;
-    }
-
-    .update-ticker-track span[aria-hidden="true"] {
-        display: none;
-    }
-}
 
 
 /* =========================================================
@@ -2437,7 +2077,6 @@ footer {
         background: #ffffff;
     }
 
-    .update-ticker,
     .preview-zoom-hint,
     .instagram-warning-banner {
         display: none !important;
@@ -2450,9 +2089,7 @@ footer {
     }
 
     .feature-card,
-    .link-card,
     .principle-card,
-    .about-card,
     .legal-page,
     .about-story,
     .download-cta {
