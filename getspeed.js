@@ -4,7 +4,7 @@
     const WIDGET_SCRIPT_URL = "https://raceticket.de/widget/raceticket-widget.js";
     const WIDGET_STYLE_URL = "https://raceticket.de/widget/raceticket-widget.css";
     const WIDGET_CONTAINER_SELECTOR = "#raceticket-widget";
-    const WIDGET_TIMEOUT_MS = 15000;
+    const WIDGET_RENDER_CHECK_MS = 500;
 
     function initGetSpeedBooking() {
         const shell = document.querySelector("[data-raceticket-shell]");
@@ -19,8 +19,9 @@
         const errorText = shell.dataset.errorText || "The booking system could not be loaded right now.";
         const retryText = shell.dataset.retryText || "Try again";
 
-        let timeoutId;
         let observer;
+        let shadowObserver;
+        let renderCheckId;
         let scriptLoading = false;
 
         function setStatus(message, state) {
@@ -48,23 +49,48 @@
             }
         }
 
+        function hasWidgetContent() {
+            const shadowRoot = container.shadowRoot;
+
+            return Boolean(
+                container.children.length ||
+                container.textContent.trim() ||
+                (
+                    shadowRoot &&
+                    (shadowRoot.children.length || shadowRoot.textContent.trim())
+                )
+            );
+        }
+
         function markLoaded() {
-            window.clearTimeout(timeoutId);
+            window.clearInterval(renderCheckId);
+            renderCheckId = null;
 
             if (observer) {
                 observer.disconnect();
                 observer = null;
             }
 
+            if (shadowObserver) {
+                shadowObserver.disconnect();
+                shadowObserver = null;
+            }
+
             shell.dataset.state = "loaded";
         }
 
         function markError() {
-            window.clearTimeout(timeoutId);
+            window.clearInterval(renderCheckId);
+            renderCheckId = null;
 
             if (observer) {
                 observer.disconnect();
                 observer = null;
+            }
+
+            if (shadowObserver) {
+                shadowObserver.disconnect();
+                shadowObserver = null;
             }
 
             scriptLoading = false;
@@ -88,7 +114,7 @@
             }
 
             observer = new MutationObserver(function () {
-                if (container.children.length || container.textContent.trim()) {
+                if (hasWidgetContent()) {
                     markLoaded();
                 }
             });
@@ -100,6 +126,36 @@
             });
         }
 
+        function observeShadowContent() {
+            if (!("MutationObserver" in window) || !container.shadowRoot || shadowObserver) {
+                return;
+            }
+
+            shadowObserver = new MutationObserver(function () {
+                if (hasWidgetContent()) {
+                    markLoaded();
+                }
+            });
+
+            shadowObserver.observe(container.shadowRoot, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
+        }
+
+        function watchRenderedWidget() {
+            window.clearInterval(renderCheckId);
+
+            renderCheckId = window.setInterval(function () {
+                observeShadowContent();
+
+                if (hasWidgetContent()) {
+                    markLoaded();
+                }
+            }, WIDGET_RENDER_CHECK_MS);
+        }
+
         function initializeWidget() {
             if (!window.RaceTicketWidget || typeof window.RaceTicketWidget.init !== "function") {
                 markError();
@@ -108,6 +164,7 @@
 
             container.innerHTML = "";
             observeWidgetContent();
+            watchRenderedWidget();
 
             try {
                 window.RaceTicketWidget.init({
@@ -119,14 +176,6 @@
                 markError();
                 return;
             }
-
-            timeoutId = window.setTimeout(function () {
-                if (container.children.length || container.textContent.trim()) {
-                    markLoaded();
-                } else {
-                    markError();
-                }
-            }, WIDGET_TIMEOUT_MS);
         }
 
         function loadWidget(forceReload) {
@@ -134,11 +183,17 @@
                 return;
             }
 
-            window.clearTimeout(timeoutId);
+            window.clearInterval(renderCheckId);
+            renderCheckId = null;
 
             if (observer) {
                 observer.disconnect();
                 observer = null;
+            }
+
+            if (shadowObserver) {
+                shadowObserver.disconnect();
+                shadowObserver = null;
             }
 
             setStatus(loadingText, "loading");
