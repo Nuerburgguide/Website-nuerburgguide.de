@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Nürburg Guide × GetSpeed - book your Nürburgring experience directly through Nürburg Guide.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/favicon.png">
+    <link rel="canonical" href="https://nuerburgguide.de/en/getspeed.html">
+    <link rel="alternate" hreflang="de" href="https://nuerburgguide.de/getspeed.html">
+    <link rel="alternate" hreflang="en" href="https://nuerburgguide.de/en/getspeed.html">
+    <link rel="alternate" hreflang="es" href="https://nuerburgguide.de/es/getspeed.html">
+    <title>Book a GetSpeed experience - Nürburg Guide</title>
+</head>
+
+<body class="getspeed-page">
+    <header class="site-header">
+        <div class="container header-container">
+            <a class="logo" href="index.html" aria-label="Nürburg Guide home">
+                <img src="../assets/logo.png" alt="Nürburg Guide logo">
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="kontakt.html">Contact</a></li>
+                    <li><a href="ueber-uns.html">About us</a></li>
+                </ul>
+            </nav>
+
+            <nav class="language-switcher" aria-label="Choose language">
+                <a href="../getspeed.html" aria-label="Deutsch">🇩🇪 DE</a>
+                <a href="getspeed.html" aria-current="page" aria-label="English">🇬🇧 EN</a>
+                <a href="../es/getspeed.html" aria-label="Español">🇪🇸 ES</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="getspeed-hero" aria-labelledby="getspeed-title">
+            <img
+                class="getspeed-hero-image"
+                src="../assets/partners/getspeed/TF04042026-3759.jpg"
+                alt="GetSpeed BMW G81 Race Taxi on the Nürburgring Nordschleife"
+                fetchpriority="high"
+            >
+
+            <div class="container getspeed-hero-content">
+                <div class="getspeed-hero-copy">
+                    <div class="getspeed-hero-branding" aria-label="Nürburg Guide and GetSpeed">
+                        <img src="../assets/White%20on%20Orange.png" alt="Nürburg Guide">
+                        <span aria-hidden="true">×</span>
+                        <img src="../assets/partners/getspeed/GetSpeed%20Wei%C3%9F.png" alt="GetSpeed">
+                    </div>
+
+                    <p class="eyebrow">Official Partner</p>
+                    <h1 id="getspeed-title">Experience the Nordschleife with GetSpeed.</h1>
+                    <p class="getspeed-hero-lead">
+                        Book your GetSpeed experience directly through Nürburg Guide.
+                    </p>
+
+                    <div class="getspeed-hero-actions">
+                        <a class="button getspeed-button" href="#booking">Book now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="getspeed-section" aria-labelledby="vehicles-title">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">GetSpeed Experience</p>
+                    <h2 id="vehicles-title">On the Nordschleife</h2>
+                    <p>
+                        BMW G81 Race Taxi and Porsche 992 GT3 RS - two cars from the GetSpeed Experience.
+                    </p>
+                </div>
+
+                <div class="getspeed-vehicle-grid">
+                    <article class="getspeed-vehicle-card">
+                        <div class="getspeed-vehicle-image">
+                            <img
+                                src="../assets/partners/getspeed/TF04042026-3759.jpg"
+                                alt="GetSpeed BMW G81 Race Taxi on the Nordschleife"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="getspeed-vehicle-body">
+                            <h3>BMW G81 Race Taxi</h3>
+                        </div>
+                    </article>
+
+                    <article class="getspeed-vehicle-card">
+                        <div class="getspeed-vehicle-image">
+                            <img
+                                src="../assets/partners/getspeed/TF09032025-4935.jpg"
+                                alt="GetSpeed Porsche 992 GT3 RS on the Nordschleife"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
+                        <div class="getspeed-vehicle-body">
+                            <h3>Porsche 992 GT3 RS</h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="getspeed-booking-section" id="booking" aria-labelledby="booking-title">
+            <div class="container">
+                <div class="getspeed-booking-card">
+                    <div class="getspeed-booking-head">
+                        <div>
+                            <p class="eyebrow">Booking</p>
+                            <h2 id="booking-title">Book your experience</h2>
+                            <p>
+                                Available dates and offers are shown directly in the booking module below.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="raceticket-widget-shell"
+                        data-raceticket-shell
+                        data-loading-text="Loading booking system ..."
+                        data-error-text="The booking system could not be loaded right now."
+                        data-retry-text="Try again"
+                        data-state="loading"
+                    >
+                        <div class="raceticket-widget-status" data-raceticket-status role="status" aria-live="polite">
+                            <p>Loading booking system ...</p>
+                        </div>
+                        <div id="raceticket-widget"></div>
+                    </div>
+
+                    <noscript>
+                        <p class="getspeed-external-note">
+                            The booking system requires JavaScript.
+                        </p>
+                    </noscript>
+
+                    <p class="getspeed-external-note">
+                        The booking is processed through RaceTicket / GetSpeed. Availability, prices and booking terms come from the booking system.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-legal">
+            <div class="footer-brand">
+                <h3>Nürburg Guide</h3>
+                <p>Independent information app for visitors and drivers around the Nordschleife.</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow us</h3>
+                <div class="social-links" aria-label="Social media">
+                    <a class="social-icon" href="https://www.instagram.com/nuerburgguide/" target="_blank" rel="noopener noreferrer" aria-label="Open Nürburg Guide on Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.76 3.76 0 0 0 4 7.75v8.5A3.76 3.76 0 0 0 7.75 20h8.5A3.76 3.76 0 0 0 20 16.25v-8.5A3.76 3.76 0 0 0 16.25 4h-8.5Zm4.25 3.25A4.75 4.75 0 1 1 7.25 12 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 14.75 12 2.75 2.75 0 0 0 12 9.25Zm5-2.75a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17 6.5Z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="impressum.html">Legal notice</a></li>
+                    <li><a href="kontakt.html">Contact</a></li>
+                    <li><a href="datenschutz.html">Privacy policy</a></li>
+                    <li><a href="nutzungsbedingungen.html">Terms of use</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nürburg Guide UG (haftungsbeschränkt). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../getspeed.js"></script>
+</body>
+</html>

@@ -13,13 +13,17 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="canonical" href="https://nuerburgguide.de/">
+    <link rel="alternate" hreflang="de" href="https://nuerburgguide.de/">
+    <link rel="alternate" hreflang="en" href="https://nuerburgguide.de/en/">
+    <link rel="alternate" hreflang="es" href="https://nuerburgguide.de/es/">
 
     <title>Nürburg Guide</title>
 </head>
 
 <body>
 
-    <header>
+    <header class="site-header">
 
         <div class="container header-container">
 
@@ -51,12 +55,6 @@
                     </li>
 
                     <li>
-                        <a href="kontakt.html">
-                            Kontakt
-                        </a>
-                    </li>
-
-                    <li>
                         <a href="ueber-uns.html">
                             Über uns
                         </a>
@@ -64,6 +62,12 @@
 
                 </ul>
 
+            </nav>
+
+            <nav class="language-switcher" aria-label="Sprache auswählen">
+                <a href="index.html" aria-current="page" aria-label="Deutsch">🇩🇪 DE</a>
+                <a href="en/index.html" aria-label="English">🇬🇧 EN</a>
+                <a href="es/index.html" aria-label="Español">🇪🇸 ES</a>
             </nav>
 
         </div>
@@ -101,27 +105,18 @@
                 <a
                     class="app-preview-frame app-preview-link"
                     href="assets/app-preview-wide.jpg"
-                    target="_blank"
-                    rel="noopener"
                     aria-label="App-Vorschau groß öffnen"
                 >
-
                     <img
                         src="assets/app-preview-wide.jpg"
                         alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots"
                     >
-
                     <span class="preview-zoom-hint">
                         Vorschau öffnen
                     </span>
-
                 </a>
-
             </div>
-
         </section>
-
-
         <!-- Download / Hero -->
         <section
             class="hero hero-home"
@@ -163,7 +158,7 @@
                             </div>
 
                             <div class="stat-label">
-                                Nutzer · 14 Tage
+                                Letzte 14 Tage
                             </div>
 
                         </div>
@@ -454,7 +449,7 @@
 
 
     <!-- Footer -->
-    <footer>
+    <footer class="site-footer">
 
         <div class="container footer-legal">
 
@@ -519,6 +514,12 @@
                     <li>
                         <a href="impressum.html">
                             Impressum
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="kontakt.html">
+                            Kontakt
                         </a>
                     </li>
 
