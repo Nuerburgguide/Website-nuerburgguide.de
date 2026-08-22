@@ -230,8 +230,8 @@ header .container {
 
     gap: 28px;
 
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 22px;
+    padding-bottom: 22px;
 }
 
 .logo {
@@ -246,9 +246,9 @@ header .container {
 .logo img {
     display: block;
 
-    width: 128px;
+    width: 100px;
     height: auto;
-    max-height: 50px;
+    max-height: 39px;
 
     object-fit: contain;
 }
@@ -1665,10 +1665,18 @@ p {
 
 .getspeed-hero-branding img {
     display: block;
-    width: auto;
-    height: clamp(44px, 4.4vw, 64px);
-    max-width: min(26vw, 88px);
+    height: auto;
     object-fit: contain;
+}
+
+.getspeed-hero-branding .getspeed-brand-logo-ng {
+    width: clamp(77px, 8.8vw, 102px);
+    max-height: 40px;
+}
+
+.getspeed-hero-branding .getspeed-brand-logo-partner {
+    width: clamp(76px, 8vw, 98px);
+    max-height: 98px;
 }
 
 .getspeed-hero-branding span {
@@ -1685,7 +1693,7 @@ p {
 .getspeed-hero h1 {
     margin-bottom: var(--space-title-copy);
     color: #ffffff;
-    font-size: clamp(2.35rem, 5.2vw, 5rem);
+    font-size: clamp(2.2rem, 4.4vw, 4.2rem);
     font-weight: 950;
     line-height: 0.98;
     letter-spacing: 0;
@@ -2157,8 +2165,8 @@ footer {
 
         gap: 14px;
 
-        padding-top: 14px;
-        padding-bottom: 16px;
+        padding-top: 16px;
+        padding-bottom: 18px;
     }
 
     .language-switcher {
@@ -2170,8 +2178,8 @@ footer {
     }
 
     .logo img {
-        width: 116px;
-        max-height: 44px;
+        width: 92px;
+        max-height: 36px;
     }
 
     .main-nav {
@@ -2422,8 +2430,8 @@ footer {
     }
 
     .logo img {
-        width: 104px;
-        max-height: 40px;
+        width: 80px;
+        max-height: 31px;
     }
 
     .main-nav ul,
@@ -2594,7 +2602,7 @@ footer {
     }
 
     .getspeed-hero h1 {
-        font-size: clamp(2rem, 11vw, 3.2rem);
+        font-size: clamp(1.9rem, 10vw, 2.8rem);
     }
 
     .getspeed-hero-lead {
@@ -2680,7 +2688,7 @@ footer {
     }
 
     .getspeed-hero h1 {
-        font-size: clamp(1.85rem, 12vw, 2.65rem);
+        font-size: clamp(1.75rem, 11vw, 2.35rem);
     }
 
     .getspeed-button {
