@@ -298,6 +298,8 @@
 
                 if (activeCarFilterId) {
                     widgetConfig.filterCarId = activeCarFilterId;
+                    widgetConfig.filterCarMode = "preselect";
+                    widgetConfig.filterType = "taxi";
                 }
 
                 initRequestId = activeInitRequestId;
