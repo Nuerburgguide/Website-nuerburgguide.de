@@ -222,7 +222,7 @@ header {
 
 .header-container,
 header .container {
-    min-height: 92px;
+    min-height: 96px;
 
     display: flex;
     align-items: center;
@@ -230,8 +230,8 @@ header .container {
 
     gap: 28px;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .logo {
@@ -246,9 +246,9 @@ header .container {
 .logo img {
     display: block;
 
-    width: auto;
-    height: 58px;
-    max-width: 160px;
+    width: 128px;
+    height: auto;
+    max-height: 50px;
 
     object-fit: contain;
 }
@@ -2157,8 +2157,8 @@ footer {
 
         gap: 14px;
 
-        padding-top: 12px;
-        padding-bottom: 14px;
+        padding-top: 14px;
+        padding-bottom: 16px;
     }
 
     .language-switcher {
@@ -2170,8 +2170,8 @@ footer {
     }
 
     .logo img {
-        height: 52px;
-        max-width: 145px;
+        width: 116px;
+        max-height: 44px;
     }
 
     .main-nav {
@@ -2422,8 +2422,8 @@ footer {
     }
 
     .logo img {
-        height: 46px;
-        max-width: 130px;
+        width: 104px;
+        max-height: 40px;
     }
 
     .main-nav ul,
