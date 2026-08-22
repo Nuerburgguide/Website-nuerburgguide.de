@@ -10,12 +10,13 @@
 
     function initGetSpeedBooking() {
         const shell = document.querySelector("[data-raceticket-shell]");
-        const container = document.querySelector(WIDGET_CONTAINER_SELECTOR);
+        let container = document.querySelector(WIDGET_CONTAINER_SELECTOR);
 
         if (!shell || !container) {
             return;
         }
 
+        const vehicleLinks = document.querySelectorAll("[data-raceticket-car-id]");
         const status = shell.querySelector("[data-raceticket-status]");
         const loadingText = shell.dataset.loadingText || "Loading booking system ...";
         const errorText = shell.dataset.errorText || "The booking system could not be loaded right now.";
@@ -27,6 +28,11 @@
         let failureTimeoutId;
         let apiCheckId;
         let scriptLoading = false;
+        let requestedCarFilterId = null;
+        let initializedCarFilterId = null;
+        let widgetInstance = null;
+        let initRequestId = 0;
+        let initInFlight = false;
 
         function getWidgetLocale() {
             const pageLanguage = (document.documentElement.lang || "").toLowerCase().split("-")[0];
@@ -61,6 +67,23 @@
                 }, { once: true });
                 status.appendChild(retryButton);
             }
+        }
+
+        function getMotionPreference() {
+            return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+        }
+
+        function scrollToBooking() {
+            const bookingSection = document.querySelector("#booking");
+
+            if (!bookingSection) {
+                return;
+            }
+
+            bookingSection.scrollIntoView({
+                behavior: getMotionPreference(),
+                block: "start"
+            });
         }
 
         function hasWidgetContent() {
@@ -105,6 +128,27 @@
                 shadowObserver.disconnect();
                 shadowObserver = null;
             }
+        }
+
+        function resetWidgetContainer() {
+            if (widgetInstance && typeof widgetInstance.unmount === "function") {
+                try {
+                    widgetInstance.unmount();
+                } catch (error) {
+                    // The RaceTicket widget owns its Shadow DOM; a failed cleanup should not block a fresh init.
+                }
+            }
+
+            widgetInstance = null;
+
+            if (container.shadowRoot) {
+                const replacement = container.cloneNode(false);
+                container.replaceWith(replacement);
+                container = replacement;
+                return;
+            }
+
+            container.innerHTML = "";
         }
 
         function markError(keepWatching) {
@@ -226,14 +270,21 @@
                 return;
             }
 
+            if (initInFlight) {
+                return;
+            }
+
             window.clearInterval(apiCheckId);
             apiCheckId = null;
 
-            container.innerHTML = "";
+            stopWatchingWidget();
+            resetWidgetContainer();
             watchRenderedWidget();
             armFailureTimeout();
 
             try {
+                const activeInitRequestId = initRequestId + 1;
+                const activeCarFilterId = requestedCarFilterId;
                 const widgetConfig = {
                     container: "#raceticket-widget",
                     hostSlug: "under8-gmbh",
@@ -245,11 +296,70 @@
                     widgetConfig.locale = widgetLocale;
                 }
 
-                window.RaceTicketWidget.init(widgetConfig);
+                if (activeCarFilterId) {
+                    widgetConfig.filterCarId = activeCarFilterId;
+                }
+
+                initRequestId = activeInitRequestId;
+                initInFlight = true;
+
+                Promise.resolve(window.RaceTicketWidget.init(widgetConfig))
+                    .then(function (instance) {
+                        if (activeInitRequestId !== initRequestId) {
+                            return;
+                        }
+
+                        initInFlight = false;
+                        widgetInstance = instance || null;
+                        initializedCarFilterId = activeCarFilterId;
+
+                        if (requestedCarFilterId !== initializedCarFilterId) {
+                            initializeWidget();
+                        }
+                    })
+                    .catch(function () {
+                        if (activeInitRequestId === initRequestId) {
+                            initInFlight = false;
+                            markError(true);
+                        }
+                    });
             } catch (error) {
+                initInFlight = false;
                 markError(true);
                 return;
             }
+        }
+
+        function requestVehicleFilter(carId) {
+            requestedCarFilterId = carId;
+
+            if (
+                window.RaceTicketWidget &&
+                typeof window.RaceTicketWidget.init === "function" &&
+                !initInFlight &&
+                initializedCarFilterId !== requestedCarFilterId
+            ) {
+                initializeWidget();
+            }
+        }
+
+        function initVehicleLinks() {
+            vehicleLinks.forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    const carId = Number(link.dataset.raceticketCarId);
+
+                    if (carId) {
+                        requestVehicleFilter(carId);
+                    }
+
+                    event.preventDefault();
+                    scrollToBooking();
+
+                    if (history.pushState) {
+                        history.pushState(null, "", "#booking");
+                    }
+                });
+            });
         }
 
         function loadWidget(forceReload) {
@@ -263,7 +373,10 @@
             ensureWidgetStyles();
 
             if (forceReload) {
-                container.innerHTML = "";
+                initRequestId += 1;
+                initInFlight = false;
+                initializedCarFilterId = null;
+                resetWidgetContainer();
                 document.querySelectorAll('script[src="' + WIDGET_SCRIPT_URL + '"]').forEach(function (script) {
                     script.remove();
                 });
@@ -290,6 +403,7 @@
             document.body.appendChild(script);
         }
 
+        initVehicleLinks();
         loadWidget(false);
     }
 
