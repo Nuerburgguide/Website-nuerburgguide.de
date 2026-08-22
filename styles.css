@@ -1670,8 +1670,8 @@ p {
 }
 
 .getspeed-hero-branding .getspeed-brand-logo-ng {
-    width: clamp(77px, 8.8vw, 102px);
-    max-height: 40px;
+    width: clamp(62px, 7vw, 82px);
+    max-height: 32px;
 }
 
 .getspeed-hero-branding .getspeed-brand-logo-partner {
