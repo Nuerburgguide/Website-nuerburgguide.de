@@ -1761,8 +1761,17 @@ p {
     margin: 0 auto;
 }
 
-.getspeed-vehicle-card {
+.getspeed-vehicle-card,
+.getspeed-vehicle-card:visited,
+.getspeed-vehicle-card:hover,
+.getspeed-vehicle-card:focus-visible {
     display: block;
+    color: inherit;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+.getspeed-vehicle-card {
     min-width: 0;
     overflow: hidden;
     background: var(--color-surface);
@@ -1770,7 +1779,6 @@ p {
     border-radius: var(--radius-large);
     box-shadow: var(--shadow-card);
     cursor: pointer;
-    text-decoration: none;
     transition:
         border-color var(--transition-base),
         box-shadow var(--transition-base),
@@ -1813,19 +1821,11 @@ p {
 .getspeed-vehicle-body h3 {
     margin-bottom: 0;
     color: var(--color-text);
+    text-decoration: none;
     font-size: clamp(1.16rem, 1.8vw, 1.45rem);
     font-weight: 900;
     line-height: 1.12;
     letter-spacing: 0;
-}
-
-.getspeed-vehicle-cta {
-    display: inline-flex;
-    margin-top: 12px;
-    color: var(--getspeed-red);
-    font-size: 0.88rem;
-    font-weight: 900;
-    line-height: 1.2;
 }
 
 .getspeed-booking-section {
