@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" role="img" aria-label="Spanish flag">
+  <rect width="24" height="18" rx="2" fill="#AA151B"/>
+  <rect y="4.5" width="24" height="9" fill="#F1BF00"/>
+  <path d="M0 13.5h24V16a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" fill="#AA151B"/>
+</svg>
