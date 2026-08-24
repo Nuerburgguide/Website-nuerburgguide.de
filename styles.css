@@ -683,8 +683,8 @@ p {
 
 .preview-modal-close {
     position: absolute;
-    top: -12px;
-    right: -12px;
+    top: 12px;
+    right: 12px;
     z-index: 1;
     display: inline-flex;
     align-items: center;
@@ -2254,8 +2254,8 @@ footer {
     }
 
     .preview-modal-close {
-        top: -6px;
-        right: -6px;
+        top: 10px;
+        right: 10px;
     }
 
     .preview-modal-zoom-controls {
