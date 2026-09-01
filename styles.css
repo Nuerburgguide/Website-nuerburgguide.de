@@ -383,6 +383,25 @@ nav.main-nav a[aria-current="page"]:hover {
     display: none;
 }
 
+/* GetSpeed Partner Link */
+.main-nav a[href="getspeed.html"]:hover {
+    color: #E30303;
+    background: rgba(227, 3, 3, 0.08);
+}
+
+.main-nav a[href="getspeed.html"][aria-current="page"],
+nav.main-nav a[href="getspeed.html"][aria-current="page"] {
+    color: #ffffff;
+    background: #E30303;
+    box-shadow: 0 5px 16px rgba(227, 3, 3, 0.18);
+}
+
+.main-nav a[href="getspeed.html"][aria-current="page"]:hover,
+nav.main-nav a[href="getspeed.html"][aria-current="page"]:hover {
+    color: #ffffff;
+    background: #c90202;
+}
+
 
 /* =========================================================
    BUTTONS
