@@ -1121,7 +1121,7 @@ p {
     width: 100%;
     max-width: 100%;
 
-    padding: 6px;
+    padding: 8px;
 
     background: #101010;
 
@@ -1134,13 +1134,13 @@ p {
 
 .getspeed-home-frame img {
     width: 100%;
-    aspect-ratio: 16 / 7;
+    aspect-ratio: 21 / 8;
     height: auto;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
     object-fit: cover;
-    object-position: center center;
+    object-position: center 48%;
 }
 
 .getspeed-home-actions {
@@ -1148,9 +1148,18 @@ p {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
 
-    margin-top: 26px;
+    margin-top: 34px;
+}
+
+.getspeed-home-actions .button {
+    min-width: 168px;
+    min-height: 50px;
+
+    padding: 14px 24px;
+
+    font-size: 0.94rem;
 }
 
 .getspeed-home-secondary {
@@ -2467,12 +2476,18 @@ footer {
     }
 
     .getspeed-home-frame {
+        padding: 7px;
+
         border-radius: 24px;
     }
 
     .getspeed-home-frame img {
-        aspect-ratio: 16 / 8.5;
-        border-radius: 16px;
+        aspect-ratio: 16 / 7.8;
+        border-radius: 17px;
+    }
+
+    .getspeed-home-actions {
+        margin-top: 28px;
     }
 
     .store-links-row {
@@ -2632,19 +2647,21 @@ footer {
     }
 
     .getspeed-home-frame img {
-        aspect-ratio: 16 / 9.4;
+        aspect-ratio: 16 / 9;
         border-radius: 14px;
     }
 
     .getspeed-home-actions {
         align-items: stretch;
         flex-direction: column;
+        gap: 10px;
 
-        margin-top: 20px;
+        margin-top: 24px;
     }
 
     .getspeed-home-actions .button {
         width: 100%;
+        min-width: 0;
     }
 
     .store-links-row {
