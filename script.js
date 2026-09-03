@@ -22,7 +22,7 @@
             },
             en: {
                 numberLocale: "en-US",
-                statisticLabels: ["Last 14 days", "Users total", "Countries represented"],
+                statisticLabels: ["Last 30 days", "Users total", "Countries represented"],
                 previewClose: "Close preview",
                 previewTitle: "App preview",
                 previewZoomIn: "Zoom in",
@@ -30,8 +30,8 @@
                 previewZoomReset: "Reset zoom"
             },
             es: {
-                numberLocale: "es-ES",
-                statisticLabels: ["Últimos 14 días", "Usuarios totales", "Países representados"],
+                numberLocale: "de-DE",
+                statisticLabels: ["Últimos 30 días", "Usuarios totales", "Países representados"],
                 previewClose: "Cerrar vista previa",
                 previewTitle: "Vista previa de la app",
                 previewZoomIn: "Ampliar",
@@ -40,7 +40,7 @@
             }
         }[language] || {
             numberLocale: "en-US",
-            statisticLabels: ["Last 14 days", "Users total", "Countries represented"],
+            statisticLabels: ["Last 30 days", "Users total", "Countries represented"],
             previewClose: "Close preview",
             previewTitle: "App preview",
             previewZoomIn: "Zoom in",
@@ -50,7 +50,7 @@
 
         if (language === "de") {
             messages.statisticLabels = [
-                "Letzte 14 Tage",
+                "Letzte 30 Tage",
                 "Nutzer insgesamt",
                 "Länder vertreten"
             ];
