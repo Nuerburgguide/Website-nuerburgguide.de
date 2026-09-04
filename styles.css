@@ -1139,8 +1139,11 @@ p {
 .getspeed-home-image {
     position: absolute;
     inset: 0;
+    z-index: 0;
 
+    display: block;
     width: 100%;
+    max-width: none;
     height: 100%;
 
     object-fit: cover;
