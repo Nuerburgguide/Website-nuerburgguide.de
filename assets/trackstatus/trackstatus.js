@@ -33,7 +33,7 @@
     function render() {
         const view = viewNow();
         const available = !!current;
-        const status = available ? view.status : 'unknown';
+        const status = available ? (view.status === 'red' ? 'red' : 'green') : 'unknown';
         if (api || connection === 'unavailable') {
             write(element('label'), available ? labels[status] : connection === 'loading' ? labels.loading : labels.unavailable);
             element('badge').dataset.status = status;
@@ -220,10 +220,11 @@
             const fit = () => {
                 const canvas = element('map');
                 const display = document.documentElement.classList.contains('track-display-mode');
-                // Compensate for the perceived thinner line on the full display map.
+                // Keep the smaller mobile track readable without oversized strokes.
+                const strokeScale = window.matchMedia('(max-width: 768px)').matches ? 0.8 : 1;
                 for (const {line, outline} of lines) {
-                    line.setOptions({strokeWeight: display ? 7 : 6});
-                    outline.setOptions({strokeWeight: display ? 8 : 7});
+                    line.setOptions({strokeWeight: (display ? 7 : 6) * strokeScale});
+                    outline.setOptions({strokeWeight: (display ? 8 : 7) * strokeScale});
                 }
                 map.setOptions({isFractionalZoomEnabled: true});
                 const screen = canvas.getBoundingClientRect();
