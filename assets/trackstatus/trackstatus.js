@@ -213,38 +213,39 @@
             for (const sector of window.TRACK_GEOMETRY) {
                 sector.path.forEach(point => bounds.extend(point));
                 const options = {map, path: sector.path, geodesic: true, clickable: false, strokeOpacity: 1};
-                new google.maps.Polyline({...options, strokeColor: '#000000', strokeWeight: 5, zIndex: 10});
-                const line = new google.maps.Polyline({...options, strokeColor: '#858B93', strokeWeight: 4, zIndex: 11});
-                lines.push({id: sector.id, line});
+                const outline = new google.maps.Polyline({...options, strokeColor: '#000000', strokeWeight: 7, zIndex: 10});
+                const line = new google.maps.Polyline({...options, strokeColor: '#858B93', strokeWeight: 6, zIndex: 11});
+                lines.push({id: sector.id, line, outline});
             }
             const fit = () => {
-                // Use the same proportional breathing room in both modes.
-                // Fractional zoom avoids an unnecessarily distant integer step.
                 const canvas = element('map');
-                const padding = Math.round(Math.min(canvas.clientWidth, canvas.clientHeight) * 0.08);
-                map.setOptions({isFractionalZoomEnabled: true});
-                if (document.documentElement.classList.contains('track-display-mode')) {
-                    // The original left grid cell is the target viewport for the track.
-                    // The map itself fills the screen, including behind the overlays.
-                    const screen = canvas.getBoundingClientRect();
-                    const slot = canvas.closest('.track-map-panel').getBoundingClientRect();
-                    const gap = Math.round(Math.min(slot.width, slot.height) * 0.08);
-                    // Shift inside the existing margin without changing the fitted scale.
-                    const shift = Math.min(16, gap * 0.25);
-                    map.fitBounds(bounds, {
-                        left: Math.max(0, slot.left - screen.left) + gap - shift,
-                        right: Math.max(0, screen.right - slot.right) + gap + shift,
-                        top: Math.max(0, slot.top - screen.top) + gap,
-                        bottom: Math.max(0, screen.bottom - slot.bottom) + gap
-                    });
-                } else {
-                    map.fitBounds(bounds, padding);
+                const display = document.documentElement.classList.contains('track-display-mode');
+                // Compensate for the perceived thinner line on the full display map.
+                for (const {line, outline} of lines) {
+                    line.setOptions({strokeWeight: display ? 7 : 6});
+                    outline.setOptions({strokeWeight: display ? 8 : 7});
                 }
+                map.setOptions({isFractionalZoomEnabled: true});
+                const screen = canvas.getBoundingClientRect();
+                const slot = canvas.closest('.track-map-panel').getBoundingClientRect();
+                // Keep the existing left grid cell as the track's target area.
+                // Reserve the viewport bottom for Google's attribution.
+                const top = Math.max(0, Math.min(slot.top - screen.top, screen.height - 160));
+                const bottom = Math.max(top + 80, Math.min(slot.bottom - screen.top, screen.height - 28));
+                const gap = Math.round(Math.min(slot.width, bottom - top) * 0.08);
+                const shift = display ? Math.min(16, gap * 0.25) : 0;
+                map.fitBounds(bounds, {
+                    left: Math.max(0, slot.left - screen.left) + gap - shift,
+                    right: Math.max(0, screen.right - slot.right) + gap + shift,
+                    top: top + gap,
+                    bottom: screen.height - bottom + gap
+                });
             };
             fit();
             const mapResize = new ResizeObserver(fit);
             mapResize.observe(element('map'));
             mapResize.observe(element('map').closest('.track-map-panel'));
+            new MutationObserver(fit).observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
             message.hidden = true;
             render();
         } catch { message.hidden = false; }
