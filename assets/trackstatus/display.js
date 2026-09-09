@@ -8,7 +8,8 @@
         active = value;
         root.classList.toggle('track-display-mode', value);
         button.setAttribute('aria-pressed', String(value));
-        button.textContent = value ? page.dataset.displayExit : page.dataset.displayEnter;
+        button.textContent = value ? '×' : page.dataset.displayEnter;
+        button.setAttribute('aria-label', value ? page.dataset.displayExit : page.dataset.displayEnter);
     }
     async function leave() {
         transition++;

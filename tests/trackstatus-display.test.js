@@ -14,7 +14,7 @@ globalThis.runTrackDisplayTests = async function (source) {
     }
     for(const mode of ['success','reject','absent']) {
         const h=harness(mode);await h.handlers['button:click']();
-        assert(h.active()&&h.attributes['aria-pressed']==='true'&&h.button.textContent==='Exit',mode+' enters display');
+        assert(h.active()&&h.attributes['aria-pressed']==='true'&&h.button.textContent==='×'&&h.attributes['aria-label']==='Exit',mode+' enters display');
         assert(mode==='success'?h.doc.fullscreenElement===h.root:h.doc.fullscreenElement===null,mode+' fullscreen/fallback');
         await h.handlers['button:click']();assert(!h.active()&&h.attributes['aria-pressed']==='false',mode+' exit button');
         await h.handlers['button:click']();h.handlers.keydown({key:'Escape',preventDefault(){}});await Promise.resolve();
