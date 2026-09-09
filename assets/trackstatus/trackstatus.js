@@ -229,9 +229,11 @@
                     const screen = canvas.getBoundingClientRect();
                     const slot = canvas.closest('.track-map-panel').getBoundingClientRect();
                     const gap = Math.round(Math.min(slot.width, slot.height) * 0.08);
+                    // Shift inside the existing margin without changing the fitted scale.
+                    const shift = Math.min(16, gap * 0.25);
                     map.fitBounds(bounds, {
-                        left: Math.max(0, slot.left - screen.left) + gap,
-                        right: Math.max(0, screen.right - slot.right) + gap,
+                        left: Math.max(0, slot.left - screen.left) + gap - shift,
+                        right: Math.max(0, screen.right - slot.right) + gap + shift,
                         top: Math.max(0, slot.top - screen.top) + gap,
                         bottom: Math.max(0, screen.bottom - slot.bottom) + gap
                     });
