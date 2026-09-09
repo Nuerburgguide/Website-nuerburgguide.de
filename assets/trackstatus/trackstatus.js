@@ -223,8 +223,8 @@
                 // Keep the smaller mobile track readable without oversized strokes.
                 const strokeScale = window.matchMedia('(max-width: 768px)').matches ? 0.8 : 1;
                 for (const {line, outline} of lines) {
-                    line.setOptions({strokeWeight: (display ? 7 : 6) * strokeScale});
-                    outline.setOptions({strokeWeight: (display ? 8 : 7) * strokeScale});
+                    line.setOptions({strokeWeight: (display ? 8 : 6) * strokeScale});
+                    outline.setOptions({strokeWeight: (display ? 9 : 7) * strokeScale});
                 }
                 map.setOptions({isFractionalZoomEnabled: true});
                 const screen = canvas.getBoundingClientRect();

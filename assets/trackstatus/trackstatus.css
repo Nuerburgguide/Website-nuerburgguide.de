@@ -88,7 +88,10 @@ body:has(.track-page) { isolation: isolate; }
 .track-note { background: rgba(255,255,255,.95); padding: 16px 20px; border-radius: var(--radius-small); }
 body:has(.track-page) .site-footer { margin-bottom: 0; }
 .track-display-mode .track-map-panel { height: auto; }
-.track-display-mode .track-display-button { width: 44px; height: 44px; padding: 0; display: grid; place-items: center; font-size: 30px; font-weight: 400; line-height: 1; }
+.track-display-mode .track-display-button { position: relative; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; display: grid; place-items: center; font-size: 0; line-height: 1; }
+.track-display-mode .track-display-button::before,
+.track-display-mode .track-display-button::after { content: ''; position: absolute; left: 50%; top: 50%; width: 18px; height: 2px; border-radius: 1px; background: currentColor; pointer-events: none; transform: translate(-50%, -50%) rotate(45deg); }
+.track-display-mode .track-display-button::after { transform: translate(-50%, -50%) rotate(-45deg); }
 @media (max-width: 850px) {
     .track-map-panel { height: 440px; }
     .track-display-mode .track-map-panel { height: 50dvh; }
