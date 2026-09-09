@@ -1,0 +1,80 @@
+.track-page { padding: var(--space-section-y-compact) 0; font-size: var(--type-body); }
+.track-heading { margin-bottom: var(--space-heading-block); }
+/* Match the existing .about-hero / .section-heading title rules. */
+.track-heading h1 { font-size: var(--type-section-title); font-weight: 900; line-height: 1.08; letter-spacing: 0; margin: 0; }
+.track-note, .track-empty, .track-connection { color: var(--color-muted); }
+.track-layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 22px; align-items: start; }
+.track-map-panel, .track-panel { min-width: 0; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-soft); }
+.track-map-wrap { height: clamp(360px, 49vw, 600px); position: relative; background: #e6e8eb; }
+.track-map { height: 100%; width: 100%; }
+.track-map-message { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; padding: 32px; color: var(--color-muted); }
+.track-map-message strong { display: block; color: var(--color-text); margin-bottom: 8px; }
+.track-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #0005; background: #858b93; flex-shrink: 0; }
+.track-dot.green { background: #0DBF12; }.track-dot.yellow { background: #FCE91C; }.track-dot.red { background: #E50000; }
+.track-panel { padding: 22px; }
+/* Match existing .feature-card / .principle-card headings and body copy. */
+.track-panel h2 { font-size: var(--type-card-title); font-weight: 900; line-height: 1.2; letter-spacing: -0.03em; margin: 22px 0 var(--space-title-copy); }
+.track-empty, .track-connection, .track-note { font-size: var(--type-body-small); line-height: 1.72; }
+.track-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; max-width: 100%; font-size: var(--type-body-small); line-height: 1.6; border-radius: var(--radius-pill); font-weight: 700; background: #f0f1f3; }
+.track-badge[data-status=green] { background: #e8f8e9; }.track-badge[data-status=yellow] { background: #fffde7; }.track-badge[data-status=red] { background: #ffe8e8; color: #a50000; }
+.track-connection { margin-top: var(--space-title-copy); }
+.track-connection:empty { display: none; }
+.track-red { margin-top: 20px; padding: 16px; border-left: 4px solid #E50000; background: #fff0f0; border-radius: 8px; }
+.track-red strong, .track-red span { display: block; }
+.track-red output { font-size: 1.65rem; font-weight: 700; }
+.track-yellows { list-style: none; padding: 0; margin: 0; }
+.track-yellows li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 12px; margin-bottom: 8px; background: #FFFFFDE7; border-left: 3px solid #FCE91C; border-radius: 6px; }
+.track-yellows output, .track-red output { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.track-yellows small { color: var(--color-muted); margin-right: 8px; }
+.track-note { margin-top: 22px; max-width: var(--content-width); }
+.track-page [hidden] { display: none !important; }
+@media(max-width: 850px) { .track-layout { grid-template-columns: 1fr; }.track-map-wrap { height: 440px; } }
+@media(max-width: 480px) { .track-map-wrap { height: 360px; }.track-panel { padding: 20px; } }
+
+/* A page-level display mode; independent of the Google Maps controls. */
+.track-heading { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.track-heading h1 { flex: 1; }
+.track-display-logo { display: none; }
+.track-display-button { padding: 8px 12px; color: var(--color-muted); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-small); font-size: var(--type-body-small); line-height: 1.4; cursor: pointer; }
+.track-display-button:hover { color: var(--color-text); border-color: var(--color-text); }
+.track-page[data-connection="stale"] .track-connection { color: #9b391d; font-weight: 700; }
+.track-display-mode .site-header, .track-display-mode .site-footer { display: none; }
+/* Full-screen satellite surface with independently readable overlays. */
+.track-display-mode .track-page { position: relative; isolation: isolate; --display-inset: clamp(28px, 3.2vw, 80px); --display-gap: clamp(24px, 2.2vw, 56px); padding: var(--display-inset) 0; min-height: 100dvh; }
+.track-display-mode .track-page > .container { height: calc(100dvh - 2 * var(--display-inset)); min-height: 500px; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: var(--display-gap); }
+.track-display-mode .track-heading { position: relative; z-index: 1; margin: 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 24px; }
+.track-display-mode .track-heading h1 { display: none; }
+.track-display-mode .track-display-button { flex: 0 1 auto; max-width: 60%; padding: 12px 20px; border-radius: var(--radius-pill); background: var(--color-surface); border-color: var(--color-border); color: var(--color-muted); }
+.track-display-mode .track-display-button:hover { background: var(--color-surface); color: var(--color-text); }
+.track-display-mode .track-display-logo { display: block; width: 100px; height: auto; max-height: 39px; object-fit: contain; }
+.track-display-mode .track-layout { grid-template-columns: minmax(0, 2.35fr) minmax(340px, 1fr); gap: var(--display-gap); align-items: start; min-height: 0; }
+.track-display-mode .track-map-panel { align-self: stretch; min-height: 360px; border: 0; border-radius: 0; box-shadow: none; background: transparent; overflow: visible; }
+.track-display-mode .track-map-wrap { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100dvh; min-height: 0; }
+.track-display-mode .track-panel { position: relative; z-index: 1; max-height: 100%; overflow-y: auto; padding: var(--space-card-inner); border-radius: var(--radius-large); box-shadow: var(--shadow-card); }
+.track-display-mode .track-badge { font-size: clamp(1.15rem, 1.25vw, 1.8rem); padding: 10px 16px; }
+.track-display-mode .track-panel h2 { font-size: clamp(1.15rem, 1.15vw, 1.8rem); margin-top: var(--space-heading-block); }
+.track-display-mode .track-yellows { font-size: clamp(1rem, 1.15vw, 1.8rem); }
+.track-display-mode .track-yellows li { padding: 16px; margin-bottom: 12px; }
+.track-display-mode .track-yellows output { font-weight: 800; }
+.track-display-mode .track-red { margin-top: var(--space-heading-block); padding: 22px; }
+.track-display-mode .track-red output { font-size: clamp(2rem, 2.3vw, 3.6rem); }
+.track-display-mode .track-ad { margin-top: var(--space-heading-block); }
+.track-display-mode .track-note { display: none; }
+@media(max-width: 850px) {
+    .track-display-mode .track-page { --display-inset: 24px; --display-gap: 24px; }
+    .track-display-mode .track-page > .container { height: auto; min-height: calc(100dvh - 48px); }
+    .track-display-mode .track-layout { grid-template-columns: 1fr; }
+    .track-display-mode .track-map-panel { height: 50dvh; min-height: 360px; }
+    .track-display-mode .track-panel { max-height: none; padding: 26px; }
+    .track-display-mode .track-display-button { padding: 10px 14px; }
+}
+
+/* Campaign artwork only. No layout footprint until an image has loaded. */
+.track-ad { margin-top: 22px; width: 100%; min-width: 0; }
+.track-ad a { display: block; border-radius: var(--radius-small); }
+.track-ad img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: var(--radius-small); }
+.track-ad a:hover { opacity: .96; }
+
+/* Match the normal website header logo at each breakpoint. */
+@media (max-width: 768px) { .track-display-mode .track-display-logo { width: 92px; max-height: 36px; } }
+@media (max-width: 480px) { .track-display-mode .track-display-logo { width: 80px; max-height: 31px; } }
