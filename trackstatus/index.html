@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Trackstatus – Nürburg Guide">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://nuerburgguide.de/trackstatus/">
+<link rel="alternate" hreflang="de" href="https://nuerburgguide.de/trackstatus/">
+<link rel="alternate" hreflang="en" href="https://nuerburgguide.de/en/trackstatus/">
+<link rel="alternate" hreflang="es" href="https://nuerburgguide.de/es/trackstatus/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20260904-02">
+<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260909-02">
+<title>Trackstatus – Nürburg Guide</title>
+<script defer src="/assets/trackstatus/config.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/core.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/geometry.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/trackstatus.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/display.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/ad.js?v=20260909-02"></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <a class="logo" href="/index.html" aria-label="Nürburg Guide Startseite">
+            <img src="/assets/branding/logos/nuerburg-guide-logo-mark-orange-ed2000.svg" alt="Nürburg Guide Logo">
+        </a>
+        <nav class="main-nav" aria-label="Hauptnavigation">
+            <ul>
+                <li><a href="/index.html">Startseite</a></li>
+                <li><a href="/ueber-uns.html">Über uns</a></li>
+                <li><a href="/getspeed.html">Race Taxi buchen</a></li>
+            </ul>
+        </nav>
+        <nav class="language-switcher" aria-label="Sprache auswählen">
+            <a href="/trackstatus/" aria-current="page" aria-label="Deutsch"><img class="language-flag" src="/assets/branding/flags/flag-de.svg" width="24" height="18" alt="" aria-hidden="true"><span>DE</span></a>
+            <a href="/en/trackstatus/" aria-label="English"><img class="language-flag" src="/assets/branding/flags/flag-en.svg" width="24" height="18" alt="" aria-hidden="true"><span>EN</span></a>
+            <a href="/es/trackstatus/" aria-label="Español"><img class="language-flag" src="/assets/branding/flags/flag-es.svg" width="24" height="18" alt="" aria-hidden="true"><span>ES</span></a>
+        </nav>
+    </div>
+</header>
+<main class="track-page" id="track-page" data-unavailable="Live-Status derzeit nicht verfügbar" data-reconnecting="Verbindung wird wiederhergestellt" data-stale="Verbindung unterbrochen · letzter Status möglicherweise veraltet" data-display-enter="Display-Modus" data-display-exit="Display-Modus verlassen" data-green="Grün" data-yellow="Gelb" data-red="Rot" data-empty="Keine aktiven gelben Sektoren" data-remaining="Restzeit" data-loading="Laden …" data-connected="Verbunden" data-offline="Verbindung unterbrochen – Status nicht verfügbar" data-refreshing="Status wird erneut abgeglichen …" data-unknown="Status nicht verfügbar">
+<div class="container">
+<div class="track-heading"><img class="track-display-logo" src="/assets/branding/logos/nuerburg-guide-logo-mark-orange-ed2000.svg" alt="Nürburg Guide"><h1>Trackstatus</h1><button id="track-display" class="track-display-button" type="button" aria-pressed="false">Display-Modus</button></div>
+<div class="track-layout">
+<section class="track-map-panel" aria-label="Nordschleife">
+<div class="track-map-wrap"><div id="track-map" class="track-map"></div>
+<div id="track-map-message" class="track-map-message"><div><strong>Satellitenkarte noch nicht verfügbar</strong><p>Die Karte wird nach der Einrichtung freigeschaltet.</p></div></div></div>
+</section>
+<section class="track-panel" aria-label="Trackstatus">
+<div id="track-badge" class="track-badge" data-status="unknown" role="status"><i id="track-dot" class="track-dot" aria-hidden="true"></i><span id="track-label">Live-Status derzeit nicht verfügbar</span></div>
+<p id="track-connection" class="track-connection" role="status"></p>
+<div id="track-red" class="track-red" hidden><strong>Globaler RED-Status</strong><span id="track-red-remaining">Restzeit</span><output id="track-red-time" aria-label="Restzeit"></output></div>
+<h2>Aktive gelbe Sektoren</h2><ul id="track-yellows" class="track-yellows"></ul><p id="track-empty" class="track-empty">Status nicht verfügbar</p>
+<aside id="track-ad" class="track-ad" aria-label="Werbung" hidden></aside>
+</section></div>
+<p class="track-note">App-Meldungen sind keine offizielle Auskunft des Streckenbetreibers. Grün bedeutet ausschließlich, dass keine aktiven Gelb- oder Rotmeldungen im System vorliegen; es bestätigt weder Öffnung noch Befahrbarkeit.</p>
+<noscript><p>Bitte JavaScript aktivieren, um den Trackstatus anzuzeigen.</p></noscript>
+</div></main>
+<footer class="site-footer">
+    <div class="container footer-legal">
+        <div class="footer-brand">
+            <h3>Nürburg Guide</h3>
+            <p>
+                Unabhängige Informations-App für Besucher und Fahrer rund um die Nordschleife.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Rechtliches</h3>
+            <ul>
+                <li><a href="/impressum.html">Impressum</a></li>
+                <li><a href="/kontakt.html">Kontakt</a></li>
+                <li><a href="/datenschutz.html">Datenschutz</a></li>
+                <li><a href="/nutzungsbedingungen.html">Nutzungsbedingungen</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Nürburg Guide UG (haftungsbeschränkt). Alle Rechte vorbehalten.</p>
+    </div>
+</footer>
+</body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estado de la pista – Nürburg Guide">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://nuerburgguide.de/es/trackstatus/">
+<link rel="alternate" hreflang="de" href="https://nuerburgguide.de/trackstatus/">
+<link rel="alternate" hreflang="en" href="https://nuerburgguide.de/en/trackstatus/">
+<link rel="alternate" hreflang="es" href="https://nuerburgguide.de/es/trackstatus/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="stylesheet" href="/styles.css?v=20260904-02">
+<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260909-02">
+<title>Estado de la pista – Nürburg Guide</title>
+<script defer src="/assets/trackstatus/config.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/core.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/geometry.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/trackstatus.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/display.js?v=20260909-02"></script>
+<script defer src="/assets/trackstatus/ad.js?v=20260909-02"></script>
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <a class="logo" href="/es/index.html" aria-label="Inicio de Nürburg Guide">
+            <img src="/assets/branding/logos/nuerburg-guide-logo-mark-orange-ed2000.svg" alt="Logotipo de Nürburg Guide">
+        </a>
+        <nav class="main-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="/es/index.html">Inicio</a></li>
+                <li><a href="/es/ueber-uns.html">Sobre nosotros</a></li>
+                <li><a href="/es/getspeed.html">Reservar Race Taxi</a></li>
+            </ul>
+        </nav>
+        <nav class="language-switcher" aria-label="Elegir idioma">
+            <a href="/trackstatus/" aria-label="Deutsch"><img class="language-flag" src="/assets/branding/flags/flag-de.svg" width="24" height="18" alt="" aria-hidden="true"><span>DE</span></a>
+            <a href="/en/trackstatus/" aria-label="English"><img class="language-flag" src="/assets/branding/flags/flag-en.svg" width="24" height="18" alt="" aria-hidden="true"><span>EN</span></a>
+            <a href="/es/trackstatus/" aria-current="page" aria-label="Español"><img class="language-flag" src="/assets/branding/flags/flag-es.svg" width="24" height="18" alt="" aria-hidden="true"><span>ES</span></a>
+        </nav>
+    </div>
+</header>
+<main class="track-page" id="track-page" data-unavailable="Estado en directo no disponible en este momento" data-reconnecting="Restableciendo la conexión" data-stale="Conexión interrumpida · el último estado puede estar desactualizado" data-display-enter="Modo pantalla" data-display-exit="Salir del modo pantalla" data-green="Verde" data-yellow="Amarillo" data-red="Rojo" data-empty="Ningún sector amarillo activo" data-remaining="Tiempo restante" data-loading="Cargando …" data-connected="Conectado" data-offline="Conexión interrumpida – estado no disponible" data-refreshing="Actualizando el estado …" data-unknown="Estado no disponible">
+<div class="container">
+<div class="track-heading"><img class="track-display-logo" src="/assets/branding/logos/nuerburg-guide-logo-mark-orange-ed2000.svg" alt="Nürburg Guide"><h1>Estado de la pista</h1><button id="track-display" class="track-display-button" type="button" aria-pressed="false">Modo pantalla</button></div>
+<div class="track-layout">
+<section class="track-map-panel" aria-label="Nordschleife">
+<div class="track-map-wrap"><div id="track-map" class="track-map"></div>
+<div id="track-map-message" class="track-map-message"><div><strong>Mapa satelital aún no disponible</strong><p>El mapa estará disponible cuando finalice la configuración.</p></div></div></div>
+</section>
+<section class="track-panel" aria-label="Estado de la pista">
+<div id="track-badge" class="track-badge" data-status="unknown" role="status"><i id="track-dot" class="track-dot" aria-hidden="true"></i><span id="track-label">Estado en directo no disponible en este momento</span></div>
+<p id="track-connection" class="track-connection" role="status"></p>
+<div id="track-red" class="track-red" hidden><strong>Estado ROJO global</strong><span id="track-red-remaining">Tiempo restante</span><output id="track-red-time" aria-label="Tiempo restante"></output></div>
+<h2>Sectores amarillos activos</h2><ul id="track-yellows" class="track-yellows"></ul><p id="track-empty" class="track-empty">Estado no disponible</p>
+<aside id="track-ad" class="track-ad" aria-label="Publicidad" hidden></aside>
+</section></div>
+<p class="track-note">Los avisos de la app no son información oficial del operador del circuito. Verde solo significa que no hay avisos amarillos o rojos activos en el sistema; no confirma que la pista esté abierta ni que sea seguro circular.</p>
+<noscript><p>Activa JavaScript para ver el estado de la pista.</p></noscript>
+</div></main>
+<footer class="site-footer"><div class="container footer-legal"><div class="footer-brand"><h3>Nürburg Guide</h3><p>App independiente de información para visitantes y conductores de la Nordschleife.</p></div><div class="footer-links"><h3>Información legal</h3><ul><li><a href="/es/impressum.html">Aviso legal</a></li><li><a href="/es/kontakt.html">Contacto</a></li><li><a href="/es/datenschutz.html">Privacidad</a></li><li><a href="/es/nutzungsbedingungen.html">Condiciones de uso</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Nürburg Guide UG (haftungsbeschränkt). Todos los derechos reservados.</p></div></footer>
+</body></html>
