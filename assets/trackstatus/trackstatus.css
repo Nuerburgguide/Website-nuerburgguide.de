@@ -106,3 +106,7 @@ body:has(.track-page) .site-footer { margin-bottom: 0; }
     .track-display-mode .track-map-panel { height: auto; min-height: 0; }
     .track-display-mode .track-panel { max-height: 100%; }
 }
+
+/* Wider track-only surface on desktop; shared website containers stay intact. */
+.track-page > .container { width: 88%; max-width: 1920px; }
+@media (max-width: 1100px) { .track-page > .container { width: 100%; } }

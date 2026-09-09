@@ -1,0 +1,9 @@
+.home-track-ticker[hidden] { display: none !important; }
+.home-track-ticker { display: block; width: 100%; overflow: hidden; padding: 10px 0; color: #17391b; background: #e8f8e9; text-decoration: none; font-size: .8rem; font-weight: 700; letter-spacing: .06em; line-height: 1.5; }
+.home-track-ticker[data-status="yellow"] { color: #4a4100; background: #fffbd7; }
+.home-track-ticker[data-status="red"] { color: #821b20; background: #ffe8e8; }
+.track-ticker-rail { display: flex; width: max-content; animation: track-ticker-move 45s linear infinite; }
+.track-ticker-group { flex: none; white-space: nowrap; }
+.home-track-ticker:hover .track-ticker-rail, .home-track-ticker:focus-visible .track-ticker-rail { animation-play-state: paused; }
+@keyframes track-ticker-move { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .track-ticker-rail { animation: none; } }
