@@ -110,3 +110,27 @@ body:has(.track-page) .site-footer { margin-bottom: 0; }
 /* Wider track-only surface on desktop; shared website containers stay intact. */
 .track-page > .container { width: 88%; max-width: 1920px; }
 @media (max-width: 1100px) { .track-page > .container { width: 100%; } }
+
+/* Bound only the yellow list; the status and campaign remain stationary. */
+.track-panel { display: flex; flex-direction: column; }
+.track-panel > * { flex-shrink: 0; }
+.track-panel .track-yellows { min-height: 0; max-height: 320px; flex-shrink: 1; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.track-yellows:empty { margin: 0; }
+.track-display-mode .track-panel { overflow: hidden; padding: 28px; }
+.track-display-mode .track-panel .track-yellows { max-height: clamp(160px, 36dvh, 520px); }
+.track-display-mode .track-ad { margin-top: 24px; }
+.track-display-mode .track-ad img { max-height: 24dvh; object-fit: contain; }
+@media (min-width: 851px) {
+    .track-display-mode .track-page > .container { width: 92%; max-width: 2080px; }
+    .track-display-mode .track-layout { grid-template-columns: minmax(0, 2.05fr) minmax(340px, 1fr); }
+}
+@media (max-width: 850px) {
+    .track-display-mode .track-layout { grid-template-rows: minmax(140px, 1fr) auto; }
+    .track-display-mode .track-panel { max-height: min(60dvh, calc(100dvh - 220px)); padding: 18px; }
+    .track-display-mode .track-panel h2 { margin-top: 16px; }
+    .track-display-mode .track-ad { margin-top: 16px; }
+    .track-display-mode .track-ad img { max-height: 16dvh; }
+}
+
+.track-calendar-hours { margin: 8px 0 0; color: #59636a; font-size: 0.85rem; line-height: 1.5; font-weight: 400; }
+.track-calendar-hours[hidden] { display: none; }

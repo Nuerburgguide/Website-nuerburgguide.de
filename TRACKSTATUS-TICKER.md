@@ -1,3 +1,5 @@
+> Aktueller Stand: [Produktive Homepage-Ticker-Anbindung](HOMEPAGE-TICKER.md). Die folgenden Recherche-/Vorbereitungsnotizen beschreiben den früheren Stand.
+
 > Updated 2026-09-10: see [TF-CALENDAR-RESEARCH.md](TF-CALENDAR-RESEARCH.md) for the official embedded JSON discovery and the implemented localhost-only ticker. The original preparation notes below describe the earlier state.
 
 # Homepage ticker: calendar dependency
