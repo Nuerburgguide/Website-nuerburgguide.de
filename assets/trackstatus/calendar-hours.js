@@ -4,8 +4,6 @@
     const hours = document.getElementById('track-calendar-hours');
     if (!badge || !hours) return;
     const policy = window.TrackTickerCalendar;
-    const lang = document.documentElement.lang;
-    const prefix = {de: 'TF heute', en: 'TF today', es: 'TF hoy'}[lang] || 'TF today';
     const day = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit'});
     const time = new Intl.DateTimeFormat('en-GB', {timeZone: 'Europe/Berlin', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
     let calendar = null, request = null, refreshTimer = null, tick = null, generation = 0;
@@ -15,7 +13,7 @@
         if (badge.dataset.status === 'green' && calendar && now >= calendar.receivedAt && now < calendar.validUntil) {
             const today = day.format(calendar.server + now - calendar.receivedAt);
             const periods = calendar.periods.filter(p => day.format(p.start) === today).sort((a, b) => a.start - b.start);
-            if (periods.length) text = prefix + ': ' + periods.map(p => time.format(p.start) + '–' + time.format(p.end)).join(' · ');
+            if (periods.length) text = periods.map(p => time.format(p.start) + '–' + time.format(p.end)).join(' · ');
         }
         if (hours.textContent !== text) hours.textContent = text;
         hours.hidden = !text;

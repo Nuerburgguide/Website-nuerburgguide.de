@@ -65,9 +65,9 @@ No commit, push or deployment.
 
 ## Kalenderzeiten bei Open
 
-`calendar-hours.js` ergänzt ausschließlich bei grünem Badge eine dezente Zeile
+`calendar-hours.js` ergänzt ausschließlich bei grünem Badge die reinen Uhrzeiten rechts innerhalb der grünen Statusfläche
 mit allen heutigen TF-Perioden (Europe/Berlin, Serverzeit plus monotone Zeit).
 Kalenderabruf alle 20 Minuten und nach Tab-Rückkehr. RED, unbekannte, fehlende
 oder abgelaufene Kalenderdaten sowie Fetch-Fehler verbergen die Zeile vollständig.
-DE/EN/ES: TF heute / TF today / TF hoy. Keine Produktions-Testdaten.
+DE/EN/ES: reine Uhrzeiten ohne Sprachzusatz. Keine Produktions-Testdaten.
 42 neue Panel-Logiktests plus 138 bestehende Tests bestanden.

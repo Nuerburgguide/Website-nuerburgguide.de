@@ -10,7 +10,7 @@ globalThis.runCalendarHoursTests = async function(source, calendarSource) {
   class Observer{constructor(f){observer=f;}observe(){}}
   new Function('window','document','performance','fetch','MutationObserver','AbortController','setTimeout','clearTimeout','setInterval','clearInterval',source)({...root,addEventListener:(k,f)=>events[k]=f},doc,{now:()=>now},async()=>{if(fail)throw Error('network');return {ok:true,json:async()=>data};},Observer,class{abort(){}},()=>1,()=>{},f=>{intervals.push(f);return 1;},()=>{});
   const flush=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};await flush();
-  assert(!hours.hidden&&hours.textContent.endsWith('08:00–12:00 · 17:30–19:30'),'all windows including past and future');
+  assert(!hours.hidden&&hours.textContent === '08:00–12:00 · 17:30–19:30','all windows including past and future');
   badge.dataset.status='red';observer();assert(hours.hidden&&hours.textContent==='','red hidden');
   badge.dataset.status='unknown';observer();assert(hours.hidden,'status unknown');badge.dataset.status='green';
   data={...data,days:[]};events.visibilitychange();await flush();assert(hours.hidden,'no TF');
