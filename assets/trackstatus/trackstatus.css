@@ -132,5 +132,6 @@ body:has(.track-page) .site-footer { margin-bottom: 0; }
     .track-display-mode .track-ad img { max-height: 16dvh; }
 }
 
-.track-calendar-hours { margin: 8px 0 0; color: #59636a; font-size: 0.85rem; line-height: 1.5; font-weight: 400; }
+.track-badge:has(.track-calendar-hours:not([hidden])) { display: grid; grid-template-columns: auto auto minmax(0, 1fr); column-gap: 10px; }
+.track-calendar-hours { margin: 0 0 0 8px; min-width: 0; color: #46634d; font-size: 0.78em; line-height: 1.4; font-weight: 400; text-align: right; font-variant-numeric: tabular-nums; text-wrap: pretty; }
 .track-calendar-hours[hidden] { display: none; }
