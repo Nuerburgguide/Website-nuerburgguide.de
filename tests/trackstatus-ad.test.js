@@ -21,5 +21,10 @@ globalThis.runTrackAdTests = function (source) {
     current.onload();assert(!slot.hidden&&slot.children[0]===current,'Newest campaign wins');
     current.onerror();assert(slot.hidden&&!slot.children.length,'Failed artwork hides entire slot');
     win.renderTrackStatusAd('https://images.example/banner.png');const pending=images.at(-1);win.renderTrackStatusAd(null);pending.onload();assert(slot.hidden,'Removed campaign cannot reappear after load');
+    win.renderTrackStatusAd('https://images.example/first.png');images.at(-1).onload();const first=slot.children[0];
+    win.renderTrackStatusAd('https://images.example/next.png',null,'',null,{preserve:true});const next=images.at(-1);
+    assert(!slot.hidden&&slot.children[0]===first,'rotation preserves old image while loading');next.onerror();assert(!slot.hidden&&slot.children[0]===first,'failed successor preserves valid old image');
+    win.renderTrackStatusAd('https://images.example/final.png',null,'',null,{preserve:true});images.at(-1).onload();assert(!slot.hidden&&slot.children[0]!==first,'successful successor swaps atomically');
+    const retained=slot.children[0];const cancel=win.renderTrackStatusAd('https://images.example/late.png',null,'',null,{preserve:true});cancel();images.at(-1).onload();assert(slot.children[0]===retained,'cancelled rotation cannot replace banner');
     return `${count} ad assertions passed`;
 };

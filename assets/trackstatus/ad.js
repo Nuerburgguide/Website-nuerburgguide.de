@@ -13,14 +13,16 @@
         return null;
     }
     /**
-     * Presentation-only adapter; NOT an assumed backend campaign schema.
-     * A future campaign integration maps its verified fields to these arguments.
+     * Presentation adapter shared by the backend integration and local artwork tests.
+     * The optional ready callback runs only after successful image loading.
      * Call with null to remove an inactive campaign. This function fetches no API.
      */
-    window.renderTrackStatusAd = function (imageUrl, targetUrl = null, altText = '') {
+    window.renderTrackStatusAd = function (imageUrl, targetUrl = null, altText = '', onReady = null, options = {}) {
         const attempt = ++generation;
-        slot.hidden = true;
-        slot.replaceChildren();
+        if (!options.preserve || !imageUrl) {
+            slot.hidden = true;
+            slot.replaceChildren();
+        }
         const imageSource = publicUrl(imageUrl);
         const destination = targetUrl == null || targetUrl === '' ? null : publicUrl(targetUrl);
         if (!imageSource || (targetUrl && !destination)) return;
@@ -28,7 +30,7 @@
         image.alt = typeof altText === 'string' ? altText : '';
         image.decoding = 'async';
         image.onload = () => {
-            if (attempt !== generation || !image.naturalWidth) return;
+            if (attempt !== generation || !image.naturalWidth || (options.canCommit && !options.canCommit())) return;
             let content = image;
             if (destination) {
                 const link = document.createElement('a');
@@ -41,12 +43,13 @@
             }
             slot.replaceChildren(content);
             slot.hidden = false;
+            if (typeof onReady === 'function') onReady(image, content);
         };
         image.onerror = () => {
             if (attempt !== generation) return;
-            slot.hidden = true;
-            slot.replaceChildren();
+            if (!options.preserve) { slot.hidden = true; slot.replaceChildren(); }
         };
         image.src = imageSource;
+        return () => { if (attempt === generation) generation++; };
     };
 })();
