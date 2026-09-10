@@ -1,3 +1,5 @@
+> Aktueller Stand: [Produktive Homepage-Ticker-Anbindung](HOMEPAGE-TICKER.md). Die folgenden Recherche-/Vorbereitungsnotizen beschreiben den früheren Stand.
+
 # Calendar investigation and local ticker — 2026-09-10
 
 ## Verified app source
