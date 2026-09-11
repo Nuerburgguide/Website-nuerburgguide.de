@@ -234,7 +234,8 @@
                 const top = Math.max(0, Math.min(slot.top - screen.top, screen.height - 160));
                 const bottom = Math.max(top + 80, Math.min(slot.bottom - screen.top, screen.height - 28));
                 const gap = Math.round(Math.min(slot.width, bottom - top) * 0.08);
-                const shift = display ? Math.min(36, gap * 0.45) : Math.min(24, gap * 0.35);
+                const mobileLandscape = display && window.matchMedia('(orientation: landscape) and (min-width: 480px) and (max-width: 1100px) and (max-height: 600px)').matches;
+                const shift = mobileLandscape ? 0 : display ? Math.min(36, gap * 0.45) : Math.min(24, gap * 0.35);
                 map.fitBounds(bounds, {
                     left: Math.max(0, slot.left - screen.left) + gap - shift,
                     right: Math.max(0, screen.right - slot.right) + gap + shift,
