@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<title>Trackstatus: lokale mobile Layoutprüfung</title>
+<style>
+body { font: 15px system-ui; margin: 24px; background: #eee; }
+iframe { display: block; border: 0; margin: 16px 0 32px; }
+pre { white-space: pre-wrap; }
+</style>
+<h1>Mobile Display-Layouts</h1>
+<p>Über einen lokalen HTTP-Server öffnen. Nutzt Produktions-CSS und lokale Testdaten, keine Live-APIs.
+Die Kartenfläche und der 2:1-Testbanner sind Platzhalter. Browserleisten werden durch reduzierte Viewports simuliert.</p>
+<label><input id="safe" type="checkbox"> Zusätzliche Safe Areas: oben 20, unten 21, seitlich 47 px</label>
+<button id="run">Prüfung starten</button>
+<pre id="result"></pre>
+<div id="frames"></div>
+<script>
+document.querySelector('#run').onclick = async () => {
+    const output = document.querySelector('#result');
+    const frames = document.querySelector('#frames');
+    frames.replaceChildren();
+    output.textContent = 'Prüfung läuft …';
+    const paths = ['/trackstatus/', '/styles.css', '/assets/trackstatus/trackstatus.css', '/assets/trackstatus/mobile-layout.js', '/tests/trackstatus-mobile-layout.test.js'];
+    let [html, common, css, layout, tests] = await Promise.all(paths.map(path => fetch(path).then(r => {
+        if (!r.ok) throw new Error(path + ': ' + r.status);
+        return r.text();
+    })));
+    if (document.querySelector('#safe').checked) {
+        for (const [side, value] of Object.entries({top: 20, right: 47, bottom: 21, left: 47})) {
+            css = css.replaceAll(`env(safe-area-inset-${side}, 0px)`, `${value}px`);
+        }
+    }
+    html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<link\b[^>]*>/gi, '')
+        .replace('<html lang="de">', '<html lang="de" class="track-display-mode">')
+        .replace('</head>', `<style>${common}${css}</style></head>`);
+    const results = [];
+    for (const [width, height] of [[402,654], [393,540], [874,292], [844,390], [844,300], [667,250], [1920,1080], [2560,1440]]) {
+        const frame = document.createElement('iframe');
+        frame.width = width; frame.height = height;
+        const ready = new Promise(resolve => frame.onload = resolve);
+        frame.srcdoc = html;
+        frames.append(frame);
+        await ready;
+        frame.contentWindow.eval(layout + '\n' + tests);
+        results.push(await frame.contentWindow.runMobileLayoutTests());
+        output.textContent = JSON.stringify(results, null, 2);
+    }
+    // Safari can change its visual viewport without changing the CSS media height.
+    const dynamic = frames.querySelectorAll('iframe')[2];
+    dynamic.height = 390;
+    for (const height of [390, 292, 250, 390]) {
+        dynamic.contentDocument.documentElement.style.setProperty('--track-visible-height', `${height}px`);
+        results.push(await dynamic.contentWindow.runMobileLayoutTests());
+    }
+    const cases = results.flatMap(r => r.results);
+    output.textContent = `${cases.filter(r => r.pass).length}/${cases.length} bestanden\n` + JSON.stringify(results, null, 2);
+};
+</script>
+</html>
