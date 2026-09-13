@@ -11,12 +11,12 @@
 <link rel="alternate" hreflang="es" href="https://nuerburgguide.de/es/trackstatus/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
 <link rel="stylesheet" href="/styles.css?v=20260904-02">
-<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260911-02">
+<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260913-01">
 <title>Track status – Nürburg Guide</title>
 <script defer src="/assets/trackstatus/config.js?v=20260909-02"></script>
 <script defer src="/assets/trackstatus/core.js?v=20260909-02"></script>
 <script defer src="/assets/trackstatus/geometry.js?v=20260909-02"></script>
-<script defer src="/assets/trackstatus/trackstatus.js?v=20260911-01"></script>
+<script defer src="/assets/trackstatus/trackstatus.js?v=20260913-01"></script>
 <script defer src="/assets/trackstatus/display.js?v=20260911-01"></script>
 <script defer src="/assets/trackstatus/ad.js?v=20260910-02"></script>
 <script defer src="/assets/trackstatus/ad-backend.js?v=20260910-02"></script>
@@ -45,7 +45,7 @@
         </nav>
     </div>
 </header>
-<main class="track-page" id="track-page" data-unavailable="Live status currently unavailable" data-reconnecting="Reconnecting" data-stale="Connection interrupted · last status may be outdated" data-display-enter="Display mode" data-display-exit="Exit display mode" data-green="Open" data-yellow="Yellow" data-red="Closed" data-empty="No active yellow sectors" data-remaining="Time remaining" data-loading="Loading …" data-connected="Connected" data-offline="Connection interrupted – status unavailable" data-refreshing="Refreshing status …" data-unknown="Status unavailable">
+<main class="track-page" id="track-page" data-connection-loading="Connecting" data-unavailable="Live status currently unavailable" data-reconnecting="Reconnecting" data-stale="Connection interrupted · last status may be outdated" data-display-enter="Display mode" data-display-exit="Exit display mode" data-green="Open" data-yellow="Yellow" data-red="Closed" data-empty="No active yellow sectors" data-remaining="Time remaining" data-loading="Loading …" data-connected="Connected" data-offline="Connection interrupted – status unavailable" data-refreshing="Refreshing status …" data-unknown="Status unavailable">
 <div class="container">
 <div class="track-heading"><img class="track-display-logo" src="/assets/branding/logos/nuerburg-guide-logo-mark-white.svg" alt="Nürburg Guide"><h1>Track status</h1><button id="track-display" class="track-display-button" type="button" aria-pressed="false">Display mode</button></div>
 <div class="track-layout">
@@ -54,8 +54,8 @@
 <div id="track-map-message" class="track-map-message"><div><strong>Satellite map not yet available</strong><p>The map will be available once setup is complete.</p></div></div></div>
 </section>
 <section class="track-panel" aria-label="Track status">
-<div id="track-badge" class="track-badge" data-status="unknown" role="status"><i id="track-dot" class="track-dot" aria-hidden="true"></i><span id="track-label">Live status currently unavailable</span><span id="track-calendar-hours" class="track-calendar-hours" hidden></span></div>
-<p id="track-connection" class="track-connection" role="status"></p>
+<div id="track-badge" class="track-badge" data-status="unknown" role="status"><i id="track-dot" class="track-dot" aria-hidden="true"></i><span id="track-label">Live status currently unavailable</span><span id="track-calendar-hours" class="track-calendar-hours" hidden></span><span id="track-connection" class="track-connection" role="img" tabindex="0" aria-label="Connecting" title="Connecting"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><g class="track-signal"><path d="M3 8.5a14 14 0 0 1 18 0M6.5 12a8.5 8.5 0 0 1 11 0M10 15.5a3 3 0 0 1 4 0"/><circle cx="12" cy="19" r=".9" fill="currentColor" stroke="none"/></g><path class="track-signal-error" d="m3 3 18 18"/><path class="track-signal-loading" d="M20 12a8 8 0 1 1-8-8"/></svg></span></div>
+
 <div id="track-red" class="track-red" hidden><strong>Global RED status</strong><span id="track-red-remaining">Time remaining</span><output id="track-red-time" aria-label="Time remaining"></output></div>
 <h2>Active yellow sectors</h2><ul id="track-yellows" class="track-yellows"></ul><p id="track-empty" class="track-empty">Status unavailable</p>
 <aside id="track-ad" class="track-ad" aria-label="Advertisement" hidden></aside>

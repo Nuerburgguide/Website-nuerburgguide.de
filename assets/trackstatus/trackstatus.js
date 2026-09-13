@@ -38,8 +38,13 @@
             write(element('label'), available ? labels[status] : connection === 'loading' ? labels.loading : labels.unavailable);
             element('badge').dataset.status = status;
             element('dot').className = `track-dot ${status}`;
-            write(element('connection'), available ? labels[connection] || '' : '');
+
         }
+        const connectionLabel = connection === 'loading' ? labels.connectionLoading || labels.loading
+            : connection === 'unavailable' ? labels.offline : labels[connection] || labels.offline;
+        element('connection').setAttribute('aria-label', connectionLabel);
+        element('connection').setAttribute('title', connectionLabel);
+        element('connection').hidden = !api && connection !== 'unavailable';
         page.dataset.connection = connection;
         element('red').hidden = !available || view.status !== 'red';
         element('red-time').hidden = !view.red;
