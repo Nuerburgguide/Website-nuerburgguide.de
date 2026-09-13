@@ -6,7 +6,7 @@ globalThis.runTrackTransportTests = async function (sourceCode) {
         const nodes = new Map(), listeners = {}, timers = new Map(), calls = [], streams = [], pending = [];
         let serial = 0, now = 0;
         const labels = {green:'Open',yellow:'yellow',red:'Closed',unknown:'unknown',empty:'empty',connected:'connected',reconnecting:'reconnecting',stale:'stale',unavailable:'unavailable',loading:'loading'};
-        function node() { return {textContent:'',dataset:{...labels},className:'',hidden:false,children:[],append(...x){this.children.push(...x);},replaceChildren(...x){this.children=x;},setAttribute(){}}; }
+        function node() { return {attributes:{},textContent:'',dataset:{...labels},className:'',hidden:false,children:[],append(...x){this.children.push(...x);},replaceChildren(...x){this.children=x;},setAttribute(k,v){this.attributes[k]=v;}}; }
         const doc = {hidden:false,documentElement:{lang:'de'},getElementById(id){if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);},createElement:node,createTextNode:text=>({textContent:text}),addEventListener:(name,fn)=>{listeners[name]=fn;}};
         const win = {TrackStatusCore:globalThis.TrackStatusCore,TRACK_STATUS_CONFIG:{publicApiOrigin:enabled?'https://api.example.test':'',googleMapsBrowserKey:''},addEventListener:(name,fn)=>{listeners[name]=fn;}};
         class Stream {
@@ -35,6 +35,8 @@ globalThis.runTrackTransportTests = async function (sourceCode) {
     h.pending.shift().resolve(response(base));await flush();
     assert(h.streams.length===1&&h.streams[0].url.endsWith('/track-status/stream')&&!h.streams[0].options.withCredentials,'One credential-free native EventSource');
     assert(h.nodes.get('track-label').textContent==='Open','GET renders GREEN');
+    assert(h.nodes.get('track-connection').attributes['aria-label']==='connected' && h.nodes.get('track-connection').attributes.title==='connected','Connection icon has accessible label and tooltip');
+    assert(h.nodes.get('track-connection').textContent==='','Connection creates no text row');
     const stream=h.streams[0];stream.emit('snapshot',yellow);
     assert(h.nodes.get('track-label').textContent==='Open','Yellow snapshot keeps the global label Open');
     assert(h.nodes.get('track-yellows').children[0].children[0].children[1].textContent==='Döttinger Höhe','API sector name used');
@@ -43,6 +45,7 @@ globalThis.runTrackTransportTests = async function (sourceCode) {
     h.tick();assert(h.nodes.get('sector-time-32').textContent==='00:30','Heartbeat updates time basis');
     stream.readyState=0;stream.onerror();
     assert(!stream.closed&&h.streams.length===1,'Native reconnect is preserved');
+    assert(h.nodes.get('track-connection').attributes['aria-label']==='reconnecting','Reconnecting icon is labelled');
     assert(h.nodes.get('track-label').textContent==='Open','Disconnect keeps last flag');
     h.setNow(40000);h.tick();
     assert(h.nodes.get('track-label').textContent==='Open'&&h.nodes.get('sector-time-32').textContent==='00:00','Disconnected yellow timer expires without changing the global label');

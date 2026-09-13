@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trackstatus – lokale Symbolvorschau</title>
+<style>
+body { margin: 0; font: 14px system-ui; background: #eee; }
+header { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 12px; }
+select { font: inherit; padding: 5px; } small { color: #555; }
+iframe { display: block; width: 100%; height: calc(100dvh - 90px); border: 0; background: #243c32; }
+</style>
+<header>
+<label>Sprache <select id="language"><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option></select></label>
+<label>Verbindung <select id="state"><option value="connected">Verbunden</option><option value="loading">Wird hergestellt</option><option value="reconnecting">Wiederverbinden</option><option value="stale">Unterbrochen / veraltet</option><option value="unavailable">Fehler</option></select></label>
+<label><input id="display" type="checkbox"> Display-Modus</label>
+<small>Lokale Testdaten, schematische Karte und Beispielbanner. Keine Live-API-Anfragen.</small>
+</header>
+<iframe id="preview" title="Trackstatus-Vorschau"></iframe>
+<script>
+const frame = document.querySelector('#preview');
+const language = document.querySelector('#language');
+const state = document.querySelector('#state');
+const display = document.querySelector('#display');
+function update() {
+    const doc = frame.contentDocument, page = doc.getElementById('track-page');
+    if (!page) return;
+    page.dataset.connection = state.value;
+    const label = state.value === 'loading' ? page.dataset.connectionLoading
+        : state.value === 'unavailable' ? page.dataset.offline : page.dataset[state.value];
+    const icon = doc.getElementById('track-connection');
+    icon.hidden = false; icon.setAttribute('aria-label', label); icon.title = label;
+    doc.documentElement.classList.toggle('track-display-mode', display.checked);
+    const button = doc.getElementById('track-display');
+    button.textContent = display.checked ? '×' : page.dataset.displayEnter;
+    button.setAttribute('aria-label', display.checked ? page.dataset.displayExit : page.dataset.displayEnter);
+    button.setAttribute('aria-pressed', String(display.checked));
+}
+async function load() {
+    const prefix = language.value === 'de' ? '' : '/' + language.value;
+    const [page, geometry, layout, scrolling] = await Promise.all([
+        prefix + '/trackstatus/', '/assets/trackstatus/geometry.js',
+        '/assets/trackstatus/mobile-layout.js', '/assets/trackstatus/yellow-scroll.js'
+    ].map(url => fetch(url).then(r => r.text())));
+    const ready = new Promise(resolve => frame.onload = resolve);
+    frame.srcdoc = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+    await ready;
+    const doc = frame.contentDocument;
+    doc.getElementById('track-map-message').hidden = true;
+    doc.getElementById('track-label').textContent = 'Open';
+    doc.getElementById('track-badge').dataset.status = 'green';
+    doc.getElementById('track-dot').className = 'track-dot green';
+    doc.getElementById('track-empty').textContent = doc.getElementById('track-page').dataset.empty;
+    const hours = doc.getElementById('track-calendar-hours'); hours.textContent = '18:00–19:00'; hours.hidden = false;
+    const banner = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300"><rect width="600" height="300" fill="#232b27"/><text x="35" y="100" font-family="Arial" font-weight="bold" font-size="45" fill="white">RACE TAXI</text><text x="35" y="150" font-family="Arial" font-size="25" fill="white">PREVIEW</text><rect x="35" y="200" width="230" height="65" rx="10" fill="#ed2000"/><text x="55" y="242" font-family="Arial" font-size="30" fill="white">BOOK NOW ›</text></svg>';
+    const ad = doc.getElementById('track-ad'); ad.hidden = false; ad.innerHTML = `<img src="data:image/svg+xml,${encodeURIComponent(banner)}" alt="Beispielbanner">`;
+    frame.contentWindow.eval(geometry);
+    const points = frame.contentWindow.TRACK_GEOMETRY.flatMap(s => s.path).map(p => [p.lng * Math.cos(50.36 * Math.PI / 180), -p.lat]);
+    const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
+    const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', `${Math.min(...xs)} ${Math.min(...ys)} ${Math.max(...xs)-Math.min(...xs)} ${Math.max(...ys)-Math.min(...ys)}`);
+    svg.style = 'width:100%;height:100%;padding:7%;display:block';
+    svg.innerHTML = `<polyline points="${points.map(p => p.join(',')).join(' ')}" fill="none" stroke="#0DBF12" stroke-width="6" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`;
+    doc.querySelector('.track-map-panel').append(svg);
+    doc.querySelector('.track-map-wrap').style.background = '#243c32';
+    doc.getElementById('track-display').onclick = () => { display.checked = !display.checked; update(); };
+    update();
+    frame.contentWindow.eval(layout + '\n' + scrolling);
+}
+language.onchange = load; state.onchange = update; display.onchange = update;
+load();
+</script>
+</html>

@@ -8,7 +8,8 @@ globalThis.runMobileLayoutTests = async function () {
     };
     const settle = () => new Promise(resolve => setTimeout(resolve, 80));
     $('#track-map-message').hidden = true;
-    $('#track-connection').textContent = 'Verbunden';
+    $('#track-connection').setAttribute('aria-label', 'Verbunden');
+    $('#track-page').dataset.connection = 'connected';
     $('#track-calendar-hours').textContent = '08:00–12:00 · 17:30–19:30';
     $('#track-ad').hidden = false;
     // A visible 2:1 campaign substitute, not a live impression or click.

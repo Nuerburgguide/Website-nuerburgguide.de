@@ -220,3 +220,35 @@ body:has(.track-page) .site-footer { margin-bottom: 0; }
     .track-display-mode .track-page[data-mobile-tight] .track-yellows li { padding: 2px 4px; margin-bottom: 3px; }
     .track-display-mode .track-page[data-mobile-tight] .track-ad { margin-top: 4px; }
 }
+
+/* Transport health shares the status pill; no separate connection text row. */
+.track-page #track-badge { position: relative; padding-right: 42px; }
+.track-page #track-connection {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; margin: 0; padding: 0;
+    color: #65716b; line-height: 1; cursor: help; border-radius: 4px;
+}
+.track-page #track-connection svg { display: block; width: 19px; height: 19px; }
+.track-page #track-connection:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.track-signal-error, .track-signal-loading { display: none; }
+.track-page[data-connection="loading"] .track-signal,
+.track-page[data-connection="reconnecting"] .track-signal,
+.track-page[data-connection="refreshing"] .track-signal { display: none; }
+.track-page[data-connection="loading"] .track-signal-loading,
+.track-page[data-connection="reconnecting"] .track-signal-loading,
+.track-page[data-connection="refreshing"] .track-signal-loading { display: block; transform-origin: center; animation: track-connecting 1.2s linear infinite; }
+.track-page[data-connection="unavailable"] #track-connection,
+.track-page[data-connection="stale"] #track-connection { color: #a33b26; }
+.track-page[data-connection="unavailable"] .track-signal-error,
+.track-page[data-connection="stale"] .track-signal-error { display: block; }
+.track-page #track-connection::after {
+    content: attr(aria-label); display: none; position: absolute; right: 0; top: calc(100% + 7px);
+    width: max-content; max-width: min(240px, 65vw); padding: 7px 9px; border-radius: 6px;
+    background: #24292d; color: #fff; font: 12px/1.4 system-ui; text-align: left;
+    box-shadow: 0 2px 8px #0003; z-index: 4; pointer-events: none;
+}
+.track-page #track-connection:hover::after,
+.track-page #track-connection:focus::after { display: block; }
+@keyframes track-connecting { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .track-page .track-signal-loading { animation: none; } }
