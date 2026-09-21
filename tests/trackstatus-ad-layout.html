@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; frame-src 'self' about:">
+<title>Local 2:1 ad layout tests</title>
+<pre id="result">Running local layout tests…</pre>
+<div id="frames"></div>
+<script>
+(async () => {
+    try {
+        const paths = ['/trackstatus/', '/styles.css', '/assets/trackstatus/trackstatus.css', '/assets/trackstatus/mobile-layout.js', '/tests/trackstatus-mobile-layout.test.js'];
+        const [page, common, css, layout, tests] = await Promise.all(paths.map(path => fetch(path).then(r => r.text())));
+        const results = [];
+        for (const safe of [false, true]) for (const display of [false, true]) {
+            let styles = common + css;
+            if (safe) for (const [side, value] of Object.entries({top: 20, right: 47, bottom: 21, left: 47})) styles = styles.replaceAll(`env(safe-area-inset-${side}, 0px)`, `${value}px`);
+            const html = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<link\b[^>]*>/gi, '')
+                .replace('<html lang="de">', `<html lang="de" class="${display ? 'track-display-mode' : ''}">`)
+                .replace('</head>', `<style>${styles}</style></head>`);
+            for (const [width, height] of [[393,852], [402,654], [393,540], [852,393], [874,292], [844,390], [667,250], [1920,1080], [2560,1440]]) {
+                const frame = document.createElement('iframe'); frame.width = width; frame.height = height;
+                const loaded = new Promise(resolve => frame.onload = resolve); frame.srcdoc = html;
+                document.querySelector('#frames').append(frame); await loaded;
+                // Offscreen WKWebView pauses rAF; use the same layout logic with a timer scheduler.
+                frame.contentWindow.requestAnimationFrame = fn => frame.contentWindow.setTimeout(fn, 0);
+                frame.contentWindow.cancelAnimationFrame = id => frame.contentWindow.clearTimeout(id);
+                frame.contentWindow.eval((display ? layout : '') + '\n' + tests);
+                const result = await frame.contentWindow.runMobileLayoutTests();
+                for (const item of result.results) {
+                    const image = frame.contentDocument.querySelector('#track-ad img');
+                    const style = frame.contentWindow.getComputedStyle(image);
+                    const rect = image.getBoundingClientRect();
+                    // contain scales both intrinsic dimensions equally even when max-height limits the element box.
+                    const scale = Math.min(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+                    const fits = image.naturalWidth === image.naturalHeight * 2 && style.objectFit === 'contain' && scale > 0;
+                    const normalFits = rect.width <= width && Math.abs(rect.width / rect.height - 2) < 0.01;
+                    results.push({safe, display, width, height, status: item.mode, yellows: item.count,
+                        pass: fits && (display ? item.pass : normalFits), checks: display ? item.checks : {normalFits}, fits});
+                }
+                frame.remove();
+            }
+        }
+        const failed = results.filter(r => !r.pass);
+        document.querySelector('#result').textContent = (failed.length ? 'FAIL' : 'DONE') + `\n${results.length - failed.length}/${results.length} layout cases passed\n` + JSON.stringify(failed, null, 2);
+    } catch (error) { document.querySelector('#result').textContent = 'FAIL\n' + error.stack; }
+})();
+</script>

@@ -31,7 +31,11 @@ globalThis.runMobileLayoutTests = async function () {
         const p = rect(panel), ad = rect($('.track-ad')), img = rect($('.track-ad img'));
         const exit = rect($('#track-display')), track = rect($('.track-map-panel'));
         const mobile = matchMedia('(max-width: 850px), (orientation: landscape) and (max-width: 1100px) and (max-height: 600px)').matches;
+        const artwork = $('.track-ad img');
         const checks = {
+            completeArtwork: getComputedStyle(artwork).objectFit === 'contain' &&
+                artwork.naturalWidth === artwork.naturalHeight * 2 && img.w > 0 && img.h > 0 &&
+                img.y >= p.y && img.b <= p.b && img.x >= p.x && img.r <= p.r,
             noOverflow: panel.scrollHeight <= panel.clientHeight + 1,
             bannerInside: ad.b <= p.b - 3,
             bannerVisible: img.h >= 32,
