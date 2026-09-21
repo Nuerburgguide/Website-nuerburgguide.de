@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'">
+<title>Local ad rotation tests</title>
+<pre id="result">Running local tests…</pre>
+<script src="trackstatus-ad.test.js"></script>
+<script src="trackstatus-ad-backend.test.js"></script>
+<script src="trackstatus-ad-rotation.test.js"></script>
+<script>
+(async () => {
+    try {
+        const [backend, renderer] = await Promise.all(['ad-backend.js', 'ad.js'].map(name => fetch('../assets/trackstatus/' + name).then(r => r.text())));
+        const results = [runTrackAdTests(renderer), await runAdBackendTests(backend), await runAdRotationTests(backend, renderer)];
+        document.querySelector('#result').textContent = 'DONE\n' + results.join('\n');
+    } catch (error) { document.querySelector('#result').textContent = 'FAIL\n' + error.stack; }
+})();
+</script>

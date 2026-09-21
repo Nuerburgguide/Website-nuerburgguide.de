@@ -59,7 +59,9 @@
         const controller = new AbortController(); request = controller;
         const timeout = setTimeout(() => controller.abort(), 10000);
         try {
-            const response = await fetch(origin + '/banner?placement=' + placement + '&locale=' + locale,
+            // Only the committed image is the cursor; pending/failed successors never advance it.
+            const previous = current ? '&previous_campaign_id=' + encodeURIComponent(current.campaign.campaign_id) : '';
+            const response = await fetch(origin + '/banner?placement=' + placement + '&locale=' + locale + previous,
                 {credentials: 'omit', cache: 'no-store', signal: controller.signal});
             if (!response.ok) throw Error('Ad response');
             const data = await response.json();
