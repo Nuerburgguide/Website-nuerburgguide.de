@@ -48,7 +48,6 @@
         page.dataset.connection = connection;
         element('red').hidden = !available || view.status !== 'red';
         element('red-time').hidden = !view.red;
-        element('red-remaining').hidden = !view.red;
         if (view.red) write(element('red-time'), core.format(view.red.remaining));
         const visible = available ? view.sectors : [];
         const signature = JSON.stringify(visible.map(item => [item.id, item.name]));
