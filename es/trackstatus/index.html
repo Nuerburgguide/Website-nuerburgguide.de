@@ -19,12 +19,12 @@
 
 
 <link rel="stylesheet" href="/styles.css?v=20260904-02">
-<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260913-01">
+<link rel="stylesheet" href="/assets/trackstatus/trackstatus.css?v=20260925-01">
 <title>Estado de la pista – Nürburg Guide</title>
 <script defer src="/assets/trackstatus/config.js?v=20260909-02"></script>
 <script defer src="/assets/trackstatus/core.js?v=20260909-02"></script>
 <script defer src="/assets/trackstatus/geometry.js?v=20260909-02"></script>
-<script defer src="/assets/trackstatus/trackstatus.js?v=20260913-01"></script>
+<script defer src="/assets/trackstatus/trackstatus.js?v=20260925-01"></script>
 <script defer src="/assets/trackstatus/display.js?v=20260911-01"></script>
 <script defer src="/assets/trackstatus/ad.js?v=20260910-02"></script>
 <script defer src="/assets/trackstatus/ad-backend.js?v=20260910-02"></script>
@@ -53,7 +53,7 @@
         </nav>
     </div>
 </header>
-<main class="track-page" id="track-page" data-connection-loading="Conectando" data-unavailable="Estado en directo no disponible en este momento" data-reconnecting="Restableciendo la conexión" data-stale="Conexión interrumpida · el último estado puede estar desactualizado" data-display-enter="Modo pantalla" data-display-exit="Salir del modo pantalla" data-green="Open" data-yellow="Amarillo" data-red="Closed" data-empty="Ningún sector amarillo activo" data-remaining="Tiempo restante" data-loading="Cargando …" data-connected="Conectado" data-offline="Conexión interrumpida – estado no disponible" data-refreshing="Actualizando el estado …" data-unknown="Estado no disponible">
+<main class="track-page" id="track-page" data-connection-loading="Conectando" data-unavailable="Estado en directo no disponible en este momento" data-reconnecting="Restableciendo la conexión" data-stale="Conexión interrumpida · el último estado puede estar desactualizado" data-display-enter="Modo pantalla" data-display-exit="Salir del modo pantalla" data-green="Abierta" data-yellow="Amarillo" data-red="Cerrada" data-empty="Ningún sector amarillo activo" data-remaining="Tiempo restante" data-loading="Cargando …" data-connected="Conectado" data-offline="Conexión interrumpida – estado no disponible" data-refreshing="Actualizando el estado …" data-unknown="Estado no disponible">
 <div class="container">
 <div class="track-heading"><img class="track-display-logo" src="/assets/branding/logos/nuerburg-guide-logo-mark-white.svg" alt="Nürburg Guide"><h1>Estado de la pista</h1><button id="track-display" class="track-display-button" type="button" aria-pressed="false">Modo pantalla</button></div>
 <div class="track-layout">
@@ -64,7 +64,7 @@
 <section class="track-panel" aria-label="Estado de la pista">
 <div id="track-badge" class="track-badge" data-status="unknown" role="status"><i id="track-dot" class="track-dot" aria-hidden="true"></i><span id="track-label">Estado en directo no disponible en este momento</span><span id="track-calendar-hours" class="track-calendar-hours" hidden></span><span id="track-connection" class="track-connection" role="img" tabindex="0" aria-label="Conectando" title="Conectando"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><g class="track-signal"><path d="M3 8.5a14 14 0 0 1 18 0M6.5 12a8.5 8.5 0 0 1 11 0M10 15.5a3 3 0 0 1 4 0"/><circle cx="12" cy="19" r=".9" fill="currentColor" stroke="none"/></g><path class="track-signal-error" d="m3 3 18 18"/><path class="track-signal-loading" d="M20 12a8 8 0 1 1-8-8"/></svg></span></div>
 
-<div id="track-red" class="track-red" hidden><strong>Estado ROJO global</strong><span id="track-red-remaining">Tiempo restante</span><output id="track-red-time" aria-label="Tiempo restante"></output></div>
+<div id="track-red" class="track-red" hidden><strong>Pista actualmente cerrada</strong><output id="track-red-time" aria-label="Tiempo restante"></output></div>
 <h2>Sectores amarillos activos</h2><ul id="track-yellows" class="track-yellows"></ul><p id="track-empty" class="track-empty">Estado no disponible</p>
 <aside id="track-ad" class="track-ad" aria-label="Publicidad" hidden></aside>
 </section></div>
