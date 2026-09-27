@@ -4,6 +4,7 @@
     const hours = document.getElementById('track-calendar-hours');
     if (!badge || !hours) return;
     const policy = window.TrackTickerCalendar;
+    const outsideHours = {de: 'außerhalb der Öffnungszeiten', en: 'outside opening hours', es: 'fuera del horario de apertura'}[document.documentElement.lang] || 'outside opening hours';
     const day = new Intl.DateTimeFormat('en-CA', {timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit'});
     const time = new Intl.DateTimeFormat('en-GB', {timeZone: 'Europe/Berlin', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
     let calendar = null, request = null, refreshTimer = null, tick = null, generation = 0;
@@ -11,9 +12,14 @@
         const now = performance.now();
         let text = '';
         if (badge.dataset.status === 'green' && calendar && now >= calendar.receivedAt && now < calendar.validUntil) {
-            const today = day.format(calendar.server + now - calendar.receivedAt);
+            const currentTime = calendar.server + now - calendar.receivedAt;
+            const today = day.format(currentTime);
             const periods = calendar.periods.filter(p => day.format(p.start) === today).sort((a, b) => a.start - b.start);
-            if (periods.length) text = periods.map(p => time.format(p.start) + '–' + time.format(p.end)).join(' · ');
+            if (periods.length) {
+                text = periods.some(p => p.start <= currentTime && currentTime < p.end)
+                    ? periods.map(p => time.format(p.start) + '–' + time.format(p.end)).join(' · ')
+                    : '· ' + outsideHours;
+            }
         }
         if (hours.textContent !== text) hours.textContent = text;
         hours.hidden = !text;
