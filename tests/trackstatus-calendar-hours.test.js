@@ -10,7 +10,22 @@ globalThis.runCalendarHoursTests = async function(source, calendarSource) {
   class Observer{constructor(f){observer=f;}observe(){}}
   new Function('window','document','performance','fetch','MutationObserver','AbortController','setTimeout','clearTimeout','setInterval','clearInterval',source)({...root,addEventListener:(k,f)=>events[k]=f},doc,{now:()=>now},async()=>{if(fail)throw Error('network');return {ok:true,json:async()=>data};},Observer,class{abort(){}},()=>1,()=>{},f=>{intervals.push(f);return 1;},()=>{});
   const flush=async()=>{for(let i=0;i<12;i++)await Promise.resolve();};await flush();
-  assert(!hours.hidden&&hours.textContent === '08:00–12:00 · 17:30–19:30','all windows including past and future');
+  const outside='· '+{de:'außerhalb der Öffnungszeiten',en:'outside opening hours',es:'fuera del horario de apertura'}[lang];
+  const check=(expected,message)=>assert(hours.textContent===expected&&hours.hidden===!expected,lang+' '+message);
+  check(outside,'gap between windows');
+  assert(badge.dataset.status==='green','technical status remains green');
+  for(const [time,expected] of [
+   ['07:59:59','outside'],['08:00:00','inside'],['11:59:59','inside'],['12:00:00','outside'],
+   ['17:30:00','inside'],['19:29:59','inside'],['19:30:00','outside'],['21:00:00','outside']
+  ]) {
+   data={...data,server_time:'2026-09-10T'+time+'+02:00',last_successful_fetch:'2026-09-10T'+time+'+02:00'};
+   events.visibilitychange();await flush();
+   check(expected==='inside'?'08:00–12:00 · 17:30–19:30':outside,time);
+  }
+  now=3600000;intervals.at(-1)();check('','expired calendar');now=0;
+  data={...data,server_time:'2026-09-10T19:29:59+02:00',last_successful_fetch:'2026-09-10T19:29:59+02:00'};
+  events.visibilitychange();await flush();now=1000;intervals.at(-1)();check(outside,'timer crosses closing boundary');
+  now=0;
   badge.dataset.status='red';observer();assert(hours.hidden&&hours.textContent==='','red hidden');
   badge.dataset.status='unknown';observer();assert(hours.hidden,'status unknown');badge.dataset.status='green';
   data={...data,days:[]};events.visibilitychange();await flush();assert(hours.hidden,'no TF');
