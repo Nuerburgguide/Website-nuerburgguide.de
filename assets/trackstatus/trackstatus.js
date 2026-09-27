@@ -38,6 +38,7 @@
             write(element('label'), available ? labels[status] : connection === 'loading' ? labels.loading : labels.unavailable);
             element('badge').dataset.status = status;
             element('dot').className = `track-dot ${status}`;
+            window.TrackCalendarHours?.render();
 
         }
         const connectionLabel = connection === 'loading' ? labels.connectionLoading || labels.loading
