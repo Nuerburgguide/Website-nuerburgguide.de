@@ -1,0 +1,12 @@
+# Local files and credentials
+.DS_Store
+.env
+.env.*
+!.env.example
+# Original GetSpeed media; optimized/ remains versionable.
+/assets/partners/getspeed/video/originals/
+/assets/partners/getspeed/video-originals/
+/assets/partners/getspeed/video/VideoTouristenfahrten.mp4
+/assets/partners/getspeed/video/VideoNLS.mp4
+/assets/partners/getspeed/video/C3714_3_prob3.mp4
+/assets/partners/getspeed/video/C3714_5_prob3.mp4

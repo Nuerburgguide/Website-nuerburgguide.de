@@ -1,0 +1,133 @@
+
+/* Shared local redesign for all content pages. */
+.site-redesign{background:#fff;color:#171b22}
+.site-redesign .site-header{background:#fff;border-bottom:1px solid #e6e7e9;backdrop-filter:none}
+.site-redesign .header-container{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);min-height:92px;gap:24px;max-width:1440px}
+.site-redesign .logo{grid-column:2;grid-row:1;justify-self:center}
+.site-redesign .logo img{width:108px;max-height:42px}
+.site-redesign .main-nav{grid-column:1;grid-row:1;justify-self:start;width:auto}
+.site-redesign .main-nav ul{justify-content:flex-start;gap:6px}
+.site-redesign .main-nav a{border:0;background:transparent;box-shadow:none;border-radius:999px;padding:9px 14px;min-height:42px;font-size:.92rem;font-weight:800}
+.site-redesign .main-nav a:hover{border-radius:999px;background:#fff0eb;color:#ed2000;transform:none}
+.site-redesign .main-nav a[aria-current]{background:#ed2000;color:#fff;box-shadow:0 5px 16px #ed20002e}
+.site-redesign .language-switcher{grid-column:3;grid-row:1;justify-self:end;position:relative;isolation:isolate;margin:0;padding:4px;gap:2px;--language-cell:44px}
+.site-redesign .language-switcher span{display:none}
+.site-redesign .button,.site-redesign .button:hover,.site-redesign button,.site-redesign button:hover{border-radius:999px}
+.site-redesign :is(h1,h2,h3){letter-spacing:-.015em;line-height:1.16}
+.site-redesign h1{font-size:clamp(32px,4.1vw,58px)}
+.site-redesign h2{font-size:clamp(27px,3.3vw,46px)}
+.site-redesign .eyebrow{color:#ed2000}
+.site-redesign .site-footer,.site-redesign .footer-bottom{background:#202020;color:#ddd}
+.site-redesign .site-footer :is(h3,a){color:#fff}
+.site-redesign .site-footer p{color:#ccc}
+.site-redesign .footer-bottom{border-top:1px solid #ffffff25}
+@media(max-width:1100px){.site-redesign .main-nav a{font-size:12px;padding:9px 10px}.site-redesign .header-container{gap:12px}}
+@media(max-width:760px){.site-redesign .header-container{grid-template-columns:1fr auto 1fr;padding-block:13px;gap:12px}.site-redesign .main-nav{grid-column:1/-1;grid-row:2;justify-self:center}.site-redesign .logo img{width:88px}.site-redesign .language-switcher{--language-cell:36px}.site-redesign .main-nav a{font-size:12px}}
+/* Stable segmented language control; hover never changes the selected state. */
+.site-redesign .language-switcher{--language-cell:44px;gap:2px;padding:4px}
+.site-redesign .language-switcher a,
+.site-redesign .language-switcher a:hover,
+.site-redesign .language-switcher a:active,
+.site-redesign .language-switcher a[aria-current]{box-sizing:border-box;flex:0 0 var(--language-cell);width:var(--language-cell);min-width:var(--language-cell);height:44px;min-height:44px;padding:0;border:0;transform:none;background:transparent;border-radius:999px;box-shadow:none}
+.site-redesign .language-switcher .language-flag{width:22px;height:16px;object-fit:cover;transform:none;pointer-events:none}
+.site-redesign .language-switcher::before,
+.site-redesign .language-switcher::after{content:'';position:absolute;pointer-events:none;left:0;top:4px;bottom:4px;width:var(--language-width,44px);border-radius:999px;z-index:-1}
+.site-redesign .language-switcher::before{transform:translate3d(var(--language-selected-x,4px),0,0);background:#85858538;box-shadow:inset 0 0 0 1px #7771;transition:none}
+.site-redesign .language-switcher::after{transform:translate3d(var(--language-x,4px),0,0);background:#88888816;box-shadow:inset 0 0 0 1px #88888814;opacity:var(--language-preview,0);transition:transform .46s cubic-bezier(.22,1,.36,1),opacity .22s ease;will-change:transform}
+.site-redesign.header-orange .language-switcher::before{background:#55544455}
+.site-redesign.header-orange .language-switcher::after{background:#5554441c;box-shadow:inset 0 0 0 1px #55544425}
+.site-redesign .language-switcher a:focus-visible{outline:2px solid currentColor;outline-offset:-2px}
+
+@media(prefers-reduced-motion:reduce){.site-redesign .language-switcher::after{transition:none}}
+
+/* Content pages: same quiet white, charcoal and orange palette. */
+.site-redesign .about-hero{background:#fff;padding-block:70px 35px}
+.site-redesign .about-hero-card{background:#171717;color:#fff;border:1px solid #363636;border-radius:24px;box-shadow:0 20px 45px #00000014}
+.site-redesign .about-hero-card p{color:#eee}
+.site-redesign .about-story-section{padding-block:35px 55px;background:#fff}
+.site-redesign .about-story{max-width:850px}
+.site-redesign .respect-box{background:#fff5f0;border:1px solid #ed200024;border-radius:24px}
+.site-redesign .cooperation-box{background:#171717;border:1px solid #333;border-radius:24px;color:#fff}
+.site-redesign .cooperation-box :is(h2,p){color:#fff}
+.site-redesign .getspeed-hero{position:relative;isolation:isolate;overflow:hidden}
+.site-redesign .getspeed-background-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;opacity:0;transition:opacity .6s;z-index:0}
+.site-redesign .getspeed-background-video.is-playing{opacity:1}
+.site-redesign .getspeed-hero-image{z-index:-1}
+.site-redesign .getspeed-hero::before{z-index:1;pointer-events:none}
+.site-redesign .getspeed-hero-content{position:relative;z-index:2}
+.site-redesign .getspeed-hero-actions a,.site-redesign .getspeed-hero-actions a:hover{border-radius:999px}
+.site-redesign .getspeed-vehicle-card{border-radius:24px;overflow:hidden;border-color:#ddd;box-shadow:0 18px 40px #0000000a;perspective:1200px}
+.site-redesign .getspeed-vehicle-image{transform:rotateX(var(--card-angle,0deg)) scale(var(--card-scale,1));transform-origin:50% 100%;border-radius:20px;overflow:hidden;backface-visibility:hidden}
+.site-redesign .getspeed-booking-section{perspective:1400px;scroll-margin-top:calc(var(--header-height,92px) + 24px)}
+.site-redesign .getspeed-booking-card{transform:rotateX(var(--card-angle,0deg)) scale(var(--card-scale,1));transform-origin:50% 100%;border-radius:24px;border:1px solid #444;box-shadow:0 24px 60px #0002}
+.site-redesign:has(.getspeed-hero),.site-redesign .getspeed-section,.site-redesign .getspeed-booking-section,.site-redesign .site-header{transition:background-color .35s,color .35s,border-color .35s}
+.site-redesign.booking-dark,.site-redesign.booking-dark .getspeed-section,.site-redesign.booking-dark .getspeed-booking-section,.site-redesign.booking-dark .site-header{background:#161616;color:#fff;border-color:#333}
+.site-redesign.booking-dark .main-nav a{color:#fff}
+.site-redesign.booking-dark .main-nav a:hover{background:#ffffff18}
+.site-redesign.booking-dark .main-nav a[aria-current]{background:#ed2000}
+.site-redesign.booking-dark .language-switcher::before{background:#ffffff30}
+.site-redesign.booking-dark .language-switcher::after{background:#ffffff12}
+.site-redesign.booking-dark .getspeed-section .section-heading :is(h2,p),.site-redesign.booking-dark .getspeed-booking-head :is(h2,p){color:#fff}
+.site-redesign.booking-dark .getspeed-booking-card{background:#202020;color:#fff}
+.site-redesign .raceticket-widget-shell{background:#fff;color:#171717;border-radius:16px;overflow:hidden}
+.site-redesign:not(.track-display-mode) .track-page{background:#f7f7f7}
+.site-redesign:not(.track-display-mode) :is(.track-panel,.track-map-panel){border-radius:24px;border-color:#e4e4e4;box-shadow:0 16px 40px #00000008}
+.site-redesign .track-panel h2{font-size:22px}
+.site-redesign .footer-legal{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+.site-redesign .footer-social h3,.site-redesign .footer-links h3,.site-redesign .footer-brand h3{font-size:18px}
+@media(max-width:760px){.site-redesign .about-hero{padding-block:40px 24px}.site-redesign .getspeed-hero{min-height:min(178vw,850px)}.site-redesign .getspeed-background-video{object-fit:contain;background:#161616}.site-redesign .footer-legal{grid-template-columns:1fr;gap:24px}}
+@media(prefers-reduced-motion:reduce){.site-redesign .getspeed-background-video{display:none}.site-redesign .getspeed-vehicle-image,.site-redesign .getspeed-booking-card{transform:none}.site-redesign.booking-dark,.site-redesign .site-header{transition:none}}
+
+/* GetSpeed: immersive video and a continuous charcoal page. */
+.site-redesign.getspeed-dark,.site-redesign.getspeed-dark main,.site-redesign.getspeed-dark .getspeed-section,.site-redesign.getspeed-dark .getspeed-booking-section,.site-redesign.getspeed-dark .site-header{background:#161616;color:#fff;border-color:#303030}
+.site-redesign.getspeed-dark .main-nav a{color:#fff}
+.site-redesign.getspeed-dark .main-nav a:hover{background:#ffffff18;color:#fff}
+.site-redesign.getspeed-dark .main-nav a[aria-current]{background:#ed2000}
+.site-redesign.getspeed-dark .language-switcher::before{background:#ffffff30}
+.site-redesign.getspeed-dark .language-switcher::after{background:#ffffff12}
+.site-redesign.getspeed-dark .getspeed-hero{min-height:calc(100svh - var(--header-height,92px));display:flex;align-items:center;padding-block:80px;background:#161616}
+.site-redesign.getspeed-dark .getspeed-hero::before{background:linear-gradient(90deg,#161616cc 0%,#16161660 55%,#16161630),linear-gradient(0deg,#161616 0%,transparent 30%,transparent 85%,#16161655)}
+.site-redesign.getspeed-dark .getspeed-hero::after{display:none}
+.site-redesign.getspeed-dark .getspeed-section .section-heading :is(h2,p){color:#eee}
+.site-redesign.getspeed-dark .getspeed-vehicle-card{background:#222;border-color:#3c3c3c;box-shadow:0 20px 50px #0003}
+.site-redesign.getspeed-dark .getspeed-vehicle-body{padding:26px 28px 30px}
+.site-redesign.getspeed-dark .getspeed-vehicle-body h3{color:#fff}
+.site-redesign.getspeed-dark .vehicle-question{margin:20px 0 8px;color:#fff;font-size:20px;font-weight:750;line-height:1.4}
+.site-redesign.getspeed-dark .vehicle-description{margin:0;color:#ccc;line-height:1.65;max-width:65ch}
+.site-redesign.getspeed-dark .vehicle-price{margin:16px 0 0;color:#ff987b;font-size:14px;line-height:1.5}
+@media(max-width:760px){.site-redesign.getspeed-dark .getspeed-hero{min-height:max(650px,calc(100svh - var(--header-height,120px)));padding-block:48px}.site-redesign.getspeed-dark .getspeed-vehicle-body{padding:22px}.site-redesign.getspeed-dark .vehicle-question{font-size:18px}}
+
+/* Compact vehicle copy; the whole framed card tilts in true perspective. */
+.site-redesign.getspeed-dark .getspeed-hero-content,
+.site-redesign.getspeed-dark .getspeed-section>.container,
+.site-redesign.getspeed-dark .getspeed-booking-section>.container{width:calc(100% - 48px);max-width:980px;margin-inline:auto;padding-inline:0}
+.site-redesign.getspeed-dark .getspeed-vehicle-grid{max-width:none;width:100%;gap:32px}
+.site-redesign.getspeed-dark .getspeed-booking-card{width:100%;box-sizing:border-box}
+.site-redesign.getspeed-dark .getspeed-vehicle-body{padding:22px 28px 26px}
+.site-redesign.getspeed-dark .vehicle-question{margin:0 0 7px;font-size:15px;font-weight:500;color:#c8c8c8;line-height:1.45}
+.site-redesign.getspeed-dark .getspeed-vehicle-body h3{margin:0 0 10px;font-size:clamp(21px,2.2vw,28px);line-height:1.2;color:#fff}
+.site-redesign.getspeed-dark .vehicle-description{margin:0;font-size:15px;line-height:1.6;color:#c8c8c8;max-width:none}
+.site-redesign .getspeed-tilt-stage{min-width:0}
+.site-redesign .getspeed-vehicle-image{transform:none;border-radius:0;perspective:none}
+.site-redesign .getspeed-vehicle-card,
+.site-redesign .getspeed-vehicle-card:hover,
+.site-redesign .getspeed-vehicle-card:focus-visible,
+.site-redesign .getspeed-booking-card{perspective:none;transform:perspective(1100px) rotateX(var(--card-angle,0deg)) scale(var(--card-scale,1));transform-origin:center center;backface-visibility:hidden;transition:border-color .2s,box-shadow .2s}
+.site-redesign .getspeed-booking-section{perspective:none}
+@media(max-width:760px){.site-redesign.getspeed-dark .getspeed-hero-content,.site-redesign.getspeed-dark .getspeed-section>.container,.site-redesign.getspeed-dark .getspeed-booking-section>.container{width:calc(100% - 32px)}.site-redesign.getspeed-dark .getspeed-vehicle-body{padding:20px}.site-redesign.getspeed-dark .vehicle-question,.site-redesign.getspeed-dark .vehicle-description{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.site-redesign .getspeed-vehicle-card,.site-redesign .getspeed-vehicle-card:hover,.site-redesign .getspeed-vehicle-card:focus-visible,.site-redesign .getspeed-booking-card{transform:none}}
+
+/* About: one editorial column, one contact invitation. */
+.site-redesign .about-intro{padding:clamp(40px,7vw,88px) 0 24px;background:#fff}
+.site-redesign .about-intro>.container,.site-redesign:has(.about-intro) .about-contact-section>.container{max-width:980px;width:calc(100% - 48px);padding-inline:0;margin-inline:auto}
+.site-redesign .about-prose{max-width:none;background:transparent;border:0;box-shadow:none;padding:0}
+.site-redesign .about-prose h1{max-width:850px;margin:0 0 32px;font-size:clamp(34px,4.1vw,58px);line-height:1.15}
+.site-redesign .about-prose p{max-width:76ch;margin:0 0 22px;font-size:18px;line-height:1.8;color:#50545a}
+.site-redesign .about-prose p:last-child{margin-bottom:0}
+.site-redesign:has(.about-intro) .about-contact-section{padding-top:40px;background:#fff}
+@media(max-width:760px){.site-redesign .about-intro>.container,.site-redesign:has(.about-intro) .about-contact-section>.container{width:calc(100% - 32px)}.site-redesign .about-prose p{font-size:16px;line-height:1.75}.site-redesign .about-prose h1{margin-bottom:24px}}
+
+/* Match the homepage heading weights; retain the shared system font family. */
+.site-redesign h1{font-weight:750}
+.site-redesign h2{font-weight:700}
+.site-redesign .about-prose h1{font-family:inherit;font-weight:750;letter-spacing:-.015em;line-height:1.16}

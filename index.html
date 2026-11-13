@@ -31,10 +31,13 @@
     <script defer src="/assets/trackstatus/core.js?v=20260910-01"></script>
     <script defer src="/assets/ticker/state.js?v=20260910-01"></script>
     <script defer src="/assets/ticker/calendar.js?v=20260910-01"></script>
-    <script defer src="/assets/ticker/ticker.js?v=20260910-03"></script>
+    
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/vendor/lenis/lenis.css"><link rel="stylesheet" href="/prototype.css?v=flow-24">
+<script defer src="/assets/vendor/lenis/lenis.min.js"></script><script defer src="/prototype.js?v=flow-24"></script>
 </head>
 
-<body>
+<body class="design-prototype">
 
     <header class="site-header">
     <div class="container header-container">
@@ -61,45 +64,7 @@
     <main>
 
         <!-- App Vorschau -->
-        <section
-            class="app-preview-section app-preview-top"
-            id="app-preview"
-        >
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="eyebrow">
-                        App-Vorschau
-                    </p>
-
-                    <h1>
-                        Ein erster Blick in die Nürburg Guide App
-                    </h1>
-
-                    <p>
-                        Die Vorschau zeigt zentrale Screens und Funktionen der App.
-                        Tippe auf das Bild, um es groß zu öffnen.
-                    </p>
-
-                </div>
-
-                <a
-                    class="app-preview-frame app-preview-link"
-                    href="assets/app-preview-wide-de.png"
-                    aria-label="App-Vorschau groß öffnen"
-                >
-                    <img
-                        src="assets/app-preview-wide-de.png"
-                        alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots"
-                    >
-                    <span class="preview-zoom-hint">
-                        Vorschau öffnen
-                    </span>
-                </a>
-            </div>
-        </section>
+        
         <!-- Download / Hero -->
         <section
             class="hero hero-home"
@@ -110,13 +75,9 @@
 
                 <div class="hero-copy">
 
-                    <p class="eyebrow">
-                        Nürburg Guide
-                    </p>
+                    
 
-                    <h2>
-                        Die Nummer 1 App für Touristenfahrer, Besucher und Nordschleifen-Fans.
-                    </h2>
+                    <h1><span class="hero-heading-line">Die Nummer 1 App für</span> <span class="hero-heading-line">Touristenfahrten, Besucher</span> <span class="hero-heading-line">und Nordschleifen-Fans.</span></h1>
 
                     <!-- Nutzerstatistik -->
                     <div
@@ -196,21 +157,23 @@
 
 
                     <!-- Download CTA -->
-                    <div
+                    
+
+                </div>
+
+            </div>
+
+        </section>
+<section class="download-scroll"><div class="container"><div
                         class="download-cta"
                         aria-label="Nürburg Guide herunterladen"
                     >
 
                         <div class="download-cta-content">
 
-                            <p class="download-cta-eyebrow">
-                                Jetzt dabei sein
-                            </p>
+                            
 
-                            <h3>
-                                Werde Teil der Nürburg Guide Community –
-                                jetzt herunterladen!
-                            </h3>
+                            <h3>Werde Teil der Nürburg Guide Community – jetzt kostenlos herunterladen.</h3>
 
                             <p class="download-cta-text">
                                 Hol dir die Nürburg Guide App und entdecke alle wichtigen
@@ -255,21 +218,16 @@
 
                         </div>
 
-                    </div>
+                    </div></div></section>
 
-                </div>
-
-            </div>
-
-        </section>
 
         <!-- GetSpeed Teaser -->
-        <section
-            class="getspeed-home-section"
+        <section class="partners-section"><div class="container"><h2>Unsere Partner am Ring</h2><div class="partner-marquee"><div class="partner-track"><div class="partner-group"><a class="partner-item" href="getspeed.html"><div class="partner-mark"><img class="partner-getspeed" src="/assets/partners/getspeed/GetSpeed Weiß.png" alt=""></div><span>GetSpeed RaceTaxi</span></a><a class="partner-item" href="https://www.rent4ring.de/" target="_blank" rel="noopener noreferrer"><div class="partner-mark"><img class="partner-rent4ring" src="/assets/partners/rent4ring/logo.svg" alt=""></div><span>Rent4Ring</span></a></div><div class="partner-group" aria-hidden="true"><a class="partner-item" href="getspeed.html" tabindex="-1"><div class="partner-mark"><img class="partner-getspeed" src="/assets/partners/getspeed/GetSpeed Weiß.png" alt=""></div><span>GetSpeed RaceTaxi</span></a><a class="partner-item" href="https://www.rent4ring.de/" target="_blank" rel="noopener noreferrer" tabindex="-1"><div class="partner-mark"><img class="partner-rent4ring" src="/assets/partners/rent4ring/logo.svg" alt=""></div><span>Rent4Ring</span></a></div></div></div></div></section><section
+            class="getspeed-home-section" id="getspeed-experience"
             aria-labelledby="getspeed-home-teaser-title"
         >
 
-            <img
+            <video class="getspeed-background-video" muted playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video><img
                 class="getspeed-home-image"
                 src="assets/partners/getspeed/background.JPG"
                 alt="GetSpeed RaceTaxi auf der Nürburgring Nordschleife"
@@ -280,9 +238,7 @@
 
                 <div class="getspeed-home-content">
 
-                    <p class="eyebrow">
-                        Partner am Ring
-                    </p>
+                    
 
                     <h2 id="getspeed-home-teaser-title">
                         GetSpeed Experience buchen
@@ -321,18 +277,42 @@
             </div>
 
         </section>
-
-
-        <!-- Funktionen -->
-        <section class="features-section">
+<section
+            class="app-preview-section app-preview-top" id="app-preview"
+            id="app-preview"
+        ><div class="preview-pin">
 
             <div class="container">
 
                 <div class="section-heading">
 
-                    <p class="eyebrow">
-                        Funktionen
-                    </p>
+                    
+
+                    <h2>
+                        Ein erster Blick in die Nürburg Guide App
+                    </h2>
+
+                    
+
+                </div>
+
+                
+            </div>
+        <div class="app-preview-frame"><div class="preview-edge-glow preview-glow-top" aria-hidden="true"></div><div class="preview-edge-glow preview-glow-bottom" aria-hidden="true"></div><img draggable="false"
+                        src="assets/app-preview-wide-de.png"
+                        alt="Vorschau der Nürburg Guide App mit mehreren App-Screenshots"
+                    ></div></div></section>
+
+
+
+        <!-- Funktionen -->
+        <section class="logo-transition" aria-hidden="true"><div class="logo-pin"><img src="/assets/branding/logos/nuerburg-guide-logo-mark-orange-ed2000.svg" alt="" draggable="false"><div class="orange-fill"></div></div></section><section class="features-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    
 
                     <h2>
                         Das bietet die App
@@ -437,9 +417,7 @@
 
             <div class="container">
 
-                <p class="eyebrow community-eyebrow">
-                    Von der Community
-                </p>
+                
 
 
                 <div class="community-box">
@@ -486,6 +464,7 @@
             </div>
 
         </section>
+
 
     </main>
 
@@ -540,7 +519,9 @@
 
                     </a>
 
-                </div>
+                <a class="social-icon" href="https://www.tiktok.com/@nuerburgguide" target="_blank" rel="noopener noreferrer" aria-label="Nürburg Guide auf TikTok öffnen" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M16 2h-3v13a3 3 0 1 1-3-3V9a6 6 0 1 0 6 6V8a8 8 0 0 0 5 2V7a5 5 0 0 1-5-5Z"></path></svg></a>
+<a class="social-icon" href="https://www.youtube.com/@nuerburgguide" target="_blank" rel="noopener noreferrer" aria-label="Nürburg Guide auf YouTube öffnen" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5a3 3 0 0 0-2.1 2.1A31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5Z"></path></svg></a>
+</div>
 
             </div>
 
@@ -554,25 +535,25 @@
                 <ul>
 
                     <li>
-                        <a href="impressum.html">
+                        <a href="/impressum.html">
                             Impressum
                         </a>
                     </li>
 
                     <li>
-                        <a href="kontakt.html">
+                        <a href="/kontakt.html">
                             Kontakt
                         </a>
                     </li>
 
                     <li>
-                        <a href="datenschutz.html">
+                        <a href="/datenschutz.html">
                             Datenschutz
                         </a>
                     </li>
 
                     <li>
-                        <a href="nutzungsbedingungen.html">
+                        <a href="/nutzungsbedingungen.html">
                             Nutzungsbedingungen
                         </a>
                     </li>
@@ -597,5 +578,5 @@
 
     <script src="script.js?v=20260903-01"></script>
 
-</body>
+<svg class="logo-vector-flight" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g><path fill="#ED2000" fill-rule="evenodd" d="M 131.00 2.00 L 317.00 2.00 L 275.00 173.00 L 455.00 173.00 L 412.00 346.00 L 230.00 347.00 L 189.00 517.00 L 369.00 517.00 L 326.00 687.00 L 148.00 687.00 L 189.00 519.00 L 2.00 519.00 L 45.00 344.00 L 231.00 344.00 L 236.00 327.00 L 273.00 173.00 L 89.00 173.00 Z M 545.00 2.00 L 735.00 2.00 C 753.00 2.00 768.00 10.00 781.00 25.00 C 793.00 40.00 803.00 59.00 814.00 81.00 L 1045.00 479.00 C 1057.00 500.00 1075.00 517.00 1102.00 527.00 C 1134.00 535.00 1172.00 535.00 1226.00 536.00 L 1498.00 534.00 L 1510.00 529.00 L 1517.00 522.00 L 1544.00 411.00 L 1358.00 411.00 L 1279.00 272.00 L 1770.00 271.00 L 1773.00 275.00 L 1692.00 595.00 L 1671.00 648.00 L 1659.00 665.00 L 1644.00 678.00 L 1626.00 686.00 L 1597.00 690.00 L 1108.00 690.00 L 1062.00 683.00 L 1026.00 669.00 L 979.00 644.00 L 948.00 622.00 L 919.00 596.00 L 890.00 563.00 L 859.00 518.00 L 835.00 471.00 L 679.00 212.00 L 560.00 687.00 L 375.00 687.00 Z M 1182.00 2.00 L 1837.00 4.00 L 1796.00 165.00 L 1232.00 168.00 C 1209.00 168.00 1194.00 172.00 1183.00 181.00 C 1171.00 194.00 1162.00 215.00 1156.00 229.00 L 1095.00 465.00 L 970.00 251.00 L 1001.00 121.00 C 1015.00 75.00 1055.00 40.00 1139.00 9.00 Z"/></g></svg><script>const header=document.querySelector(".site-header");if(header)new ResizeObserver(()=>document.documentElement.style.setProperty("--header-height",header.offsetHeight+"px")).observe(header);</script></body>
 </html>
