@@ -139,6 +139,8 @@
  const video=document.querySelector('.getspeed-background-video');
  if(!video)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ // Select once: resizing must not trigger a second video download.
+ const videoDirectory='/assets/partners/getspeed/video/optimized/'+(matchMedia('(max-width: 760px)').matches?'mobile/':'');
  const clips=['VideoTouristenfahrten.mp4','VideoNLS.mp4','C3714_3_prob3.mp4','C3714_5_prob3.mp4'];
  let index=Math.floor(Math.random()*clips.length),visible=false,ready=false;
  const allowed=()=>visible&&!reduced.matches&&!document.hidden;
@@ -151,7 +153,7 @@
  }
  function loadClip(){
   ready=false;video.classList.remove('is-playing');
-  video.src='/assets/partners/getspeed/video/'+clips[index];
+  video.src=videoDirectory+clips[index];
   video.load();
  }
  video.addEventListener('loadedmetadata',()=>{
