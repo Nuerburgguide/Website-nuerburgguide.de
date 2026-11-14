@@ -414,7 +414,7 @@ body.design-prototype{overflow-x:clip}
  .design-prototype .preview-pin .section-heading{margin-bottom:26px}
  .design-prototype .preview-pin h2{font-size:clamp(23px,6vw,28px);line-height:1.2}
  .design-prototype.motion-ready .app-preview-frame{height:max(220px,min(46svh,calc(100svh - var(--header-height,170px) - var(--preview-heading-height,70px) - 76px)))}
- .design-prototype.motion-ready .logo-transition{height:230svh}
+ .design-prototype.motion-ready .logo-transition{height:265svh}
  .design-prototype .preview-edge-glow{filter:blur(9px);opacity:.65}
  .design-prototype .preview-glow-top{height:34px;top:-22px}
  .design-prototype .preview-glow-bottom{height:42px;bottom:-28px}
