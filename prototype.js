@@ -32,6 +32,13 @@
    if(!frame||!image)return;
    const heading=preview.querySelector('.section-heading');
    preview.style.setProperty('--preview-heading-height',`${heading?.getBoundingClientRect().height||60}px`);
+   const aspect=image.naturalWidth/image.naturalHeight;
+   if(Number.isFinite(aspect)&&aspect>0){
+    frame.style.setProperty('--preview-aspect',String(aspect));
+    // Explicit geometry prevents intrinsic image sizing and edge glow diverging.
+    if(!motion.matches&&document.body.classList.contains('motion-ready'))image.style.width=`${frame.clientHeight*aspect}px`;
+    else image.style.removeProperty('width');
+   }
    const imageWidth=image.getBoundingClientRect().width;
    frame.style.setProperty('--preview-image-width',`${imageWidth}px`);
    travel=Math.max(0,imageWidth-frame.clientWidth);

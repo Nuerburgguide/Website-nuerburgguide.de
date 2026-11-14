@@ -397,7 +397,7 @@ body.design-prototype{overflow-x:clip}
 /* Post-launch: readable orange panels, calmer mobile choreography. */
 .design-prototype :is(.features-section,.community-section,.disclaimer-section),
 .design-prototype :is(.features-section,.community-section,.disclaimer-section) :is(h2,p,.eyebrow,a){color:#fff}
-.design-prototype .feature-card,.design-prototype .feature-card :is(h3,p,a){color:#171b22}
+.design-prototype .features-section .feature-card,.design-prototype .features-section .feature-card :is(h2,h3,p,a){color:#171b22}
 .design-prototype .preview-edge-glow{filter:blur(12px);opacity:.75}
 .design-prototype .preview-glow-top{height:44px;top:-30px;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000)}
 .design-prototype .preview-glow-bottom{height:52px;bottom:-36px;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
@@ -418,4 +418,13 @@ body.design-prototype{overflow-x:clip}
  .design-prototype .preview-edge-glow{filter:blur(9px);opacity:.65}
  .design-prototype .preview-glow-top{height:34px;top:-22px}
  .design-prototype .preview-glow-bottom{height:42px;bottom:-28px}
+}
+
+/* Keep the panorama wider than the viewport, even on shallow desktop windows. */
+.design-prototype.motion-ready .app-preview-frame{height:clamp(260px,calc(100svh - var(--header-height,92px) - var(--preview-heading-height,60px) - 110px),650px);min-height:calc(110vw / var(--preview-aspect,4.6034))}
+.design-prototype .preview-edge-glow{min-width:0}
+.design-prototype .preview-pin .section-heading{margin-bottom:32px}
+@media(max-width:760px){
+ .design-prototype.motion-ready .app-preview-frame{height:max(220px,min(46svh,calc(100svh - var(--header-height,170px) - var(--preview-heading-height,70px) - 76px)))}
+ .design-prototype .preview-pin .section-heading{margin-bottom:26px}
 }
