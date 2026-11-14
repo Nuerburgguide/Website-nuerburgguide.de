@@ -137,8 +137,8 @@
 .site-redesign .getspeed-vehicle-card:hover,
 .site-redesign .getspeed-vehicle-card:focus-visible,
 .site-redesign .getspeed-booking-card{transform:none;perspective:none;backface-visibility:visible;will-change:auto}
-.site-redesign.getspeed-dark .getspeed-booking-card{background:#333;border:0;box-shadow:none}
-.site-redesign .raceticket-widget-shell{background:#333;color:#fff;border:0;border-radius:0;box-shadow:none;outline:0}
+.site-redesign.getspeed-dark .getspeed-booking-card{background:#000;border:0;box-shadow:none}
+.site-redesign .raceticket-widget-shell{background:#000;color:#fff;border:0;border-radius:0;box-shadow:none;outline:0}
 .site-redesign .legal-page h1{font-size:clamp(28px,3vw,36px);line-height:1.2;font-weight:750}
 .site-redesign .legal-page h2{font-size:clamp(20px,2vw,24px);line-height:1.35;font-weight:700;letter-spacing:0}
 .site-redesign .legal-page h3{font-size:18px;line-height:1.4;font-weight:700;letter-spacing:0}
