@@ -37,25 +37,3 @@
  reduced.addEventListener('change',()=>{if(reduced.matches)video.classList.remove('is-playing');play();});
  document.addEventListener('visibilitychange',play);
 })();
-
-
-(() => {
- const reduce=matchMedia('(prefers-reduced-motion: reduce)');
- const booking=document.querySelector('.getspeed-booking-section');
- const cards=[...document.querySelectorAll('.getspeed-vehicle-card,.getspeed-booking-card')];
- let pending=false;
- function update(){
-  pending=false;
-  const dark=document.body.classList.contains('getspeed-dark')||(booking&&booking.getBoundingClientRect().top<innerHeight*.72);
-  document.body.classList.toggle('booking-dark',!!dark);
-  cards.forEach(card=>{
-   const anchor=card.parentElement;
-   const progress=Math.max(0,Math.min(1,(innerHeight-anchor.getBoundingClientRect().top)/(innerHeight*.72)));
-   const eased=progress*progress*(3-2*progress);
-   card.style.setProperty('--card-angle',reduce.matches?'0deg':((1-eased)*24)+'deg');
-   card.style.setProperty('--card-scale',reduce.matches?'1':String(.98+eased*.02));
-  });
- }
- function schedule(){if(!pending){pending=true;requestAnimationFrame(update);}}
- addEventListener('scroll',schedule,{passive:true});addEventListener('resize',schedule);reduce.addEventListener('change',schedule);update();
-})();

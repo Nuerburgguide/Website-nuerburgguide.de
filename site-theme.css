@@ -131,3 +131,25 @@
 .site-redesign h1{font-weight:750}
 .site-redesign h2{font-weight:700}
 .site-redesign .about-prose h1{font-family:inherit;font-weight:750;letter-spacing:-.015em;line-height:1.16}
+
+/* Post-launch: stable cards, including dynamically sized booking contents. */
+.site-redesign .getspeed-vehicle-card,
+.site-redesign .getspeed-vehicle-card:hover,
+.site-redesign .getspeed-vehicle-card:focus-visible,
+.site-redesign .getspeed-booking-card{transform:none;perspective:none;backface-visibility:visible;will-change:auto}
+.site-redesign.getspeed-dark .getspeed-booking-card{background:#333;border:0;box-shadow:none}
+.site-redesign .raceticket-widget-shell{background:#333;color:#fff;border:0;border-radius:0;box-shadow:none;outline:0}
+.site-redesign .legal-page h1{font-size:clamp(28px,3vw,36px);line-height:1.2;font-weight:750}
+.site-redesign .legal-page h2{font-size:clamp(20px,2vw,24px);line-height:1.35;font-weight:700;letter-spacing:0}
+.site-redesign .legal-page h3{font-size:18px;line-height:1.4;font-weight:700;letter-spacing:0}
+.site-redesign .legal-page :is(p,li){font-size:16px;line-height:1.75}
+@media(max-width:760px){
+ .site-redesign .header-container{grid-template-columns:minmax(0,1fr);gap:6px;padding-block:10px}
+ .site-redesign .logo{grid-column:1;grid-row:1;justify-self:center}
+ .site-redesign .language-switcher{grid-column:1;grid-row:2;justify-self:center;margin:0;--language-cell:40px;padding:2px 4px}
+ .site-redesign .language-switcher::before,.site-redesign .language-switcher::after{top:2px;bottom:2px}
+ .site-redesign .main-nav{grid-column:1;grid-row:3;justify-self:center;width:100%;min-width:0}
+ .site-redesign .main-nav ul{justify-content:center;gap:2px}
+ .site-redesign .main-nav a{padding:8px 10px;font-size:clamp(10px,3vw,12px);white-space:nowrap}
+ .site-redesign .legal-page{padding:24px 18px}
+}

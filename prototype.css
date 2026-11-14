@@ -393,3 +393,29 @@ body.design-prototype{overflow-x:clip}
 .design-prototype .preview-glow-top{height:49px;top:-37px}
 .design-prototype .preview-glow-bottom{height:60px;bottom:-44px}
 @media(max-width:760px){.design-prototype .preview-glow-top{height:39px;top:-27px}.design-prototype .preview-glow-bottom{height:52px;bottom:-36px}}
+
+/* Post-launch: readable orange panels, calmer mobile choreography. */
+.design-prototype :is(.features-section,.community-section,.disclaimer-section),
+.design-prototype :is(.features-section,.community-section,.disclaimer-section) :is(h2,p,.eyebrow,a){color:#fff}
+.design-prototype .feature-card,.design-prototype .feature-card :is(h3,p,a){color:#171b22}
+.design-prototype .preview-edge-glow{filter:blur(12px);opacity:.75}
+.design-prototype .preview-glow-top{height:44px;top:-30px;-webkit-mask-image:linear-gradient(transparent,#000);mask-image:linear-gradient(transparent,#000)}
+.design-prototype .preview-glow-bottom{height:52px;bottom:-36px;-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.design-prototype .app-preview-frame>img{-webkit-mask-image:linear-gradient(transparent,#000 7px,#000 calc(100% - 7px),transparent);mask-image:linear-gradient(transparent,#000 7px,#000 calc(100% - 7px),transparent)}
+@media(max-width:760px){
+ .design-prototype .header-container{grid-template-columns:minmax(0,1fr);gap:6px;padding-block:10px}
+ .design-prototype .logo{grid-column:1;grid-row:1;justify-self:center}
+ .design-prototype .language-switcher{grid-column:1;grid-row:2;justify-self:center;margin:0;--language-cell:40px;padding:2px 4px}
+ .design-prototype .language-switcher::before,.design-prototype .language-switcher::after{top:2px;bottom:2px}
+ .design-prototype .main-nav{grid-column:1;grid-row:3;justify-self:center;width:100%;min-width:0}
+ .design-prototype .main-nav ul{justify-content:center;gap:2px}
+ .design-prototype .main-nav a{padding:8px 10px;font-size:clamp(10px,3vw,12px);white-space:nowrap}
+ .design-prototype.motion-ready .preview-pin{height:100svh;padding-top:calc(var(--header-height,170px) + 16px);padding-bottom:30px}
+ .design-prototype .preview-pin .section-heading{margin-bottom:26px}
+ .design-prototype .preview-pin h2{font-size:clamp(23px,6vw,28px);line-height:1.2}
+ .design-prototype.motion-ready .app-preview-frame{height:max(220px,min(46svh,calc(100svh - var(--header-height,170px) - var(--preview-heading-height,70px) - 76px)))}
+ .design-prototype.motion-ready .logo-transition{height:230svh}
+ .design-prototype .preview-edge-glow{filter:blur(9px);opacity:.65}
+ .design-prototype .preview-glow-top{height:34px;top:-22px}
+ .design-prototype .preview-glow-bottom{height:42px;bottom:-28px}
+}
