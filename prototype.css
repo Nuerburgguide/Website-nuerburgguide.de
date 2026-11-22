@@ -428,3 +428,27 @@ body.design-prototype{overflow-x:clip}
  .design-prototype.motion-ready .app-preview-frame{height:max(220px,min(46svh,calc(100svh - var(--header-height,170px) - var(--preview-heading-height,70px) - 76px)))}
  .design-prototype .preview-pin .section-heading{margin-bottom:26px}
 }
+
+/* Season countdown between hero statistics and download CTA.
+   Desktop: the hero's min-height already leaves space below the stats, so only bottom padding
+   (tracking that space across widths) is added to centre the countdown. Its padding is the only extra spacing; removing the section restores the original layout. */
+.design-prototype .season-countdown{position:relative;isolation:isolate;background:#fff;padding:0 0 clamp(136px,calc(381px - 17.6vw),222px);text-align:center}
+.design-prototype .season-countdown[hidden]{display:none!important}
+.design-prototype .season-countdown::after{content:'';position:absolute;inset:0;background:#161616;z-index:5;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.design-prototype.dark-scene .season-countdown::after{opacity:1}
+.design-prototype .season-countdown-eyebrow{margin:0 0 10px;color:#bd2914;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.design-prototype .season-countdown-title{margin:0 auto 26px;max-width:640px;color:#171b22;font-size:clamp(21px,2.3vw,30px);font-weight:700;line-height:1.2;letter-spacing:-.02em;text-wrap:balance}
+.design-prototype .season-countdown-timer{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));max-width:680px;margin:0 auto}
+.design-prototype .season-countdown-unit{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;padding:2px 10px;border-right:1px solid #20252c26}
+.design-prototype .season-countdown-unit:last-child{border-right:0}
+.design-prototype .season-countdown-value{color:#171b22;font-size:clamp(28px,3.4vw,44px);font-weight:700;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.design-prototype .season-countdown-label{color:#57606b;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+@media(max-width:760px){
+ .design-prototype .season-countdown{padding:26px 0 14px}
+ .design-prototype .season-countdown-eyebrow{font-size:11px;margin-bottom:8px}
+ .design-prototype .season-countdown-title{font-size:clamp(19px,5.4vw,24px);margin-bottom:20px}
+ .design-prototype .season-countdown-unit{padding:2px 4px;gap:5px}
+ .design-prototype .season-countdown-value{font-size:clamp(24px,7vw,34px)}
+ .design-prototype .season-countdown-label{font-size:clamp(8px,2.3vw,10px);letter-spacing:.06em}
+}
+@media(prefers-reduced-motion:reduce){.design-prototype .season-countdown::after{transition:none}}
