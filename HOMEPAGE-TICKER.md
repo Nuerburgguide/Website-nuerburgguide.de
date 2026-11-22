@@ -1,5 +1,7 @@
 > Aktueller Stand: Homepage-Ticker produktiv deaktiviert (früher Return ohne lokalen DEV-Schalter). Code und lokale DEV-Helfer bleiben erhalten. Die folgende Beschreibung dokumentiert die vorbereitete Anbindung.
 
+> Seit 22.11.2026 laden die Startseiten (DE/EN/ES) die Ticker-Dateien nicht mehr, da der Ticker deaktiviert ist. Zum Reaktivieren im `<head>` der drei Startseiten wieder einbinden: `/assets/ticker/ticker.css`, `/assets/trackstatus/core.js`, `/assets/ticker/state.js`, `/assets/ticker/calendar.js` und `/assets/ticker/ticker.js` (jeweils `defer`). Das Element `#home-track-ticker` ist weiterhin vorhanden.
+
 # Homepage-Ticker — produktive Kalenderanbindung
 
 Stand: 2026-09-10. Lokal implementiert, nicht deployed.

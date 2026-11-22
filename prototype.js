@@ -45,6 +45,7 @@
    previewDistance=Math.max(innerHeight*2.3,travel*1.65);
    preview.style.setProperty('--preview-height',`${innerHeight+previewDistance}px`);
    lenis?.resize();
+   dirty=true;
  }
  function update(){
    if(motion.matches){const features=document.querySelector('.features-section');setHeader(features?.getBoundingClientRect().top<=92?'orange':download?.getBoundingClientRect().top<=92?'dark':'light');return;}
@@ -94,8 +95,16 @@
     taxi.style.setProperty('--light-x',`${pointer.x}%`);taxi.style.setProperty('--light-y',`${pointer.y}%`);
    }
  }
- function tick(time){lenis?.raf(time);update();rafId=fine.matches?requestAnimationFrame(tick):0;}
- function schedule(){if(!rafId)rafId=requestAnimationFrame(tick);}
+ // Lenis needs every frame; the scroll effects only when scroll, viewport or the pointer light changed.
+ let lastFrame='',dirty=true;
+ function tick(time){
+  lenis?.raf(time);
+  const frameKey=`${scrollY}|${innerWidth}|${innerHeight}`;
+  const light=Math.abs(pointer.tx-pointer.x)>.05||Math.abs(pointer.ty-pointer.y)>.05;
+  if(dirty||light||frameKey!==lastFrame){dirty=false;lastFrame=frameKey;update();}
+  rafId=fine.matches?requestAnimationFrame(tick):0;
+ }
+ function schedule(){dirty=true;if(!rafId)rafId=requestAnimationFrame(tick);}
  function setup(){
    cancelAnimationFrame(rafId);lenis?.destroy();lenis=null;
    document.body.classList.toggle('motion-ready',!motion.matches);
@@ -116,73 +125,9 @@
  const headerElement=document.querySelector('.site-header');
  if(headerElement)new ResizeObserver(()=>{measure();if(!motion.matches)schedule();}).observe(headerElement);
  if(frame)new ResizeObserver(measure).observe(frame);
+ // Content above may resize without scrolling (fonts, images, countdown removal).
+ new ResizeObserver(()=>{if(!motion.matches)schedule();}).observe(document.body);
  setup();
 })();
 
-// Stable selection plus a separate, lighter hover preview.
-(() => {
- const group=document.querySelector('.language-switcher');
- if(!group)return;
- const links=[...group.querySelectorAll('a')];
- const selected=links.find(a=>a.hasAttribute('aria-current'))||links[0];
- let preview=selected;
- function move(link){
-  preview=link||selected;
-  group.style.setProperty('--language-x',`${preview.offsetLeft}px`);
-  group.style.setProperty('--language-preview',preview===selected?'0':'1');
- }
- function measure(){
-  group.style.setProperty('--language-selected-x',`${selected.offsetLeft}px`);
-  group.style.setProperty('--language-width',`${selected.offsetWidth}px`);
-  move(preview);
- }
- links.forEach(link=>{
-  link.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')move(link);});
-  link.addEventListener('focus',()=>move(link));
- });
- group.addEventListener('pointerleave',()=>move(group.contains(document.activeElement)?document.activeElement:selected));
- group.addEventListener('focusout',e=>{if(!group.contains(e.relatedTarget))move(selected);});
- new ResizeObserver(measure).observe(group);
- measure();
-})();
-
-// Local muted playlist. Decode only when this section is near the viewport.
-(() => {
- const video=document.querySelector('.getspeed-background-video');
- if(!video)return;
- const reduced=matchMedia('(prefers-reduced-motion: reduce)');
- // Select once: resizing must not trigger a second video download.
- const videoDirectory='/assets/partners/getspeed/video/optimized/'+(matchMedia('(max-width: 760px)').matches?'mobile/':'');
- const clips=['VideoTouristenfahrten.mp4','VideoNLS.mp4','C3714_3_prob3.mp4','C3714_5_prob3.mp4'];
- let index=Math.floor(Math.random()*clips.length),visible=false,ready=false;
- const allowed=()=>visible&&!reduced.matches&&!document.hidden;
- function play(){
-  if(!allowed()){video.pause();return;}
-  if(!video.getAttribute('src')){loadClip();return;}
-  if(!ready)return;
-  video.muted=true;
-  video.play().catch(()=>video.classList.remove('is-playing'));
- }
- function loadClip(){
-  ready=false;video.classList.remove('is-playing');
-  video.src=videoDirectory+clips[index];
-  video.load();
- }
- video.addEventListener('loadedmetadata',()=>{
-  const duration=video.duration;
-  // Leave at least five seconds before the next clip.
-  const start=Number.isFinite(duration)?Math.random()*Math.max(0,duration-5):0;
-  if(start>.05){video.currentTime=start;}else{ready=true;play();}
- });
- video.addEventListener('seeked',()=>{ready=true;play();});
- video.addEventListener('playing',()=>video.classList.add('is-playing'));
- video.addEventListener('error',()=>video.classList.remove('is-playing'));
- video.addEventListener('ended',()=>{
-  index=(index+1+Math.floor(Math.random()*(clips.length-1)))%clips.length;
-  loadClip();
- });
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;play();},{rootMargin:'150px'}).observe(video.closest('section'));
- reduced.addEventListener('change',()=>{if(reduced.matches)video.classList.remove('is-playing');play();});
- document.addEventListener('visibilitychange',play);
-})();
-
+// Language switcher: /site-theme.js. GetSpeed background video: /getspeed-motion.js.

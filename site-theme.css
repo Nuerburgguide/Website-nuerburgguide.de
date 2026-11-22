@@ -41,14 +41,10 @@
 @media(prefers-reduced-motion:reduce){.site-redesign .language-switcher::after{transition:none}}
 
 /* Content pages: same quiet white, charcoal and orange palette. */
-.site-redesign .about-hero{background:#fff;padding-block:70px 35px}
-.site-redesign .about-hero-card{background:#171717;color:#fff;border:1px solid #363636;border-radius:24px;box-shadow:0 20px 45px #00000014}
-.site-redesign .about-hero-card p{color:#eee}
-.site-redesign .about-story-section{padding-block:35px 55px;background:#fff}
-.site-redesign .about-story{max-width:850px}
-.site-redesign .respect-box{background:#fff5f0;border:1px solid #ed200024;border-radius:24px}
+
 .site-redesign .cooperation-box{background:#171717;border:1px solid #333;border-radius:24px;color:#fff}
 .site-redesign .cooperation-box :is(h2,p){color:#fff}
+.site-redesign .cooperation-box .button{white-space:nowrap}
 .site-redesign .getspeed-hero{position:relative;isolation:isolate;overflow:hidden}
 .site-redesign .getspeed-background-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;opacity:0;transition:opacity .6s;z-index:0}
 .site-redesign .getspeed-background-video.is-playing{opacity:1}
@@ -61,22 +57,15 @@
 .site-redesign .getspeed-booking-section{perspective:1400px;scroll-margin-top:calc(var(--header-height,92px) + 24px)}
 .site-redesign .getspeed-booking-card{transform:rotateX(var(--card-angle,0deg)) scale(var(--card-scale,1));transform-origin:50% 100%;border-radius:24px;border:1px solid #444;box-shadow:0 24px 60px #0002}
 .site-redesign:has(.getspeed-hero),.site-redesign .getspeed-section,.site-redesign .getspeed-booking-section,.site-redesign .site-header{transition:background-color .35s,color .35s,border-color .35s}
-.site-redesign.booking-dark,.site-redesign.booking-dark .getspeed-section,.site-redesign.booking-dark .getspeed-booking-section,.site-redesign.booking-dark .site-header{background:#161616;color:#fff;border-color:#333}
-.site-redesign.booking-dark .main-nav a{color:#fff}
-.site-redesign.booking-dark .main-nav a:hover{background:#ffffff18}
-.site-redesign.booking-dark .main-nav a[aria-current]{background:#ed2000}
-.site-redesign.booking-dark .language-switcher::before{background:#ffffff30}
-.site-redesign.booking-dark .language-switcher::after{background:#ffffff12}
-.site-redesign.booking-dark .getspeed-section .section-heading :is(h2,p),.site-redesign.booking-dark .getspeed-booking-head :is(h2,p){color:#fff}
-.site-redesign.booking-dark .getspeed-booking-card{background:#202020;color:#fff}
+
 .site-redesign .raceticket-widget-shell{background:#fff;color:#171717;border-radius:16px;overflow:hidden}
 .site-redesign:not(.track-display-mode) .track-page{background:#f7f7f7}
 .site-redesign:not(.track-display-mode) :is(.track-panel,.track-map-panel){border-radius:24px;border-color:#e4e4e4;box-shadow:0 16px 40px #00000008}
 .site-redesign .track-panel h2{font-size:22px}
 .site-redesign .footer-legal{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
 .site-redesign .footer-social h3,.site-redesign .footer-links h3,.site-redesign .footer-brand h3{font-size:18px}
-@media(max-width:760px){.site-redesign .about-hero{padding-block:40px 24px}.site-redesign .getspeed-hero{min-height:min(178vw,850px)}.site-redesign .getspeed-background-video{object-fit:contain;background:#161616}.site-redesign .footer-legal{grid-template-columns:1fr;gap:24px}}
-@media(prefers-reduced-motion:reduce){.site-redesign .getspeed-background-video{display:none}.site-redesign .getspeed-vehicle-image,.site-redesign .getspeed-booking-card{transform:none}.site-redesign.booking-dark,.site-redesign .site-header{transition:none}}
+@media(max-width:760px){.site-redesign .getspeed-hero{min-height:min(178vw,850px)}.site-redesign .getspeed-background-video{object-fit:contain;background:#161616}.site-redesign .footer-legal{grid-template-columns:1fr;gap:24px}}
+@media(prefers-reduced-motion:reduce){.site-redesign .getspeed-background-video{display:none}.site-redesign .getspeed-vehicle-image,.site-redesign .getspeed-booking-card{transform:none}.site-redesign .site-header{transition:none}}
 
 /* GetSpeed: immersive video and a continuous charcoal page. */
 .site-redesign.getspeed-dark,.site-redesign.getspeed-dark main,.site-redesign.getspeed-dark .getspeed-section,.site-redesign.getspeed-dark .getspeed-booking-section,.site-redesign.getspeed-dark .site-header{background:#161616;color:#fff;border-color:#303030}
@@ -94,7 +83,7 @@
 .site-redesign.getspeed-dark .getspeed-vehicle-body h3{color:#fff}
 .site-redesign.getspeed-dark .vehicle-question{margin:20px 0 8px;color:#fff;font-size:20px;font-weight:750;line-height:1.4}
 .site-redesign.getspeed-dark .vehicle-description{margin:0;color:#ccc;line-height:1.65;max-width:65ch}
-.site-redesign.getspeed-dark .vehicle-price{margin:16px 0 0;color:#ff987b;font-size:14px;line-height:1.5}
+
 @media(max-width:760px){.site-redesign.getspeed-dark .getspeed-hero{min-height:max(650px,calc(100svh - var(--header-height,120px)));padding-block:48px}.site-redesign.getspeed-dark .getspeed-vehicle-body{padding:22px}.site-redesign.getspeed-dark .vehicle-question{font-size:18px}}
 
 /* Compact vehicle copy; the whole framed card tilts in true perspective. */
@@ -153,3 +142,11 @@
  .site-redesign .main-nav a{padding:8px 10px;font-size:clamp(10px,3vw,12px);white-space:nowrap}
  .site-redesign .legal-page{padding:24px 18px}
 }
+
+/* Tablet header: keep the three nav links on one row (longest labels: DE/ES). */
+@media(min-width:761px) and (max-width:1100px){
+ .site-redesign .header-container{gap:10px}
+ .site-redesign .main-nav ul{gap:2px}
+ .site-redesign .main-nav a{white-space:nowrap}
+}
+@media(min-width:761px) and (max-width:860px){.site-redesign .main-nav a{padding-inline:8px}}

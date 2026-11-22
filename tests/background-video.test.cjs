@@ -2,7 +2,8 @@
 const fs = require('node:fs');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
-for (const file of ['prototype.js', 'getspeed-motion.js']) {
+// The homepage and the GetSpeed pages share this one implementation.
+for (const file of ['getspeed-motion.js']) {
  const source=fs.readFileSync(file,'utf8').split('// Local muted playlist.')[1];
  const code=source.slice(source.indexOf('(() => {'),source.indexOf('})();')+5);
  for (const mobile of [false,true]) for(const reduce of [false,true]) for(const seed of [0.1,0.4,0.7,0.95]) {
